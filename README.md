@@ -9,8 +9,8 @@ npm install -g serve
 u22/src/firebase/firebaseConfig.js <-こんな感じ
 
 
-##ビルド
+### ビルド
 npm run build
 
-##ローカルホスト
+### ローカルホスト
 serve もしくは firebase serve
