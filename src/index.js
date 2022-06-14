@@ -3,6 +3,6 @@ import $ from "jquery"
 
 $(function () {
     $("#main").on("click", () => {
-        console.log(signUp("test001@example.com", "pass00"));
+        signUp("test001@example.com", "pass00");
     });
 });
