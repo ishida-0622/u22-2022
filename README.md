@@ -17,5 +17,7 @@ serve もしくは firebase serve
 
 ### 禁止事項
 firebase deploy コマンドの実行
+
 上記に書いていないnpmパッケージのインストール
+
 src, public配下以外のファイルの編集
