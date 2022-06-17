@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword, AuthErrorCodes } from "firebase/auth"
 
 const signUp = (mail, pass) => {
     createUserWithEmailAndPassword(auth, mail, pass).then(() => {
-        return true;
+        // window.location.href = '/test.html';
     }).catch((e) => {
         switch (e.code) {
             case AuthErrorCodes.EMAIL_EXISTS:
