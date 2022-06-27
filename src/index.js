@@ -6,6 +6,5 @@ $(function () {
     $("#main").on("click", async () => {
         // signUp("test001@example.com", "pass00");
         console.log(getUserData());
-        // window.location.href = '/test.html';
     });
 });
