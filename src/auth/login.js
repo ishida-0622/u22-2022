@@ -5,13 +5,11 @@ const login = (mail, pass) => {
     signInWithEmailAndPassword(auth, mail, pass).then(() => {
         // window.location.href = '/test.html';
     }).catch((e) => {
-        switch (e.code) {
-            case AuthErrorCodes.USER_DELETED:
-            case AuthErrorCodes.INVALID_PASSWORD:
-                alert("メールアドレスもしくはパスワードが間違っています");
-                break;
-            default:
-                alert(e.code);
+        const errorCode = e.code;
+        if (errorCode === AuthErrorCodes.USER_DELETED || errorCode === AuthErrorCodes.INVALID_PASSWORD) {
+            alert("メールアドレスもしくはパスワードが間違っています");
+        } else {
+            alert(errorCode);
         }
     });
 }

@@ -8,18 +8,15 @@ const signUp = async (mail, pass) => {
         await sendEmailVerification(user);
         // window.location.href = '/home.html';
     }).catch((e) => {
-        switch (e.code) {
-            case AuthErrorCodes.EMAIL_EXISTS:
-                alert("そのメールアドレスは使用されています");
-                break;
-            case AuthErrorCodes.WEAK_PASSWORD:
-                alert("パスワードは6文字以上で入力してください");
-                break;
-            case AuthErrorCodes.INVALID_EMAIL:
-                alert("メールアドレスの形式が正しくありません");
-                break;
-            default:
-                alert(e.code);
+        const errorCode = e.code;
+        if (errorCode === AuthErrorCodes.EMAIL_EXISTS) {
+            alert("そのメールアドレスは使用されています");
+        } else if (AuthErrorCodes.WEAK_PASSWORD) {
+            alert("パスワードは6文字以上で入力してください");
+        } else if (AuthErrorCodes.INVALID_EMAIL) {
+            alert("メールアドレスの形式が正しくありません");
+        } else {
+            alert(errorCode);
         }
     });
 }
