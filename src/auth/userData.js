@@ -1,5 +1,5 @@
-import { getAuth } from 'firebase/auth';
-import { app } from '../firebase/firebaseConfig';
+import { getAuth } from "firebase/auth";
+import { app } from "../firebase/firebaseConfig";
 
 const getUserData = () => {
     const auth = getAuth(app);
