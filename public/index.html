@@ -27,7 +27,9 @@
 
 <body>
     <div id="main">
-        <h2>作成中</h2>
+        <h2 id="test">作成中</h2>
+        <input type="text" name="txt" id="txt" v-model="test" @input="changeFunc">
+        {{ array }}
     </div>
     <script src="dist/index.js"></script>
 </body>
