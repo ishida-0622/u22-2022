@@ -1,4 +1,4 @@
-import auth from "../firebase/firebaseConfig";
+import { auth } from "../firebase/firebaseConfig";
 import { signInWithEmailAndPassword, AuthErrorCodes } from "firebase/auth"
 
 const login = (mail, pass) => {
