@@ -12,6 +12,12 @@ u22/src/firebase/firebaseConfig.js <-こんな感じ
 ### ビルド
 npm run build
 
+### フォーマット
+npm run fmt
+
+### ビルドとフォーマット
+npm run all
+
 ### ローカルホスト
 serve もしくは firebase serve
 
