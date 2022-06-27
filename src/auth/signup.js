@@ -1,9 +1,12 @@
-import auth from "../firebase/firebaseConfig";
-import { createUserWithEmailAndPassword, AuthErrorCodes } from "firebase/auth"
+import { auth } from "../firebase/firebaseConfig";
+import { createUserWithEmailAndPassword, AuthErrorCodes, sendEmailVerification } from "firebase/auth"
+import getUserData from "./userData";
 
-const signUp = (mail, pass) => {
-    createUserWithEmailAndPassword(auth, mail, pass).then(() => {
-        // window.location.href = '/test.html';
+const signUp = async (mail, pass) => {
+    await createUserWithEmailAndPassword(auth, mail, pass).then(async () => {
+        const user = getUserData();
+        await sendEmailVerification(user);
+        // window.location.href = '/home.html';
     }).catch((e) => {
         switch (e.code) {
             case AuthErrorCodes.EMAIL_EXISTS:
