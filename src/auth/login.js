@@ -3,7 +3,7 @@ import { signInWithEmailAndPassword, AuthErrorCodes } from "firebase/auth"
 
 const login = (mail, pass) => {
     signInWithEmailAndPassword(auth, mail, pass).then(() => {
-        return true;
+        // window.location.href = '/test.html';
     }).catch((e) => {
         switch (e.code) {
             case AuthErrorCodes.USER_DELETED:
