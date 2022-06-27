@@ -1,9 +1,9 @@
-import auth from "../firebase/firebaseConfig";
+import { auth } from "../firebase/firebaseConfig";
 import { signInWithEmailAndPassword, AuthErrorCodes } from "firebase/auth"
 
 const login = (mail, pass) => {
     signInWithEmailAndPassword(auth, mail, pass).then(() => {
-        return true;
+        // window.location.href = '/home.html';
     }).catch((e) => {
         switch (e.code) {
             case AuthErrorCodes.USER_DELETED:
