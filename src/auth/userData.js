@@ -9,6 +9,6 @@ const getUserData = () => {
         return user;
     }
     return null;
-}
+};
 
 export default getUserData;

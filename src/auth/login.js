@@ -1,19 +1,22 @@
-import auth from "../firebase/firebaseConfig";
-import { signInWithEmailAndPassword, AuthErrorCodes } from "firebase/auth"
+import { auth } from "../firebase/firebaseConfig";
+import { signInWithEmailAndPassword, AuthErrorCodes } from "firebase/auth";
 
 const login = (mail, pass) => {
-    signInWithEmailAndPassword(auth, mail, pass).then(() => {
-        return true;
-    }).catch((e) => {
-        switch (e.code) {
-            case AuthErrorCodes.USER_DELETED:
-            case AuthErrorCodes.INVALID_PASSWORD:
+    signInWithEmailAndPassword(auth, mail, pass)
+        .then(() => {
+            // window.location.href = '/test.html';
+        })
+        .catch((e) => {
+            const errorCode = e.code;
+            if (
+                errorCode === AuthErrorCodes.USER_DELETED ||
+                errorCode === AuthErrorCodes.INVALID_PASSWORD
+            ) {
                 alert("メールアドレスもしくはパスワードが間違っています");
-                break;
-            default:
-                alert(e.code);
-        }
-    });
-}
+            } else {
+                alert(errorCode);
+            }
+        });
+};
 
 export default login;
