@@ -14,9 +14,11 @@ import {
 import { auth, db } from "./firebase/firebaseConfig";
 import { signOut } from "firebase/auth";
 import Vue from "./vue";
+import login from "./auth/login";
 
 $(function () {
     $("#test").on("click", async () => {
+        // login("ken.babuo@gmail.com", "pass00");
         // signUp("test001@example.com", "pass00");
         // console.log(getUserData());
         // window.location.href = '/test.html';
@@ -31,6 +33,7 @@ $(function () {
             性別: "男",
             生年月日: "20020622",
         };
+        data["userID"]; // "ken"
         // const data = {
         //     userID: "katogi",
         //     アカウントタイプ: "講師",
@@ -102,7 +105,7 @@ $(function () {
         };
         const arr = [a, b, c, d];
         // const e = "加藤";
-        const e = vm.test;
+        // const e = vm.test;
         // const reg = new RegExp("^" + e);
         // const arr2 = arr.filter(obj => obj.name.match(reg));
         // console.log(arr2);
@@ -112,19 +115,29 @@ $(function () {
         const classID = "XYZ塾5年生国語クラス(一意のクラス名)";
         const testID = "ABC模試";
         // クラスIDからテスト一覧を取得
-        const q = query(
-            collection(db, `tests`),
-            where("クラス名(一意)", "==", classID)
-        );
-        const res = await getDocs(q);
-        res.forEach((doc) => {
-            console.log(doc.data());
-        });
+        // const q = query(collection(db, `users`), where("年齢", ">=", 20));
+        // const res = await getDocs(q);
+        const res = await getDocs(collection(db, "users"));
+        const docs = res.docs.map((v) => v.data());
+        console.log(docs);
+        // res.forEach((doc) => {
+        //     console.log(doc.data());
+        // });
         // テスト
-        const res2 = await getDoc(doc(db, `users/${userID}/class/${classID}`));
-        const res3 = await getDoc(doc(db, `tests/${testID}`));
-        console.log(res2.data());
-        console.log(res3.data());
+        const res2 = await getDoc(doc(db, `users/${userID}`));
+        // const res3 = await getDoc(doc(db, `tests/${testID}`));
+        // const res4 = await getDoc(doc(db, `class/${classID}`));
+        // console.log(res2.data());
+        console.log(res2.data()["userID"]);
+        console.log(res2.data()["ミョウジ"]);
+        // console.log(res3.data());
+        // console.log(res4.data());
+        // const name = res4.data()["生徒"];
+        // name.forEach((val) => {
+        //     console.log(val);
+        // });
+        // console.log(res4.data()["生徒"]);
+        // console.log(name);
         const labels = [
             "第一回ABC模試",
             "第一回XX模試",
@@ -156,8 +169,8 @@ $(function () {
                 },
             },
         };
-        const myChart = new Chart(document.getElementById("myChart"), config);
-        myChart.canvas.parentNode.style.height = "30%";
-        myChart.canvas.parentNode.style.width = "50%";
+        // const myChart = new Chart(document.getElementById("myChart"), config);
+        // myChart.canvas.parentNode.style.height = "30%";
+        // myChart.canvas.parentNode.style.width = "50%";
     });
 });
