@@ -9,7 +9,7 @@ const getClassData = async (className) => {
     const firestoreData = firestoreDocument.data();
 
     // 変数に代入したデータを返す
-    return firestoreData
-}
+    return firestoreData;
+};
 
 export default getClassData;

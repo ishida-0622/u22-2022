@@ -20,3 +20,5 @@ const getStuData = async (uid) => {
     // ドキュメントを返却
     return document;
 };
+
+export default getStuData;
