@@ -26,3 +26,5 @@ const getTeacherData = async (uid) => {
         return null;
     }
 };
+
+export default getTeacherData;
