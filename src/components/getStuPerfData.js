@@ -14,11 +14,6 @@ const getStuPerfData = async (uid) => {
     //クラスごとの成績(レート)を配列に代入
     const documents = firestoreCollection.docs.map((doc) => doc.data());
 
-    // 存在していなかったらnullを返す
-    if (documents === undefined) {
-        return null;
-    }
-
     // 変数に代入したデータを返す
     return documents;
 }
