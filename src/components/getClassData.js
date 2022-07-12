@@ -9,7 +9,9 @@ import { getDoc, doc } from "firebase/firestore";
  */
 const getClassData = async (className) => {
     // firestoreのclassコレクションからclassNameが一致するドキュメントを取得して変数に代入
-    const firestoreDocument = await getDoc(doc(db, `class/${className}`).withConverter(classDataConverter));
+    const firestoreDocument = await getDoc(
+        doc(db, `class/${className}`).withConverter(classDataConverter)
+    );
 
     // データを変数に代入
     const firestoreData = firestoreDocument.data();
