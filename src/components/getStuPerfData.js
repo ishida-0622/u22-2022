@@ -9,13 +9,17 @@ import { collection, getDocs } from "firebase/firestore";
  */
 const getStuPerfData = async (uid) => {
     // firestoreのusersから、idがuidに一致する生徒のクラスのドキュメントｗ全て取得する
-    const firestoreCollection = await getDocs(collection(db, `users/${uid}/class`).withConverter(stuClassDataConverter));
+    const firestoreCollection = await getDocs(
+        collection(db, `users/${uid}/class`).withConverter(
+            stuClassDataConverter
+        )
+    );
 
     //クラスごとの成績(レート)を配列に代入
     const documents = firestoreCollection.docs.map((doc) => doc.data());
 
     // 変数に代入したデータを返す
     return documents;
-}
+};
 
 export default getStuPerfData;

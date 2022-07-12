@@ -1,16 +1,6 @@
 import signUp from "./auth/signup";
 import $ from "jquery";
 import getUserData from "./auth/userData";
-import {
-    doc,
-    setDoc,
-    addDoc,
-    getDoc,
-    collection,
-    getDocs,
-    query,
-    where,
-} from "firebase/firestore";
 import { auth, db } from "./firebase/firebaseConfig";
 import { signOut } from "firebase/auth";
 import Vue from "./vue";
@@ -18,26 +8,27 @@ import login from "./auth/login";
 import getClassData from "./components/getClassData";
 import getStuData from "./components/getStuData";
 import getTeacherData from "./components/getTeacherData";
+import getStuPerfData from "./components/getStuPerfData";
+import { stuClassData } from "./firebase/firestoreTypes"
 
 $(function () {
     $("#test").on("click", async () => {
-        // login("ken.babuo@gmail.com", "pass00");
         // signUp("test001@example.com", "pass00");
         // console.log(getUserData());
         // window.location.href = '/test.html';
         // await signOut(auth);
+        // await login("satomichi@example.com", "pass00");
         // await signUp("ken.babuo@gmail.com", "pass00");
         const userID = auth.currentUser.uid;
         console.log(userID);
         // テスト
-        const classData = await getClassData(
-            "東京情報クリエイター工学院専門学校ネットワークコース"
-        );
-        const stuData = await getTeacherData("zTp17yLgZOQqgIAQ1iAXFmnm2Lq2");
-        const teacherData = await getStuData("EjQWBubQ3oPR7KDOTplWxCLhe9b2");
+        const classData = await getStuPerfData(userID);
         console.log(classData);
-        console.log(stuData);
-        console.log(teacherData);
+        classData.forEach(val => {
+            val.rate.forEach(r => {
+                console.log(r.date, r.score);
+            })
+        })
 
         const labels = [
             "第一回ABC模試",
