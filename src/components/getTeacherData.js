@@ -1,4 +1,5 @@
 import { db } from "../firebase/firebaseConfig";
+import { teacherDataConverter } from "../firebase/firestoreTypes";
 import { doc, getDoc } from "firebase/firestore";
 
 /**
@@ -8,7 +9,7 @@ import { doc, getDoc } from "firebase/firestore";
  */
 const getTeacherData = async (uid) => {
     // firestoreのusersコレクションからuidが一致するドキュメントを取得して変数に代入
-    const firestoreDocument = await getDoc(doc(db, `users/${uid}`));
+    const firestoreDocument = await getDoc(doc(db, `users/${uid}`).withConverter(teacherDataConverter));
 
     // データを変数に代入
     const firestoreData = firestoreDocument.data();
@@ -20,7 +21,7 @@ const getTeacherData = async (uid) => {
     }
 
     // uidが講師のものであればreturnする。それ以外であればnullで返す。
-    if (firestoreData["type"] === "teacher") {
+    if (firestoreData.type === "teacher") {
         return firestoreData;
     } else {
         return null;
