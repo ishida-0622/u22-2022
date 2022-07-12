@@ -9,7 +9,9 @@ import { doc, getDoc } from "firebase/firestore";
  */
 const getTeacherData = async (uid) => {
     // firestoreのusersコレクションからuidが一致するドキュメントを取得して変数に代入
-    const firestoreDocument = await getDoc(doc(db, `users/${uid}`).withConverter(teacherDataConverter));
+    const firestoreDocument = await getDoc(
+        doc(db, `users/${uid}`).withConverter(teacherDataConverter)
+    );
 
     // データを変数に代入
     const firestoreData = firestoreDocument.data();
