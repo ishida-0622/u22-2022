@@ -1,4 +1,5 @@
 import { db } from "../firebase/firebaseConfig";
+import { stuDataConverter } from "../firebase/firestoreTypes";
 import { doc, getDoc } from "firebase/firestore";
 
 /**
@@ -8,7 +9,7 @@ import { doc, getDoc } from "firebase/firestore";
  */
 const getStuData = async (uid) => {
     // firestoreのusersから、idがuidに一致する生徒情報のドキュメントを取得する
-    const firestoreDoc = await getDoc(doc(db, `users/${uid}`));
+    const firestoreDoc = await getDoc(doc(db, `users/${uid}`).withConverter(stuDataConverter));
 
     // オブジェクト型に変換する
     const document = firestoreDoc.data();
@@ -19,7 +20,7 @@ const getStuData = async (uid) => {
     }
 
     // 取得したドキュメントのタイプが生徒でなかった場合はnullを返却する
-    if (document["type"] !== "student") {
+    if (document.type !== "student") {
         return null;
     }
 
