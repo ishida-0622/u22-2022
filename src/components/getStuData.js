@@ -9,7 +9,9 @@ import { doc, getDoc } from "firebase/firestore";
  */
 const getStuData = async (uid) => {
     // firestoreのusersから、idがuidに一致する生徒情報のドキュメントを取得する
-    const firestoreDoc = await getDoc(doc(db, `users/${uid}`).withConverter(stuDataConverter));
+    const firestoreDoc = await getDoc(
+        doc(db, `users/${uid}`).withConverter(stuDataConverter)
+    );
 
     // オブジェクト型に変換する
     const document = firestoreDoc.data();
