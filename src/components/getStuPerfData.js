@@ -1,4 +1,5 @@
 import { db } from "../firebase/firebaseConfig";
+import { stuClassDataConverter } from "../firebase/firestoreTypes";
 import { collection, getDocs } from "firebase/firestore";
 
 /**
@@ -8,9 +9,8 @@ import { collection, getDocs } from "firebase/firestore";
  */
 const getStuPerfData = async (uid) => {
     // firestoreのusersから、idがuidに一致する生徒のクラスのドキュメントｗ全て取得する
-    const firestoreCollection = await getDocs(collection(db, `users/${uid}/class`));
+    const firestoreCollection = await getDocs(collection(db, `users/${uid}/class`).withConverter(stuClassDataConverter));
 
-    
     //クラスごとの成績(レート)を配列に代入
     const documents = firestoreCollection.docs.map((doc) => doc.data());
 
