@@ -6,7 +6,7 @@ import { getStuData } from "../components/getStuData";
  * @param {string} className クラス名
  * @returns クラス名に対応する生徒の情報
  */
-const getStuInData = async (className) => {
+const getStuInClass = async (className) => {
     // classNameを引数にgetClassDataを呼び出し、クラスの情報をclassDocumentに代入
     const classDocument = await getClassData(className);
 
@@ -27,4 +27,4 @@ const getStuInData = async (className) => {
     return studentDocument;
 };
 
-export default getStuInData;
+export default getStuInClass;
