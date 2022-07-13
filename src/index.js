@@ -9,46 +9,22 @@ import getClassData from "./components/getClassData";
 import getStuData from "./components/getStuData";
 import getTeacherData from "./components/getTeacherData";
 import getStuPerfData from "./components/getStuPerfData";
+import getTestData from "./components/getTestData";
+import getTestList from "./components/getTestList";
+import getStuInClass from "./components/getStuInClass";
 import { classData } from "./firebase/firestoreTypes";
 
-const getStuInData = async (className) => {
-    // classNameを引数にgetClassDataを呼び出し、クラスの情報をclassDocumentに代入
-    const classDocument = await getClassData(className);
-
-    // 存在していなかったらnullを返す
-    if (classDocument === null) {
-        return null;
-    }
-
-    // class/studentsのuidを全てstudentIdに代入
-    const studentId = classDocument.students;
-
-    // studentIdを引数に渡してgetStuDataを呼び出し、生徒の情報を配列studentDocumentに格納
-    const studentDocument = await Promise.all(studentId.map(async (val) => await getStuData(val)));
-
-    studentDocument.map(val => val)
-    const res = []
-    studentId.forEach(async val => {
-        const d = await getStuData(val)
-        res.push(d);
-    })
-
-    // 配列に格納したデータを返す
-    return studentDocument;
-    // return res;
-};
-
 const main = async () => {
-    const stu = await getStuInData()
-    const selectFoodName = document.getElementById("enomoo");
-    const arr = ["test1", "test2", "test3"];
-    arr.forEach((val) => {
-        const option1 = document.createElement("option");
-        option1.value = val;
-        option1.textContent = val;
-        selectFoodName.appendChild(option1);
-    });
-    console.log(document.getElementById("enomoo").value);
+    const t = await getTestData("ABC模試");
+    const tests = await getTestList(
+        "東京情報クリエイター工学院専門学校ネットワークコース"
+    );
+    const stu = await getStuInClass(
+        "東京情報クリエイター工学院専門学校ネットワークコース"
+    );
+    console.log(t);
+    console.log(tests);
+    console.log(stu);
 };
 
 // window.onload = main;
