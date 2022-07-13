@@ -23,8 +23,11 @@ const getStuInClass = async (className) => {
         studentIdList.map(async (val) => await getStuData(val))
     );
 
+    // nullを取り除いたstudentDocuments
+    const notNullStudentDocuments = studentDocuments.flatMap((val) => (val === null ? [] : [val]))
+
     // 配列に格納したデータを返す
-    return studentDocuments;
+    return notNullStudentDocuments;
 };
 
 export default getStuInClass;
