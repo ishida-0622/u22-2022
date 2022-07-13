@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.idConverter =
     exports.classDataConverter =
     exports.testDataConverter =
@@ -11,7 +11,7 @@ exports.idConverter =
     exports.stuDataConverter =
         void 0;
 exports.stuDataConverter = {
-    toFirestore: function (stuData) {
+    toFirestore(stuData) {
         return {
             id: stuData.id,
             type: stuData.type,
@@ -25,8 +25,8 @@ exports.stuDataConverter = {
             birth_date: stuData.birth_date,
         };
     },
-    fromFirestore: function (snapshot, options) {
-        var data = snapshot.data(options);
+    fromFirestore(snapshot, options) {
+        const data = snapshot.data(options);
         return {
             id: data.id,
             type: data.type,
@@ -42,14 +42,14 @@ exports.stuDataConverter = {
     },
 };
 exports.stuClassDataConverter = {
-    toFirestore: function (stuClassData) {
+    toFirestore(stuClassData) {
         return {
             class_name: stuClassData.class_name,
             rate: stuClassData.rate,
         };
     },
-    fromFirestore: function (snapshot, options) {
-        var data = snapshot.data(options);
+    fromFirestore(snapshot, options) {
+        const data = snapshot.data(options);
         return {
             class_name: data.class_name,
             rate: data.rate,
@@ -57,14 +57,14 @@ exports.stuClassDataConverter = {
     },
 };
 exports.stuTestDataConverter = {
-    toFirestore: function (stuTestData) {
+    toFirestore(stuTestData) {
         return {
             test_name: stuTestData.test_name,
             score: stuTestData.score,
         };
     },
-    fromFirestore: function (snapshot, options) {
-        var data = snapshot.data(options);
+    fromFirestore(snapshot, options) {
+        const data = snapshot.data(options);
         return {
             test_name: data.test_name,
             score: data.score,
@@ -72,7 +72,7 @@ exports.stuTestDataConverter = {
     },
 };
 exports.teacherDataConverter = {
-    toFirestore: function (teacherData) {
+    toFirestore(teacherData) {
         return {
             id: teacherData.id,
             type: teacherData.type,
@@ -86,8 +86,8 @@ exports.teacherDataConverter = {
             birth_date: teacherData.birth_date,
         };
     },
-    fromFirestore: function (snapshot, options) {
-        var data = snapshot.data(options);
+    fromFirestore(snapshot, options) {
+        const data = snapshot.data(options);
         return {
             id: data.id,
             type: data.type,
@@ -103,20 +103,20 @@ exports.teacherDataConverter = {
     },
 };
 exports.teacherClassDataConverter = {
-    toFirestore: function (teacherClassData) {
+    toFirestore(teacherClassData) {
         return {
             class_name: teacherClassData.class_name,
         };
     },
-    fromFirestore: function (snapshot, options) {
-        var data = snapshot.data(options);
+    fromFirestore(snapshot, options) {
+        const data = snapshot.data(options);
         return {
             class_name: data.class_name,
         };
     },
 };
 exports.parentDataConverter = {
-    toFirestore: function (parentData) {
+    toFirestore(parentData) {
         return {
             id: parentData.id,
             type: parentData.type,
@@ -131,8 +131,8 @@ exports.parentDataConverter = {
             children_id: parentData.children_id,
         };
     },
-    fromFirestore: function (snapshot, options) {
-        var data = snapshot.data(options);
+    fromFirestore(snapshot, options) {
+        const data = snapshot.data(options);
         return {
             id: data.id,
             type: data.type,
@@ -149,7 +149,7 @@ exports.parentDataConverter = {
     },
 };
 exports.testDataConverter = {
-    toFirestore: function (testData) {
+    toFirestore(testData) {
         return {
             test_name: testData.test_name,
             class_name: testData.class_name,
@@ -157,8 +157,8 @@ exports.testDataConverter = {
             min_score: testData.min_score,
         };
     },
-    fromFirestore: function (snapshot, options) {
-        var data = snapshot.data(options);
+    fromFirestore(snapshot, options) {
+        const data = snapshot.data(options);
         return {
             test_name: data.test_name,
             class_name: data.class_name,
@@ -168,15 +168,15 @@ exports.testDataConverter = {
     },
 };
 exports.classDataConverter = {
-    toFirestore: function (classData) {
+    toFirestore(classData) {
         return {
             class_name: classData.class_name,
             students: classData.students,
             teachers: classData.teachers,
         };
     },
-    fromFirestore: function (snapshot, options) {
-        var data = snapshot.data(options);
+    fromFirestore(snapshot, options) {
+        const data = snapshot.data(options);
         return {
             class_name: data.class_name,
             students: data.students,
@@ -185,14 +185,14 @@ exports.classDataConverter = {
     },
 };
 exports.idConverter = {
-    toFirestore: function (id) {
+    toFirestore(id) {
         return {
             uid: id.uid,
             password: id.password,
         };
     },
-    fromFirestore: function (snapshot, options) {
-        var data = snapshot.data(options);
+    fromFirestore(snapshot, options) {
+        const data = snapshot.data(options);
         return {
             uid: data.uid,
             password: data.password,
