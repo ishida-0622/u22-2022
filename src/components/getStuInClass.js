@@ -1,5 +1,5 @@
-import { getClassData } from "../components/getClassData";
-import { getStuData } from "../components/getStuData";
+import getClassData from "./getClassData";
+import getStuData from "./getStuData";
 
 /**
  * クラス名を引数に貰って、クラスに所属している生徒の情報を配列で返す
@@ -16,15 +16,15 @@ const getStuInClass = async (className) => {
     }
 
     // class/studentsのuidを全てstudentIdに代入
-    const studentId = classDocument.students;
+    const studentIdList = classDocument.students;
 
     // studentIdを引数に渡してgetStuDataを呼び出し、生徒の情報を配列studentDocumentに格納
-    const studentDocument = studentId.map(async (val) => {
-        await getStuData(val)
-    });
+    const studentDocuments = await Promise.all(
+        studentIdList.map(async (val) => await getStuData(val))
+    );
 
     // 配列に格納したデータを返す
-    return studentDocument;
+    return studentDocuments;
 };
 
 export default getStuInClass;
