@@ -9,9 +9,53 @@ import getClassData from "./components/getClassData";
 import getStuData from "./components/getStuData";
 import getTeacherData from "./components/getTeacherData";
 import getStuPerfData from "./components/getStuPerfData";
-import { stuClassData } from "./firebase/firestoreTypes"
+import { classData } from "./firebase/firestoreTypes";
+
+const getStuInData = async (className) => {
+    // classNameを引数にgetClassDataを呼び出し、クラスの情報をclassDocumentに代入
+    const classDocument = await getClassData(className);
+
+    // 存在していなかったらnullを返す
+    if (classDocument === null) {
+        return null;
+    }
+
+    // class/studentsのuidを全てstudentIdに代入
+    const studentId = classDocument.students;
+
+    // studentIdを引数に渡してgetStuDataを呼び出し、生徒の情報を配列studentDocumentに格納
+    const studentDocument = await Promise.all(studentId.map(async (val) => await getStuData(val)));
+
+    studentDocument.map(val => val)
+    const res = []
+    studentId.forEach(async val => {
+        const d = await getStuData(val)
+        res.push(d);
+    })
+
+    // 配列に格納したデータを返す
+    return studentDocument;
+    // return res;
+};
+
+const main = async () => {
+    const stu = await getStuInData()
+    const selectFoodName = document.getElementById("enomoo");
+    const arr = ["test1", "test2", "test3"];
+    arr.forEach((val) => {
+        const option1 = document.createElement("option");
+        option1.value = val;
+        option1.textContent = val;
+        selectFoodName.appendChild(option1);
+    });
+    console.log(document.getElementById("enomoo").value);
+};
+
+// window.onload = main;
 
 $(function () {
+    $(".enomoooooo").on("click", main);
+
     $("#test").on("click", async () => {
         // signUp("test001@example.com", "pass00");
         // console.log(getUserData());
@@ -22,13 +66,14 @@ $(function () {
         const userID = auth.currentUser.uid;
         console.log(userID);
         // テスト
-        const classData = await getStuPerfData(userID);
-        console.log(classData);
-        classData.forEach(val => {
-            val.rate.forEach(r => {
-                console.log(r.date, r.score);
-            })
-        })
+        const classDoc = await getClassData(
+            "東京情報クリエイター工学院専門学校ネットワークコース"
+        );
+        if (classDoc === null) {
+            return null;
+        }
+        const stu = classDoc.students;
+        const stuDocs = stu.map(async (val) => await getStuData(val));
 
         const labels = [
             "第一回ABC模試",
