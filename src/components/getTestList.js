@@ -1,4 +1,4 @@
-import { db } from "../src/firebase/firebaseConfig";
+import { db } from "../firebase/firebaseConfig";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { testDataConverter } from "../firebase/firestoreTypes";
 
