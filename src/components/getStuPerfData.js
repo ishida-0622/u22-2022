@@ -1,6 +1,7 @@
 import { db } from "../firebase/firebaseConfig";
-import { stuClassDataConverter } from "../firebase/firestoreTypes";
 import { collection, getDocs } from "firebase/firestore";
+import { stuClassDataConverter } from "../firebase/firestoreTypes";
+import getStuData from "./getStuData";
 
 /**
  * usersの中からidが一致する生徒のクラスごとの成績(レート)を全クラス分配列で取得する
@@ -8,6 +9,11 @@ import { collection, getDocs } from "firebase/firestore";
  * @returns idがuidに一致する生徒のクラスごとの成績(レート)を全クラス分配列
  */
 const getStuPerfData = async (uid) => {
+    // 生徒でなかった場合はnullを返却
+    if (getStuData(uid) === null) {
+        return null;
+    }
+
     // firestoreのusersから、idがuidに一致する生徒のクラスのドキュメントｗ全て取得する
     const firestoreCollection = await getDocs(
         collection(db, `users/${uid}/class`).withConverter(
