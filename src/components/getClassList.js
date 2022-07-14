@@ -1,5 +1,8 @@
 import getStuPerfData from "./getStuPerfData";
 import getTeacherData from "./getTeacherData";
+import getStuData from "./getStuData";
+import { collection, getDocs } from "firebase/firestore";
+import { teacherClassDataConverter, teacherDataConverter } from "../firebase/firestoreTypes";
 
 /**
  * useridに対応するクラスの一覧を返す
@@ -7,27 +10,34 @@ import getTeacherData from "./getTeacherData";
  * @returns useridに対応するクラスの一覧
  */
 const getClassList = async (uid) => {
-    // uidが講師ならばデータを代入
-    let firestoreCollection = await getTeacherData(uid);
 
-    // クラスリストの宣言
-    let classList = [];
+    // uidが講師かどうか
+    const isTeacher = await getTeacherData(uid) !== null;
 
+    // uidが生徒化どうか
+    const isStudent = await getStuData(uid) !== null;
     // 生徒の場合
-    if (firestoreCollection === null) {
+    if (isStudent) {
         // コレクションを変数に代入
-        firestoreCollection = await getStuPerfData(uid);
+        const firestoreCollection = await getStuPerfData(uid);
 
         // クラス名のリストを変数に代入
-        classList = firestoreCollection.map((value) => value.class_name);
+        const classList = firestoreCollection.map((value) => value.class_name);
 
-        // 講師の場合
-    } else {
-        // クラス名のリストを変数に代入
-        classList = firestoreCollection.map((value) => value.class.class_name);
+        return classList;
     }
 
-    return classList;
+    // 講師の場合
+    if (isTeacher) {
+        const firestoreCollection= await getDocs(collection(db,`users/${uid}/class`).withConverter(teacherDataConverter));
+
+        // クラス名のリストを変数に代入
+        const classList = firestoreCollection.map((value) => value.class_name);
+
+        return classList;
+    }
+
+    return null;
 };
 
 export default getClassList;
