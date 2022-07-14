@@ -24,7 +24,9 @@ const getStuInClass = async (className) => {
     );
 
     // nullを取り除いたstudentDocuments
-    const notNullStudentDocuments = studentDocuments.flatMap((val) => (val === null ? [] : [val]))
+    const notNullStudentDocuments = studentDocuments.flatMap((val) =>
+        val === null ? [] : [val]
+    );
 
     // 配列に格納したデータを返す
     return notNullStudentDocuments;
