@@ -35,7 +35,9 @@ const getClassList = async (uid) => {
         );
 
         // クラス名のリストを変数に代入
-        const classList = firestoreCollection.map((value) => value.class_name);
+        const classList = firestoreCollection.docs.map(
+            (value) => value.data().class_name
+        );
 
         return classList;
     }
