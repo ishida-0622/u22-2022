@@ -5,10 +5,10 @@ const entries = glob.sync("./src/**/*.js");
 module.exports = {
     entry: {
         all: entries,
-        stuScoreInput: "./src/student/score_input.js",
-        stuScoreCfm: "./scr/student/score_cfm.js",
-        teacherScoreInput: "./scr/teacher/score_input.js",
-        teacherScoreCfm: "./scr/teacher/score_cfm.js",
+        stuScoreInput: "./src/student/scoreInput.js",
+        stuScoreCfm: "./scr/student/scoreCfm.js",
+        teacherScoreInput: "./scr/teacher/scoreInput.js",
+        teacherScoreCfm: "./scr/teacher/scoreCfm.js",
         classList: "./src/teacher/classList.js",
     },
     output: {
