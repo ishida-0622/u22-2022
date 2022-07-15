@@ -1,7 +1,7 @@
 import getClassList from "../components/getClassList";
 import getClassData from "../components/getClassData";
 
-classList = await getClassList(uid);
+const classList = await getClassList(uid);
 
 let classData = [];
 
