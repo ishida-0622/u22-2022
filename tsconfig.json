@@ -12,6 +12,12 @@
         "noUnusedLocals": true,                           /* Enable error reporting when a local variables aren't read. */
         "noUnusedParameters": true,                       /* Raise an error when a function parameter isn't read */
         "noImplicitReturns": true,                        /* Enable error reporting for codepaths that do not explicitly return in a function. */
-        "noFallthroughCasesInSwitch": true,               /* Enable error reporting for fallthrough cases in switch statements. */
+        "noFallthroughCasesInSwitch": true,
+        "sourceMap": true,
+        "strictNullChecks": true,
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "jsx": "react",
+        "lib": ["es2020", "dom"]              /* Enable error reporting for fallthrough cases in switch statements. */
     }
 }
