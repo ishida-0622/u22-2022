@@ -10,6 +10,7 @@ module.exports = {
         teacherScoreInput: "./scr/teacher/scoreInput.js",
         teacherScoreCfm: "./scr/teacher/scoreCfm.js",
         classList: "./src/teacher/classList.js",
+        stuSearch: "./src/teacher/stuSearch.js"
     },
     output: {
         path: path.resolve(__dirname, './public/dist'),
