@@ -3,6 +3,7 @@ import getTeacherData from "./getTeacherData";
 import getStuData from "./getStuData";
 import { collection, getDocs } from "firebase/firestore";
 import { teacherClassDataConverter } from "../firebase/firestoreTypes";
+import { db } from "../firebase/firebaseConfig";
 
 /**
  * useridに対応するクラスの一覧を返す

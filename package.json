@@ -5,7 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "all": "run-s fmt build",
-    "build": "webpack --mode=production",
+    "build": "webpack --mode development",
+    "builds": "run-s fmt build tsx",
+    "tsx": "webpack --config webpack.tsx.js --mode production",
     "fmt": "prettier --write src/**/*.{js,html,css}"
   },
   "keywords": [],
