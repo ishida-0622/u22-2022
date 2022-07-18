@@ -1,8 +1,8 @@
 import { auth } from "../firebase/firebaseConfig";
 import { signInWithEmailAndPassword, AuthErrorCodes } from "firebase/auth";
 
-const login = (mail, pass) => {
-    signInWithEmailAndPassword(auth, mail, pass)
+const login = async (mail, pass) => {
+    await signInWithEmailAndPassword(auth, mail, pass)
         .then(() => {
             // window.location.href = '/test.html';
         })
