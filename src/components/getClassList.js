@@ -1,3 +1,4 @@
+import { db } from "../firebase/firebaseConfig";
 import getStuPerfData from "./getStuPerfData";
 import getTeacherData from "./getTeacherData";
 import getStuData from "./getStuData";
