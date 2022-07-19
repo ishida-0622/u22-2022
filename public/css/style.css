@@ -1,0 +1,354 @@
+@charset "utf-8";
+:root {
+    --header_height: 150px;
+    --menu_weight: 250px;
+    --button_color: rgb(50, 156, 255);
+    --button_hover: rgb(42, 144, 240);
+    --button_current: rgb(37, 128, 212);
+    --bg_color: rgb(237, 247, 255);
+    --header_footer_color: rgb(45, 154, 255);
+}
+
+@media screen and (max-width:767px){
+    :root {
+        /* --header_height: 150px; */
+        --menu_weight: 150px;
+    }
+}
+
+body{
+    width: 100%;
+    margin: 0 auto;
+    /* margin: 0 auto 0 auto; */
+    overflow-y:scroll;
+}
+
+a{
+    background-color: var(--button_color);
+    text-decoration: none;
+    color: white;
+    padding: 0 5px;
+}
+
+a:hover{
+    background-color: var(--button_hover);
+}
+
+
+
+/* ヘッダーの設定 */
+header{
+    top: 0;
+    width: 100vw;
+    height: var(--header_height);
+    position: fixed;
+    text-align: center;
+    display: flex;
+}
+
+#menu_button{
+    width: var(--menu_weight);
+    background: var(--bg_color);
+    height: var(--header_height);
+    line-height:var(--header_height);
+
+}
+
+#menu_button a{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 100px;
+    width: 100px;
+    height: 100px;
+    line-height:100px;
+
+
+}
+
+#header_icon{
+    width: var(--menu_weight);
+    background: var(--bg_color);
+    height: var(--header_height);
+}
+
+#header_icon table{
+    width: 100%;
+}
+
+#header_icon img{
+    border-radius: 50%;
+    width: 100px;
+
+}
+
+#header_icon p{
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+#close{
+    float: right;
+}
+
+#header{
+    flex-grow: 1;
+    height: var(--header_height);
+    background: var(--header_footer_color);
+    color: rgb(50, 64, 255);
+    left: var(--menu_weight);
+    font-size: 50px;
+    font-weight: bold;
+    font-style: italic;
+    vertical-align: middle;
+}
+
+
+#name{
+    margin: 0 auto;
+    line-height: 150px;
+}
+/* .praptable{
+
+} */
+table{
+    border-collapse: collapse;
+}
+td{
+
+    padding: 0;
+    vertical-align: top;
+    height: auto;
+}
+
+
+#wrapper{
+    height: 100%;
+}
+
+
+#wapper:after {
+    content: "　";
+    display: block;
+    clear: both;
+ }
+/* メニューの設定 */
+
+#menu{
+    background-color: rgb(204, 231, 255);
+    width: var(--menu_weight);
+    /* float: left; */
+    display: block;
+    padding-bottom: auto;
+    position: fixed;
+    top: var(--header_height);
+    height: 100vw;
+
+    min-height: calc(100vh - var(--header_height));
+}
+
+#menu ul{
+    padding: 0;
+    margin: 0;
+}
+#menu ul li{
+    list-style: none;
+    text-align: center;
+    margin-bottom: 1px;
+}
+#menu ul li a{
+    display: block;
+    padding: 4px;
+}
+
+#menu ul li.current a{
+    background-color: var(--button_current);
+}
+
+/* メイン部分の設定 */
+#maintable{
+    margin-top: var(--header_height);
+    background-color: var(--bg_color);
+
+
+}
+#main{
+    width: calc(100% - var(--menu_weight));
+    width: 100%;
+
+    /* margin-left: var(--menu_weight); */
+    margin-bottom: 24px;
+
+    min-height: calc(100vh - 184px - 24px);
+    /* width: 620px; */
+    /* float: right; */
+    /* height: 100%; */
+
+}
+th{
+    font-weight: normal;
+}
+#main h1{
+    background-color: rgb(255, 255, 255);
+    border-left: rgb(110, 185, 255) solid 15px;
+    margin-top: 0;
+}
+
+#main h2{
+    width: auto;
+    /* text-align: center; */
+    padding-right: 0;
+}
+
+#main img{
+    float: left;
+}
+#main p{
+    line-height: 1.6;
+    margin: 0;
+}
+
+#main a{
+    /* margin-block-start: 100px; */
+    /* margin-block-end: 100px; */
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#main th{
+    background-color: rgb(139, 199, 255);
+}
+#main tr{
+    background-color: rgb(255, 255, 255);
+}
+
+/* パンくずリストの設定 */
+#breadcrumb{
+    width: calc(100vw - var(--menu_weight));
+    width: 100vw;
+
+    background-color: rgb(204, 231, 255);
+    height: 24px;
+    display: table-cell;
+    padding: 5px 0;
+    /* position: fixed; */
+    top: 150px;
+    /* left: var(--menu_weight); */
+}
+#breadcrumb ol{
+    margin: 0;
+    list-style: none;
+    margin-left: 10px;
+    padding: 0;
+
+}
+#breadcrumb ol li{
+    display: inline;
+}
+#breadcrumb ol li::after{
+    content: " >";
+}
+#breadcrumb ol li:last-child::after{
+    content: none;
+}
+
+/* 折り畳みの設定 */
+details{
+    line-height: 0px;
+}
+summary{
+    margin-bottom: 10px;
+}
+
+footer{
+    bottom: 0;
+    float: left;
+    width: 100%;
+    background-color: var(--header_footer_color);
+    text-align: center;
+    position: fixed;
+
+}
+
+footer p{
+    color: #fFFFff;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin: 0;
+}
+/* footer ul{
+    list-style: none;
+    margin:0 auto;
+    padding: 0;
+    width: 300px;
+
+}
+footer ul li{
+    flex-grow: 1;
+    margin: 0;
+    content: none;
+    border-left: rgb(0, 129, 161) solid 1px;
+}
+footer ul li:last-child{
+    border-right: rgb(0, 129, 161) solid 1px;
+}
+footer ul li a{
+    display: block;
+    text-decoration: none;
+
+} */
+
+
+/* スマホ用の設定 */
+@media screen and (max-width:470px){
+    #header{
+        font-size: 20px;
+    }
+
+
+    /* header{
+        width: 100%;
+        height: 150px;
+        position: static;
+    } */
+    /* #maintable{
+        margin-top: 0;
+    } */
+
+    /* #menu{
+        float: none;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        position: static;
+    } */
+
+    #breadcrumb{
+        display: block;
+        width: auto;
+        left: 0;
+        top: attr(menu height);
+        float: none;
+        position: static;
+    }
+    #main{
+        float: none;
+        width: auto;
+        padding: 0 auto;
+        margin: 0;
+    }
+    /* footer{
+        position: static;
+    } */
+    .praptable{
+        width: auto;
+        display:block;
+    }
+    #in_wrapper{
+        width:100%;
+    }
+    .intro{
+        text-align: left;
+        width: 100%;
+        display:block;
+    }
+}
