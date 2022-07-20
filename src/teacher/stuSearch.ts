@@ -1,5 +1,5 @@
 import Vue from "vue";
-import getUserData from "../auth/userData.js";
+import getUserData from "../auth/getUserData.js";
 import { stuData } from "firebase/firestoreTypes";
 import getClassList from "../components/getClassList";
 import getStuInClass from "../components/getStuInClass";

@@ -1,6 +1,6 @@
 import signUp from "./auth/signup";
 import $ from "jquery";
-import getUserData from "./auth/userData";
+import getUserData from "./auth/getUserData";
 import {
     doc,
     setDoc,
