@@ -30,7 +30,7 @@ const main = async () => {
 
     // クラスを渡し、テスト情報を取得する
     let tests = (await Promise.all(uclasses.map(async (val) => await getTestList(val)))).flat();
-    tests = { test_name: '未選択' } + tests;
+    tests.unshift({ test_name: '未選択' });
 
     // DBから取得したテスト名を走査する
     tests.forEach((test) => {
