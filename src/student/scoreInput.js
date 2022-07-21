@@ -4,7 +4,7 @@ import getTestList from "../components/getTestList";
 import { db } from "../firebase/firebaseConfig";
 import { doc, updateDoc } from "../firebase/firestore";
 
-// 各HTML要素を取得す
+// 各HTML要素を取得する
 // テストセレクトボックスを含む要素を取得する
 const selectTestWrap = document.querySelector('#test-selectbox');
 
@@ -17,26 +17,20 @@ const scoreInputArea = document.querySelector('#score-input');
 // 登録するボタンのHTML要素を取得する
 const btn = document.querySelector('#cfm-dialog');
 
-
-// DBから各情報を取得する
 // ログイン中のユーザ（生徒）のIDを取得する
 const uid = getUserData().uid;
-
-// ユーザ（生徒）の所属しているクラス（複数の場合、配列）を取得する
-const uclass = getClassList(uid);
-
-// デフォルトを「未選択」として設定する
-tests[0] = { test_name: '未選択' }
-
-// クラスを渡し、テスト情報を取得する
-uclasses.foreach((uclass) => {
-    tests[tests.length] = getTestList( uclass );
-});
 
 /**
  * DBからテスト名を取得し、テストセレクトボックスに与える
  */
-const testSelect = () => {
+const main = async () => {
+
+    // ユーザ（生徒）の所属しているクラス（複数の場合、配列）を取得する
+    const uclasses = getClassList(uid);
+
+    // クラスを渡し、テスト情報を取得する
+    let tests = (await Promise.all(uclasses.map(async (val) => await getTestList(val)))).flat();
+    tests = { test_name: '未選択' } + tests;
 
     // DBから取得したテスト名を走査する
     tests.forEach((test) => {
@@ -65,7 +59,7 @@ const testSelect = () => {
 const scoreInput = () => {
 
     // 入力された値が最低点未満または最高点より上だった場合
-    if ((scoreInputArea.value < tests.min_score) || ( tests.max_score < scoreInputArea.value )) {
+    if ((scoreInputArea.value < tests.min_score) || (tests.max_score < scoreInputArea.value)) {
 
         // アラートで通知する
         alert('テストの点数範囲外です。登録するにはテスト情報を更新してください。');
@@ -75,14 +69,11 @@ const scoreInput = () => {
 
 /**
  * テストの点数をDBに更新する関数
- * @param {String} uid テストを受験した生徒のID
- * @param {String} test テスト
+ * @param {string} uid テストを受験した生徒のID
+ * @param {string} testName テスト
  * @param {number} score 点数
  */
-const scoreUpdate = async ( uid, test, score ) => {
-
-    // 点数をアップデートするテスト
-    const test_name = test;
+const scoreUpdate = async (uid, testName, score) => {
 
     // アップデートするテストの点数の情報
     const updateUserData = {
@@ -90,7 +81,7 @@ const scoreUpdate = async ( uid, test, score ) => {
     };
 
     // 該当する生徒のテストの点数が変更される
-    await updateDoc(doc(db, `users/${uid}/tests/${test_name}`), updateUserData);
+    await updateDoc(doc(db, `users/${uid}/tests/${testName}`), updateUserData);
 };
 
 /**
@@ -99,18 +90,18 @@ const scoreUpdate = async ( uid, test, score ) => {
 const cfm = () => {
 
     // テストセレクトボックスの値が未定義の場合
-    if ( selectBox.value == '未選択' ) {
+    if (selectBox.value == '未選択') {
 
         // テストの選択がないことをアラートで通知する
         alert('テストの選択がされていません');
 
-    // 点数の入力がない場合
-    } else if ( String(scoreInputArea.value) == "" ) {
+        // 点数の入力がない場合
+    } else if (String(scoreInputArea.value) == "") {
 
         // 点数の入力がないことをアラートで通知する
         alert('点数の入力がありません');
 
-    // テストの選択および点数の入力がある場合
+        // テストの選択および点数の入力がある場合
     } else {
 
         // 登録の意思を確認するダイアログを表示する
@@ -120,7 +111,7 @@ const cfm = () => {
         if (result) {
 
             // 入力された情報をDBへ更新する
-            scoreUpdate( uid, selectBox.value, scoreInputArea.value );
+            scoreUpdate(uid, selectBox.value, scoreInputArea.value);
 
             // 完了をアラートで通知する
             alert('登録が完了しました');
@@ -131,7 +122,8 @@ const cfm = () => {
 }
 
 // ページがロードされたら、テストセレクトボックスを表示する
-window.addEventListener('load', testSelect);
+window.addEventListener('load', main);
+
 // ページがロードされたら、点数の入力欄を表示する
 window.addEventListener('change', scoreInput);
 
