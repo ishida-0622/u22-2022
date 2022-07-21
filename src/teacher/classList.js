@@ -1,7 +1,7 @@
 import getClassList from "../components/getClassList";
 import getClassData from "../components/getClassData";
 import getTeacherData from "../components/getTeacherData";
-import getUserData from "../auth/userData";
+import getUserData from "../auth/getUserData";
 import $ from "jquery";
 import { db } from "../firebase/firebaseConfig";
 import { doc, deleteDoc } from "firebase/firestore";

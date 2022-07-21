@@ -4,7 +4,7 @@ import {
     AuthErrorCodes,
     sendEmailVerification,
 } from "firebase/auth";
-import getUserData from "./userData";
+import getUserData from "./getUserData";
 
 const signUp = async (mail, pass) => {
     await createUserWithEmailAndPassword(auth, mail, pass)
