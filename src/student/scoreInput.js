@@ -18,7 +18,7 @@ const scoreInputArea = document.querySelector('#score-input');
 const btn = document.querySelector('#cfm-dialog');
 
 // ログイン中のユーザ（生徒）のIDを取得する
-const uid = getUserData().uid;
+const uid = getUid().uid;
 
 /**
  * DBからテスト名を取得し、テストセレクトボックスに与える
@@ -124,7 +124,7 @@ const cfm = () => {
 // ページがロードされたら、テストセレクトボックスを表示する
 window.addEventListener('load', main);
 
-// 点数を入力されたら、不正な点数がないかチェックする
+// 点数を入力されたら、不正な点数がないかどうかチェックする
 window.addEventListener('change', scoreInput);
 
 // 登録するボタンをクリックされたら、登録の意思を確認するダイアログを表示する
