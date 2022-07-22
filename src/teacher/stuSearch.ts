@@ -28,7 +28,7 @@ new Vue({
 
             // ログインしているユーザーがいない場合ログイン画面に飛ばす
             if (user === null) {
-                window.location.href = "/login.js";
+                window.location.href = "/login.html";
                 return;
             }
             this.uid = user.uid;
