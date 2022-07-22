@@ -11,6 +11,7 @@ const main = async () => {
     //     return;
     // }
 
+
     // // useridを変数に代入
     // const uid = userData.uid;
 
