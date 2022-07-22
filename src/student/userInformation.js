@@ -1,5 +1,5 @@
 import getUserData from "../auth/getUserData";
-import getStuData from "../components/getStudata";
+import getStuData from "../components/getStuData";
 
 /**
  * ユーザ情報参照画面のjs
@@ -56,3 +56,5 @@ const main = async () => {
         year + "/" + month + "/" + day;
     document.getElementById("tel").innerHTML = tel;
 };
+
+main();
