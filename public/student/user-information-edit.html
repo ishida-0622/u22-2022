@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ユーザ情報編集</title>
+</head>
+
+<body>
+    <div id="main">
+        <form name="user_information_edit">
+            <img src="example.png" alt="ユーザの写真" title="user_img">
+            <!--テーブルの表示-->
+            <table border="1" id="user-information">
+                <tr>
+                    <th>苗字</th>
+                    <th>名前</th>
+                </tr>
+                <tr>
+                    <td><input type="text" id="last_name"></td>
+                    <td><input type="text" id="first_name"></td>
+                </tr>
+                <tr>
+                    <th>苗字(カナ)</th>
+                    <th>名前(カナ)</th>
+                </tr>
+                <tr>
+                    <td><input type="text" id="last_name_kana"></td>
+                    <td><input type="text" id="first_name_kana"></td>
+                </tr>
+                <tr>
+                    <th>性別</th>
+                    <td><input type="text" id="sex"></td>
+                </tr>
+                <tr>
+                    <th>メールアドレス</th>
+                    <td><input type="text" id="mail"></td>
+                </tr>
+                <tr>
+                    <th>生年月日</th>
+                    <td><input type="text" id="birth_date"></td>
+                </tr>
+                <tr>
+                    <th>電話番号</th>
+                    <td><input type="text" id="tel"></td>
+                </tr>
+            </table>
+            <button type="submit" id="registration_button">登録</button>
+            <button onclick="window.location.href ='./user-information.html'">キャンセル</button>
+        </form>
+    </div>
+    <!--JSの読み込み-->
+    <script src="../dist/stuInformationEdit.bundle.js"></script>
+</body>
+
+</html>
