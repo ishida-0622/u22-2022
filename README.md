@@ -4,7 +4,7 @@ npm install
 
 npm install -g serve
 
-その後src直下にfirebaseフォルダを作成してfirebaseConfig.jsファイルを作成 ファイルの中身は後日教えます
+その後src直下にfirebaseフォルダを作成してfirebaseConfig.jsファイルを作成
 
 u22/src/firebase/firebaseConfig.js <-こんな感じ
 
