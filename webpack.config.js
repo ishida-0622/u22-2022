@@ -4,8 +4,8 @@ const entries = glob.sync("./src/**/*.js");
 
 module.exports = {
     entry: {
-        all: entries,
-        // test: "./src/test/test.tsx"
+        // all: entries,
+        index: "./src/index.ts"
     },
     output: {
         path: path.resolve(__dirname, './public/dist'),
