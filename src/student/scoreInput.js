@@ -1,4 +1,4 @@
-import getUid from "../components/getUid";
+import getUserData from "../components/getUserData";
 import getClassList from "../components/getClassList";
 import getTestList from "../components/getTestList";
 import { db } from "../firebase/firebaseConfig";
@@ -18,7 +18,7 @@ const scoreInputArea = document.querySelector('#score-input');
 const btn = document.querySelector('#cfm-dialog');
 
 // ログイン中のユーザ（生徒）のIDを取得する
-const uid = getUid();
+const uid = getUserData().uid;
 
 /**
  * DBからテスト名を取得し、テストセレクトボックスに与える
