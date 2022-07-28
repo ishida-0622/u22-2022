@@ -1,5 +1,5 @@
 // import signUp from "./auth/signup";
-import $ from "jquery";
+// import $ from "jquery";
 // import getUserData from "./auth/userData";
 // import { auth, db } from "./firebase/firebaseConfig";
 // import { signOut } from "firebase/auth";
@@ -14,7 +14,7 @@ import getStuData from "./components/getStuData";
 // import getStuInClass from "./components/getStuInClass";
 // import { classData } from "./firebase/firestoreTypes";
 import Vue from "vue"
-import getUid from "components/getUid";
+import getUid from "./components/getUid";
 
 new Vue({
     el: "#app",
@@ -47,9 +47,9 @@ new Vue({
     }
 })
 
-const main = async () => {
-    ;
-};
+// const main = async () => {
+//     ;
+// };
 
 // window.onload = main;
 

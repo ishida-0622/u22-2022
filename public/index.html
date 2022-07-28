@@ -29,8 +29,8 @@
     <div id="main">
         <h2 id="test">作成中</h2>
         <div id="app">
-            <input type="text" name="in" id="in" v-model="id"><span v-model="name"></span>
-            <button @click="search"></button>
+            <input type="text" name="in" id="in" v-model="id">{{ name }}<br>
+            <button @click="search">submit</button>
         </div>
         <!-- <input type="text" name="txt" id="txt" v-model="test" @input="changeFunc"> -->
         {{ array }}
@@ -38,7 +38,7 @@
         <!-- <select name="enomoo" id="enomoo"></select>
         <h2 class="enomoooooo">enomooooooooooooooooooooo</h2> -->
     </div>
-    <!-- <script src="dist/index.js"></script> -->
+    <script src="dist/index.bundle.js"></script>
 </body>
 
 </html>

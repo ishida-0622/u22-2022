@@ -11,4 +11,17 @@ module.exports = {
         path: path.resolve(__dirname, './public/dist'),
         filename: "[name].bundle.js"
     },
+    module: {
+        rules: [
+            {
+                test: /\.ts$/,
+                loader: 'ts-loader'
+            }
+        ]
+    },
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js'
+        }
+    }
 };
