@@ -1,130 +1,171 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <title>ここにタイトルを入力｜(システム名)</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="icon" href="images/favicon.ico">
-    </head>
+	<head>
+		<meta charset="UTF-8">
+		<title>ここにタイトルを入力｜tensile</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="icon" href="images/favicon.ico">
+		<script src="jquery-3.6.0.min.js"></script>
+		<script>
+			const openMenu = () => {
+				$('.side_menu').css('animation-name', 'openMenu');
+			}
 
-    <body>
+			const closeMenu = () => {
+				$('.side_menu').css('animation-name', 'closeMenu');
+			}
 
-        <!-- ヘッダー -->
-        <header>
-            <!-- サイドメニュー表示用ボタン -->
-            <div id="menu_button" onclick="open_menu();">
-                <a>≡</a>
-            </div>
+		</script>
+	</head>
 
-            <!-- アイコンを表示する場所 -->
-            <div id="header_icon">
-                <a id="close" onclick="close_menu();">✕</a>
-                <img src = 'images/icon.png'>
-                <p>ユーザ名</p>
-                <p>ID:UserID</p>
+	<body>
 
-            </div>
+		<!-- ヘッダー -->
+		<header>
+			<!-- サイドメニュー表示用ボタン -->
+			<div id="menu_button">
+				<a onclick="openMenu();">≡</a>
+			</div>
 
-            <!-- ヘッダ部分 -->
-            <div id="header" onclick="location.href = `index.html`">
-                <p id="name">(システム名)</p>
-            </div>
-        </header>
+			<!-- アイコンを表示する場所 -->
+			<div id="header_icon" class="side_menu">
+				<a id="close" onclick="closeMenu();">✕</a>
+				<img src = 'images/icon.png'>
+				<p>ユーザ名</p>
+				<p>ID:UserID</p>
+
+			</div>
+
+			<!-- ヘッダ部分 -->
+			<div id="header" onclick="location.href = `index.html`">
+				<p>tensile</p>
+			</div>
+		</header>
 
 
-        <!-- wrapper -->
-        <div id="wrapper">
-            <!-- <table id="in_wrapper"> -->
-            <!-- メニュー -->
-            <div id="menu" class="praptable">
-                <ul>
-                    <li class="current"><a href="">生徒検索</a></li>
-                    <li><a href="">クラス一覧</a></li>
-                    <li><a href="">得点入力</a></li>
-                    <li><a href="">テスト追加</a></li>
-                    <li><a href="">レート参照</a></li>
-                    <li><a href="">生徒切り替え</a></li>
-                </ul>
-            </div>
-            <!-- メイン -->
-            <div id="maintable" class="praptable">
-                <!-- パンくずリスト -->
-                <div id="breadcrumb">
-                    <ol>
-                        <li><a href="index.html">トップ</a></li>
-                        <li>現在地</li>
-                    </ol>
-                </div>
-                <div id="main">
-                    <h1>見出し1</h1>
-                    <p>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</p>
-                    <h2>見出し2</h2>
-                    <p>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</p>
-                    <!-- <br> -->
-                    <a href="">ボタンテスト</a>
-                    <ul>
-                        <li>項目1</li>
-                        <li>項目2</li>
-                        <li>項目3</li>
-                        <li>項目4</li>
-                        <li>項目5</li>
-                        <li>項目6</li>
-                    </ul>
-                    <details>
-                        <summary>折り畳みテスト</summary>
-                        <p>折り畳み内容1</p>
-                        <p>折り畳み内容2</p>
-                        <p>折り畳み内容3</p>
-                        <p>折り畳み内容4</p>
-                        <p>折り畳み内容5</p>
-                        <p>折り畳み内容6</p>
-                        <p>折り畳み内容7</p>
-                        <p>折り畳み内容8</p>
-                        <p>折り畳み内容9</p>
-                        <p>折り畳み内容10</p>
-                    </details>
-                    <table border="1">
-                        <tr>
-                            <th>見出し1</th>
-                            <th>見出し2</th>
-                        </tr>
-                        <tr>
-                            <td>内容1-1</td>
-                            <td>内容2-1</td>
-                        </tr>
-                        <tr>
-                            <td>内容1-2</td>
-                            <td>内容2-2</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <!-- </table> -->
-        </div>
 
-        <footer>
-            <div id="footernav">
-                <p>フッタ</p>
-            </div>
-        </footer>
-        <script>
+		<!-- メニュー -->
+		<div id="menu" class="side_menu">
+			<ul>
+				<li class="current"><a href="">生徒検索</a></li>
+				<li><a href="">クラス一覧</a></li>
+				<li><a href="">得点入力</a></li>
+				<li><a href="">テスト追加</a></li>
+				<li><a href="">レート参照</a></li>
+				<li><a href="">生徒切り替え</a></li>
+			</ul>
+		</div>
+		<!-- メイン -->
+		<div id="maintable" class="praptable">
+			<!-- パンくずリスト -->
+			<div id="breadcrumb">
+				<ol>
+					<li><a href="index.html">トップ</a></li>
+					<li><a href="index.html">途中1</a></li>
+					<li><a href="index.html">途中2</a></li>
+					<li><a href="index.html">途中3</a></li>
+					<li>現在地</li>
+				</ol>
+			</div>
 
-            function open_menu(){
-                document.getElementById("menu_button").style.display = 'none';
-                document.getElementById("header_icon").style.display = 'block';
-                document.getElementById("menu").style.display = 'block';
-            }
+			<div id="main">
+				<!-- ↓↓↓ここからメイン部分↓↓↓ -->
+				<h1>見出し1</h1>
+				<p>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</p>
+				<h2>見出し2</h2>
+				<p>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</p>
 
-            function close_menu(){
-                document.getElementById("menu_button").style.display = 'block';
-                document.getElementById("header_icon").style.display = 'none';
-                document.getElementById("menu").style.display = 'none';
-            }
+				<a href="">ボタンテスト</a>
 
-            document.getElementById("header_icon").style.display = 'none';
-            document.getElementById("menu").style.display = 'none';
+				<ul>
+					<li>項目1</li>
+					<li>項目2</li>
+					<li>項目3</li>
+					<li>項目4</li>
+					<li>項目5</li>
+					<li>項目6</li>
+				</ul>
 
-        </script>
-    </body>
+				<details>
+					<summary>折り畳みテスト</summary>
+					<p>折り畳み内容1</p>
+					<p>折り畳み内容2</p>
+					<p>折り畳み内容3</p>
+					<p>折り畳み内容4</p>
+					<p>折り畳み内容5</p>
+					<p>折り畳み内容6</p>
+					<p>折り畳み内容7</p>
+					<p>折り畳み内容8</p>
+					<p>折り畳み内容9</p>
+					<p>折り畳み内容10</p>
+				</details>
+
+				<table border="1">
+					<tr>
+						<th>見出し1</th>
+						<th>見出し2</th>
+					</tr>
+					<tr>
+						<td>内容1-1</td>
+						<td>内容2-1</td>
+					</tr>
+					<tr>
+						<td>内容1-2</td>
+						<td>内容2-2</td>
+					</tr>
+				</table>
+
+				<form>
+					<textarea name="msg" required></textarea>
+					<input type="button" value="フォームボタンテスト">
+				</form>
+				<img src = 'images/icon.png'>
+				<p>画像のテストです</p>
+
+				<div class="clearfix">
+					<img src = 'images/icon.png' class = "float">
+					<p>classを"float"に設定すると文字が要素の右に回り込むようになっています</p>
+					<p>ただし使用する際にclassを"clearfix"にしたdiv要素で囲まないとそれ以降に書かれた文字も回り込んだり末尾に置いた際表示がおかしくなります</p>
+				</div>
+
+				<p>この文字は回り込みません</p>
+				<!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
+			</div>
+
+		</div>
+
+		<!-- トップに戻るボタン -->
+		<a href="#" id="pageTop">▲</a>
+
+		<!-- フッタ -->
+		<footer>
+			<div id="footernav">
+				<p>フッタ</p>
+			</div>
+		</footer>
+
+		<!-- トップに戻るボタンのスクリプト -->
+		<script>
+			let showPageTop = false;
+			const PAGETOP = $('#pageTop');
+
+			$(window).scroll(() => {
+				if ($(this).scrollTop() > 10) {
+					if (!showPageTop) {
+						showPageTop = true;
+						PAGETOP.stop().animate({'opacity': '0.5'}, 300);
+						PAGETOP.css('pointer-events', 'fill');
+					}
+				} else {
+					if (showPageTop) {
+						showPageTop = false;
+						PAGETOP.stop().animate({'opacity': '0'}, 300);
+						PAGETOP.css('pointer-events', 'none');
+					}
+				}
+			});
+			// element.scrollTop
+		</script>
+	</body>
 </html>
