@@ -238,6 +238,7 @@ th{
 }
 
 #main th{
+    text-align: center;
 	background-color: rgb(139, 199, 255);
 }
 #main tr{
@@ -248,9 +249,17 @@ th{
 	background: rgb(238, 238, 238);
 }
 
+.tdNumber{
+    text-align: right;
+}
+
 #main textarea{
 	max-width: calc(100% - 10px);
 }
+
+/* #main canvas{
+    background-color: #ffffff;
+} */
 
 .clearfix::after {
     content: "";
@@ -287,9 +296,6 @@ th{
 }
 
 /* 折り畳みの設定 */
-details{
-	line-height: 0px;
-}
 summary{
 	margin-bottom: 10px;
 }
