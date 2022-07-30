@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>ここにタイトルを入力｜tensile</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="icon" href="../images/favicon.ico">
+		<script src="../jquery-3.6.0.min.js"></script>
+		<script>
+			const openMenu = () => {
+				$('.side_menu').css('animation-name', 'openMenu');
+			}
+
+			const closeMenu = () => {
+				$('.side_menu').css('animation-name', 'closeMenu');
+			}
+
+		</script>
+	</head>
+
+	<body>
+
+		<!-- ヘッダー -->
+		<header>
+			<!-- サイドメニュー表示用ボタン -->
+			<div id="menu_button">
+				<a onclick="openMenu();">≡</a>
+			</div>
+
+			<!-- アイコンを表示する場所 -->
+			<div id="header_icon" class="side_menu">
+				<a id="close" onclick="closeMenu();">✕</a>
+				<img src = '../images/icon.png'>
+				<p>ユーザ名</p>
+				<p>ID:UserID</p>
+
+			</div>
+
+			<!-- ヘッダ部分 -->
+			<div id="header" onclick="location.href = `index.html`">
+				<p>tensile</p>
+			</div>
+		</header>
+
+
+
+		<!-- メニュー -->
+		<div id="menu" class="side_menu">
+			<ul>
+				<li class="current"><a href="">生徒検索</a></li>
+				<li><a href="">クラス一覧</a></li>
+				<li><a href="">得点入力</a></li>
+				<li><a href="">テスト追加</a></li>
+				<li><a href="">レート参照</a></li>
+				<li><a href="">生徒切り替え</a></li>
+			</ul>
+		</div>
+		<!-- メイン -->
+		<div id="maintable" class="praptable">
+			<!-- パンくずリスト -->
+			<div id="breadcrumb">
+				<ol>
+					<li><a href="index.html">トップ</a></li>
+					<li>現在地</li>
+				</ol>
+			</div>
+
+			<div id="main">
+				<!-- ↓↓↓ここからメイン部分↓↓↓ -->
+                <p>クラスを選択してください</p>
+				<select name="class">
+					<option value="jan">1月</option>
+					<option value="feb">2月</option>
+					<option value="mar">3月</option>
+					<option value="apr">4月</option>
+					<option value="may">5月</option>
+					<option value="jun">6月</option>
+					<option value="jul">7月</option>
+					<option value="aug">8月</option>
+					<option value="sep">9月</option>
+					<option value="oct">10月</option>
+					<option value="nov">11月</option>
+					<option value="dec">12月</option>
+				</select>
+                <div class="clearfix">
+                    <h2 class = "float">現在のレート:</h2>
+					<h2 class = "float">あいうえお</h2>
+				</div>
+                <div class="clearfix" >
+                    <a class = "float" class = "scrollButton"><=</a>
+                    <canvas id="graph" class = "float"></canvas>
+					<a class = "float" class = "scrollButton">=></a>
+				</div>
+
+                <details>
+					<summary>今までのレートを見る</summary>
+                    <table border="1">
+                        <tr>
+                            <th>レート</th>
+                        </tr>
+                        <tr>
+                            <td class = 'tdNumber'>0</td>
+                        </tr>
+                        <tr>
+                            <td class = 'tdNumber'>0</td>
+                        </tr>
+                    </table>
+                </details>
+				<details>
+					<summary>今までの点数を見る</summary>
+                    <table border="1">
+                        <tr>
+                            <th>テスト名</th>
+                            <th>得点</th>
+                        </tr>
+                        <tr>
+                            <td>テスト1</td>
+                            <td class = 'tdNumber'>0</td>
+                        </tr>
+                        <tr>
+                            <td>テスト2</td>
+                            <td class = 'tdNumber'>0</td>
+                        </tr>
+                    </table>
+                </details>
+				<!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
+			</div>
+
+		</div>
+
+        <script>
+
+
+
+            const showGraph = (context, max, rate) =>{
+                // 背景を塗る------------
+                context.fillStyle = "white";
+                context.fillRect(0,0,512,267);
+                context.translate(0.5, 0.5);
+
+                // 目盛線の表示------------
+                context.strokeStyle = "rgb(204, 231, 255)";
+                context.lineWidth = 1;
+                context.beginPath();
+                for(let i = 0; i < 10; i++){
+                    context.moveTo(42 + i * 47, 5);
+                    context.lineTo(42 + i * 47, 255);
+                    context.moveTo(63.5, 5 + i * 25);
+                    context.lineTo(512, 5 + i * 25);
+                }
+                context.closePath();
+                context.stroke();
+
+                // レートの点を描写する------------
+                let start = 42
+                if(rate.length <= 9){
+                    start += 47
+                }
+
+                context.fillStyle = "rgb(50, 156, 255)";
+                rate.forEach((i, ind) => {
+                    if(!isNaN(i)){
+                        context.beginPath();
+                        context.arc(start + ind * 47, 255 - i / max * 251, 2, 0, 360)
+                        context.fill()
+                    }
+                });
+
+                // レートの点同士をつなぐ線を描写する------------
+                let started = false;
+
+                context.strokeStyle = "rgb(50, 156, 255)";
+                context.beginPath();
+                rate.forEach((i, ind) => {
+                    if(!isNaN(i)){
+                        if (!started){
+                            context.moveTo(start + ind * 47, 255 - i / max * 251);
+                            started = true;
+                        } else {
+                            context.lineTo(start + ind * 47, 255 - i / max * 251);
+                        }
+                    }
+                });
+                context.stroke();
+
+
+                // グラフより左側にある物を白い四角形で隠す------------
+                context.fillStyle = "white";
+                context.fillRect(0,0,65,267);
+
+                // グラフの外枠を表示------------
+                context.strokeRect(65, 5, 512, 250)
+
+                // 軸の表示------------
+                context.textAlign = "right";
+                context.textBaseline = "middle";
+                context.fillStyle = "black";
+                context.beginPath();
+                for(let i = 0; i < 11; i++){
+                    context.fillText(Math.round(max / 10 * i), 60, 255 - i * 25);
+                    context.moveTo(63.5, 255 - i * 25);
+                    context.lineTo(66.5, 255 - i * 25);
+                }
+                context.closePath();
+                context.stroke();
+            }
+
+            var canvas = document.getElementById("graph");
+            canvas.width = 489;
+            canvas.height = 261;
+
+            // 二次元グラフィックスのコンテキストを取得
+            const context = canvas.getContext("2d");
+            const max = 100
+            const rate = [72, 10, 22, 91, 92, 68, 61, 76, 17];
+
+            showGraph(context, max, rate)
+
+
+        </script>
+
+		<!-- トップに戻るボタン -->
+		<a href="#" id="pageTop">▲</a>
+
+		<!-- フッタ -->
+		<footer>
+			<div id="footernav">
+				<p>フッタ</p>
+			</div>
+		</footer>
+
+		<!-- トップに戻るボタンのスクリプト -->
+		<script>
+			let showPageTop = false;
+			const PAGETOP = $('#pageTop');
+
+			$(window).scroll(() => {
+				if ($(this).scrollTop() > 10) {
+					if (!showPageTop) {
+						showPageTop = true;
+						PAGETOP.stop().animate({'opacity': '0.5'}, 300);
+						PAGETOP.css('pointer-events', 'fill');
+					}
+				} else {
+					if (showPageTop) {
+						showPageTop = false;
+						PAGETOP.stop().animate({'opacity': '0'}, 300);
+						PAGETOP.css('pointer-events', 'none');
+					}
+				}
+			});
+			// element.scrollTop
+		</script>
+	</body>
+</html>
