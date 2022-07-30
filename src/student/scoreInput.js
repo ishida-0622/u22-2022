@@ -8,7 +8,7 @@ import { doc, updateDoc } from "firebase/firestore";
 // テストセレクトボックスを含む要素を取得する
 const selectTestWrap = document.querySelector('#test-selectbox');
 
-// テストセレクトボックスのHTML要素を取得する
+// テストセレクトボックスを生成し、HTML要素を取得する
 const selectBox = document.createElement('select');
 
 // 点数入力欄のHTML要素を取得する
@@ -30,6 +30,8 @@ const main = async () => {
 
     // クラスを渡し、テスト情報を取得する
     let tests = (await Promise.all(uclasses.map(async (val) => await getTestList(val)))).flat();
+
+    // テスト名のデフォルト値を設定する
     tests.unshift({ test_name: '未選択' });
 
     // DBから取得したテスト名を走査する
