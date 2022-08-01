@@ -12,6 +12,7 @@
     <div id="main">
         <form name="user_information_edit">
             <img src="example.png" alt="ユーザの写真" title="user_img">
+            
             <!--テーブルの表示-->
             <table border="1" id="user-information">
                 <tr>
@@ -43,10 +44,15 @@
                     <td><input type="tel" id="tel_number"></td>
                 </tr>
             </table>
-            <button type="submit" id="registration_button">登録</button>
-            <button onclick="window.location.href ='./user-information.html'">キャンセル</button>
+
+            <!--情報を送信するボタン-->
+            <button type="button" id="registration_button">登録</button>
         </form>
+
+        <!--ユーザ情報登録画面に遷移するボタン-->
+        <button onclick="window.location.href ='./user-information.html'">キャンセル</button>
     </div>
+
     <!--JSの読み込み-->
     <script src="../dist/stuInformationEdit.bundle.js"></script>
 </body>
