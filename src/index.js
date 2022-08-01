@@ -1,55 +1,66 @@
 // import signUp from "./auth/signup";
-// import $ from "jquery";
+import $ from "jquery";
 // import getUserData from "./auth/userData";
 // import { auth, db } from "./firebase/firebaseConfig";
 // import { signOut } from "firebase/auth";
-// import Vue from "./vue";
 // import login from "./auth/login";
 // import getClassData from "./components/getClassData";
 import getStuData from "./components/getStuData";
 // import getTeacherData from "./components/getTeacherData";
 // import getStuPerfData from "./components/getStuPerfData";
-// import getTestData from "./components/getTestData";
+import getTestData from "./components/getTestData";
 // import getTestList from "./components/getTestList";
-// import getStuInClass from "./components/getStuInClass";
+import getStuInClass from "./components/getStuInClass";
 // import { classData } from "./firebase/firestoreTypes";
 import Vue from "vue"
 import getUid from "./components/getUid";
 
-new Vue({
-    el: "#app",
-    data(): {
-        id: string
-        name: string
-    } {
-        return {
-            id: "",
-            name: "",
-        }
-    },
-    methods: {
-        search: async function () {
-            const uid = await getUid(this.id);
-            if (uid === null) {
-                alert("idが見つからない")
-                return;
-            }
-            const user = await getStuData(uid);
-            if (user === null) {
-                alert("userが見つからない")
-                return
-            }
-            this.name = user.last_name + user.first_name;
-        },
-        add: function() {
-            ;
-        }
-    }
-})
+// new Vue({
+//     el: "#app",
+//     data(): {
+//         id: string
+//         name: string
+//     } {
+//         return {
+//             id: "",
+//             name: "",
+//         }
+//     },
+//     methods: {
+//         search: async function () {
+//             const uid = await getUid(this.id);
+//             if (uid === null) {
+//                 alert("idが見つからない")
+//                 return;
+//             }
+//             const user = await getStuData(uid);
+//             if (user === null) {
+//                 alert("userが見つからない")
+//                 return
+//             }
+//             this.name = user.last_name + user.first_name;
+//         },
+//         add: function() {
+//             ;
+//         }
+//     }
+// })
 
-// const main = async () => {
-//     ;
-// };
+const selectBox = document.getElementById("id")
+
+const main = async () => {
+    const testClass = await getTestData(selectBox.value);
+
+    if (testClass === null) {
+        return;
+    }
+
+    const stuDatas = await getStuInClass(testClass.class_name);
+
+    if (stuDatas === null) {
+        return;
+    }
+};
 
 // window.onload = main;
 
