@@ -75,7 +75,7 @@ const userEdit = async () => {
 };
 
 $(function () {
-    $("#registration_button").on("click", async () => {
+    $("#user_information_edit").on("submit", async () => {
         // 「OK」時の処理開始 ＋ 確認ダイアログの表示
         if (window.confirm("編集してもよろしいですか？")) {
             await userEdit();
