@@ -1,10 +1,10 @@
-import getUserData from "../components/getUserData";
+import getUserData from "../auth/getUserData";
 import getTestData from "../components/getTestData";
 import getClassList from "../components/getClassList";
 import getTestList from "../components/getTestList";
 import getStuInClass from '../components/getStuInClass'
 import { db } from "../firebase/firebaseConfig";
-import { doc, updateDoc } from "../firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 
 // 各HTML要素を取得する
 // テストセレクトボックスを含む要素を取得する

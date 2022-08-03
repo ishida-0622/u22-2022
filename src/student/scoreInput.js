@@ -1,4 +1,4 @@
-import getUserData from "../components/getUserData";
+import getUserData from "../auth/getUserData";
 import getClassList from "../components/getClassList";
 import getTestList from "../components/getTestList";
 import { db } from "../firebase/firebaseConfig";
