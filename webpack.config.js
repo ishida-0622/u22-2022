@@ -15,6 +15,7 @@ module.exports = {
         stuInformation: "./src/student/userInformation.js",
         parentsInformation: "./src/parents/userInformation.js",
         stuInformationEdit: "./src/student/userInformationEdit.js",
+        testList: "./src/teacher/testList.js",
     },
     output: {
         path: path.resolve(__dirname, './public/dist'),
