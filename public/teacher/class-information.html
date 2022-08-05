@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クラス情報を参照する</title>
+</head>
+
+<body>
+    <form method="get">
+        <input type="text" name="class_name" value="東京情報クリエイター工学院専門学校ネットワークコース">
+        <input type="submit" value="submit">
+    </form>
+
+
+    <h1>クラス情報</h1>
+    <label for="className">クラス名:</label>
+    <div id="class_name"></div>
+    <label for="teacherName">代表講師名:</label>
+    <div id="teacher_name"></div>
+
+    <table border="1" id="class-informaition">
+        <tr>
+            <th>生徒名</th>
+            <th>生徒ID</th>
+            <th>学年</th>
+            <th>レート</th>
+        </tr>
+
+        <tr>
+            <td><button id="add-input-form">+</button></td>
+        </tr>
+    </table>
+
+    <br>
+    <button>生徒の追加</button>
+    <button>生徒の削除</button>
+    <button>クラス情報変更</button>
+    <!-- <script src="../dist/classCreate.bundle.js"></script> -->
+    <script src="../dist/classInformtion.bundle.js"></script>
+</body>
+
+</html>
