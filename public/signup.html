@@ -7,13 +7,16 @@
 </head>
 <body>
     <h1>Sign Up</h1>
-    <form>
-        <label>メールアドレス:<input type="email" name="email" id="email"></label><br>
-        <label>パスワード:<input type="password" name="pass" id="password"></label><br>
-        <label>名字:<input type="text" name="first_name" class="name" id="first_name"></label><br>
-        <label>名前:<input type="text" name="last_name" class="name" id="last_name"></label><br>
-        <label>年齢:<input type="number" name="age" id="age"></label><br>
-        <input type="submit" value="submit">
+    <form onsubmit="return false" id="signup">
+        <label>メールアドレス:<input type="email" name="email" id="email" required></label><br>
+        <label>パスワード:<input type="password" name="pass" id="password" required></label><br>
+        <label>名字:<input type="text" name="first-name" class="name" id="first-name" required></label><br>
+        <label>名字(カナ):<input type="text" name="first-name" class="name" id="first-name-kana" required></label><br>
+        <label>名前:<input type="text" name="last-name" class="name" id="last-name" required></label><br>
+        <label>名前(カナ):<input type="text" name="last-name" class="name" id="last-name-kana" required></label><br>
+        <label>生年月日:<input type="date" name="birth-date" id="birth-date" required></label><br>
+        <input type="submit" value="submit" id="submit">
     </form>
+    <script src="./dist/signup.bundle.js"></script>
 </body>
 </html>
