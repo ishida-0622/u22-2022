@@ -1,23 +1,15 @@
 import Vue from "vue";
 import getUserData from "../auth/getUserData.js";
-import { stuData } from "firebase/firestoreTypes";
 import getClassList from "../components/getClassList";
 import getStuInClass from "../components/getStuInClass";
 
 new Vue({
     el: "#app",
-    data(): {
-        inputValue: string;
-        uid: string;
-        allStudentList: stuData[];
-        studentList: stuData[];
-    } {
-        return {
-            inputValue: "",
-            uid: "",
-            allStudentList: [],
-            studentList: [],
-        };
+    data: {
+        inputValue: "",
+        uid: "",
+        allStudentList: [],
+        studentList: [],
     },
     methods: {
         init: async function () {
@@ -56,7 +48,7 @@ new Vue({
                 )
             );
         },
-        pageTransition: function (id: string) {
+        pageTransition: function (id) {
             import("../components/getUid").then(async (module) => {
                 const uid = await module.default(id);
                 window.location.href = `./stu-data-teacher.html?id=${uid}`;
