@@ -5,6 +5,7 @@ import {
     sendEmailVerification,
 } from "firebase/auth";
 import getUserData from "./getUserData";
+import $ from "jquery"
 
 const signUp = async (mail, pass) => {
     await createUserWithEmailAndPassword(auth, mail, pass)
@@ -27,4 +28,17 @@ const signUp = async (mail, pass) => {
         });
 };
 
-export default signUp;
+const main = async () => {
+    const email = $("#email").val();
+    const password = $("#password").val();
+    console.log(email,password);
+}
+
+// $(function () {
+    $("#signup").on("submit", async () => {
+        main();
+    })
+// })
+
+// main();
+
