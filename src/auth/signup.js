@@ -7,6 +7,11 @@ import {
 import getUserData from "./getUserData";
 import $ from "jquery"
 
+/**
+ * サインアップ
+ * @param {string} mail メールアドレス
+ * @param {string} pass パスワード
+ */
 const signUp = async (mail, pass) => {
     await createUserWithEmailAndPassword(auth, mail, pass)
         .then(async () => {
