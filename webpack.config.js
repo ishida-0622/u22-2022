@@ -4,6 +4,7 @@ const entries = glob.sync("./src/**/*.js");
 
 module.exports = {
     entry: {
+        signup: "./src/auth/signup.js",
         stuScoreInput: "./src/student/scoreInput.js",
         stuScoreCfm: "./src/student/scoreCfm.js",
         teacherScoreInput: "./src/teacher/scoreInput.js",
@@ -15,7 +16,8 @@ module.exports = {
         stuInformation: "./src/student/userInformation.js",
         parentsInformation: "./src/parents/userInformation.js",
         stuInformationEdit: "./src/student/userInformationEdit.js",
-        testList: "./src/teacher/testList.js",
+        // testList: "./src/teacher/testList.js",
+        testCreate: "./src/teacher/testCreate.js",
     },
     output: {
         path: path.resolve(__dirname, './public/dist'),
