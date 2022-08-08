@@ -71,11 +71,14 @@
 		</div>
 
 		<div id="main">
+
+			<!-- メイン処理 -->
 			<form onsubmit="return false;" name="test-create" id="test-create">
 				<p>テスト名</p>
 				<input type="text" id="test_name" required>
 				<p>クラス</p>
-				<input type="text" id="class_name" required>
+				<select id="class_name" required>
+				</select>
 				<p>最高得点</p>
 				<input type="number" id="max_score" required>
 				<p>最低得点</p>
@@ -85,6 +88,7 @@
 				<br>
 				<input type="submit" value="登録" id="registration">
 			</form>
+			<!-- メイン処理終了 -->
 		</div>
 
 	</div>
