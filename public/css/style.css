@@ -338,6 +338,18 @@ footer p{
 	margin: 0;
 }
 
+/* パスワード入力エリアのデザイン */
+.text-password {
+    border: none;
+}
+
+.password-input-area {
+    border-width: thin;
+    border-style: solid;
+    width: 200px;
+}
+/* パスワード入力エリアここまで */
+
 /* スマホ用の設定 */
 @media screen and (max-width:470px){
 	#header{
