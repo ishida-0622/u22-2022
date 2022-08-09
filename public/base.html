@@ -7,10 +7,6 @@
         <!-- スタイルシート読み込み(必要に応じてパス編集) -->
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="icon" href="images/favicon.ico">
-		<script src="jquery-3.6.0.min.js"></script>
-
-        <!-- サイドバーの開閉用js読み込み(必要に応じてコメントアウト, パス編集) -->
-		<script src="../src/viewComponents/openCloseSidebar.js"></script>
 	</head>
 
 	<body>
@@ -19,13 +15,13 @@
 		<header>
 			<!-- サイドメニュー表示用ボタン -->
 			<div id="menu_button">
-				<a onclick="openMenu();">≡</a>
+				<a id="open">≡</a>
 			</div>
 
 			<!-- アイコンを表示する場所 -->
 			<div id="header_icon" class="side_menu">
-				<a id="close" onclick="closeMenu();">✕</a>
-				<img src = 'images/icon.png'>
+				<a id="close">✕</a>
+				<img src = "images/icon.png">
 				<p>ユーザ名</p>
 				<p>ID:UserID</p>
 
@@ -114,11 +110,11 @@
 					<textarea name="msg" required></textarea>
 					<input type="button" value="フォームボタンテスト">
 				</form>
-				<img src = 'images/icon.png'>
+				<img src = "images/icon.png">
 				<p>画像のテストです</p>
 
 				<div class="clearfix">
-					<img src = 'images/icon.png' class = "float">
+					<img src = "images/icon.png" class = "float">
 					<p>classを"float"に設定すると文字が要素の右に回り込むようになっています</p>
 					<p>ただし使用する際にclassを"clearfix"にしたdiv要素で囲まないとそれ以降に書かれた文字も回り込んだり末尾に置いた際表示がおかしくなります</p>
 				</div>
@@ -139,9 +135,11 @@
 			</div>
 		</footer>
 
+        <!-- サイドバーの開閉用js読み込み(必要に応じてコメントアウト, パス編集) -->
+        <script src="./dist/openCloseSidebar.bundle.js"></script>
 		<!-- トップに戻るボタン用js(必要に応じてコメントアウト, パス編集) -->
-		<script src="../src/viewComponents/scrollToTop.js"></script>
+		<script src="./dist/scrollToTop.bundle.js"></script>
         <!-- パスワード入力フォーム用js(必要に応じてコメントアウト解除, パス編集) -->
-        <!-- <script src="../src/viewComponents/showHidePassword.js"></script> -->
+        <!-- <script src="./dist/showHidePassword.bundle.js"></script> -->
 	</body>
 </html>
