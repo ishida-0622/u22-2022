@@ -1,3 +1,5 @@
+import $ from "jquery";
+
 /*
     パスワードの表示と非表示を切り替える関数
     最大3つまでのパスワードフォームに対応可能
@@ -22,7 +24,7 @@ const showHidePassword = () => {
         txtPass.type = "text";
         btnEye.className = "fa fa-eye-slash";
     }
-}
+};
 
 /**
  * 目のアイコンをクリックすることで、新規パスワードの表示と非表示を切り替える関数
@@ -42,7 +44,7 @@ const showHideNewPassword = () => {
         txtPass.type = "text";
         btnEye.className = "fa fa-eye-slash";
     }
-}
+};
 
 /**
  * 目のアイコンをクリックすることで、再入力パスワードの表示と非表示を切り替える関数
@@ -62,9 +64,9 @@ const showHideRePassword = () => {
         txtPass.type = "text";
         btnEye.className = "fa fa-eye-slash";
     }
-}
+};
 
 // 各idでonclickを設定
-document.getElementById("password-eye").onclick = showHidePassword;
-document.getElementById("new-password-eye").onclick = showHideNewPassword;
-document.getElementById("re-password-eye").onclick = showHideRePassword;
+$("#password-eye").on("click", showHidePassword);
+$("#new-password-eye").on("click", showHideNewPassword);
+$("#re-password-eye").on("click", showHideRePassword);
