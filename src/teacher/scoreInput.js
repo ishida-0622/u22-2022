@@ -64,10 +64,16 @@ const main = async () => {
 const addTable = async () => {
 
     // 選択されたテストを渡してテストデータを取得し、テストのクラス名を取得する
-    const testClass = (await Promise.all(getTestData(selectBox.value))).flat().class_name;
+    const testClass = await getTestData(selectBox.value);
+    if (testClass === null) {
+        return;
+    }
 
     // クラスに所属する生徒情報を取得する
-    const stuDatas = (await Promise.all(getStuInClass(testClass))).flat();
+    const stuDatas = await getStuInClass(testClass.class_name);
+    if (stuDatas === null) {
+        return;
+    }
 
     // 入力があったら、scoreCheckを実行する
     const scoreInput = (event) => {
