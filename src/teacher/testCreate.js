@@ -2,7 +2,6 @@ import getUserData from "../auth/getUserData";
 import $ from "jquery";
 import { db } from "../firebase/firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
-import login from "../auth/login";
 import getTestData from "../components/getTestData";
 import getClassList from "../components/getClassList";
 
@@ -10,9 +9,6 @@ import getClassList from "../components/getClassList";
  * ユーザ情報参照画面のjs
  */
 const main = async () => {
-    // main関数の最初に記載
-    await login("satomichi@example.com", "pass00");
-
     // 現在ログイン出来ているかどうかを確認　出来ていなければログイン画面に飛ばす
     const userData = getUserData();
     if (userData === null) {
