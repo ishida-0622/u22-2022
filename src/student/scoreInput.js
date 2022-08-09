@@ -8,6 +8,7 @@ import { doc, updateDoc } from "firebase/firestore";
 // テストセレクトボックスを含む要素を取得する
 const selectTestWrap = document.querySelector("#test-selectbox");
 
+
 // テストセレクトボックスのHTML要素を取得する
 const selectBox = document.createElement("select");
 
