@@ -2,38 +2,126 @@
 <html lang="ja">
 
 <head>
-	<meta charset="UTF-8">
-	<title>点数入力｜tensile</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="../css/style.css">
-	<link rel="icon" href="../images/favicon.ico">
-	<script src="../jquery-3.6.0.min.js"></script>
-	<script>
-		const openMenu = () => {
-			$('.side_menu').css('animation-name', 'openMenu');
-		}
+    <meta charset="UTF-8">
+    <title>点数入力｜tensile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <script src="../jquery-3.6.0.min.js"></script>
+    <script>
+        const openMenu = () => {
+            $('.side_menu').css('animation-name', 'openMenu');
+        }
 
-		const closeMenu = () => {
-			$('.side_menu').css('animation-name', 'closeMenu');
-		}
+        const closeMenu = () => {
+            $('.side_menu').css('animation-name', 'closeMenu');
+        }
 
-	</script>
+    </script>
 </head>
 
 <body>
 
-    <!-- テストセレクトボックスエリア -->
-    <label>テストを選択してください</label>
-    <div id = "test-selectbox"></div>
+    <!-- ヘッダー -->
+    <header>
+        <!-- サイドメニュー表示用ボタン -->
+        <div id="menu_button">
+            <a onclick="openMenu();">≡</a>
+        </div>
 
-    <!-- 点数入力エリア -->
-    <label>点数を入力してください</label>
-    <div><input type="number" id = "score-input"></div>
+        <!-- アイコンを表示する場所 -->
+        <div id="header_icon" class="side_menu">
+            <a id="close" onclick="closeMenu();">✕</a>
+            <img src='../images/icon.png'>
+            <p>ユーザ名</p>
+            <p>ID:UserID</p>
 
-    <!-- 登録するボタン -->
-    <button id="cfm-dialog">登録する</button>
+        </div>
 
+        <!-- ヘッダ部分 -->
+        <div id="header" onclick="location.href = `index.html`">
+            <p>tensile</p>
+        </div>
+    </header>
+
+
+
+    <!-- メニュー -->
+    <div id="menu" class="side_menu">
+        <ul>
+            <li class="current"><a href="">生徒検索</a></li>
+            <li><a href="">クラス一覧</a></li>
+            <li><a href="">得点入力</a></li>
+            <li><a href="">テスト追加</a></li>
+            <li><a href="">レート参照</a></li>
+            <li><a href="">生徒切り替え</a></li>
+        </ul>
+    </div>
+    <!-- メイン -->
+    <div id="maintable" class="praptable">
+        <!-- パンくずリスト -->
+        <div id="breadcrumb">
+            <ol>
+                <li><a href="index.html">トップ</a></li>
+                <li><a href="index.html">途中1</a></li>
+                <li><a href="index.html">途中2</a></li>
+                <li><a href="index.html">途中3</a></li>
+                <li>現在地</li>
+            </ol>
+        </div>
+
+        <div id="main">
+
+            <!-- メイン処理 -->
+            <!-- テストセレクトボックスエリア -->
+            <label>テストを選択してください</label>
+            <div id="test-selectbox"></div>
+
+            <!-- 点数入力エリア -->
+            <label>点数を入力してください</label>
+            <div><input type="number" id="score-input"></div>
+
+            <!-- 登録するボタン -->
+            <button id="cfm-dialog">登録する</button>
+            <!-- メイン処理終了 -->
+        </div>
+
+    </div>
+
+    <!-- トップに戻るボタン -->
+    <a href="#" id="pageTop">▲</a>
+
+    <!-- フッタ -->
+    <footer>
+        <div id="footernav">
+            <p>フッタ</p>
+        </div>
+    </footer>
+
+    <!-- トップに戻るボタンのスクリプト -->
+    <script>
+        let showPageTop = false;
+        const PAGETOP = $('#pageTop');
+
+        $(window).scroll(() => {
+            if ($(this).scrollTop() > 10) {
+                if (!showPageTop) {
+                    showPageTop = true;
+                    PAGETOP.stop().animate({ 'opacity': '0.5' }, 300);
+                    PAGETOP.css('pointer-events', 'fill');
+                }
+            } else {
+                if (showPageTop) {
+                    showPageTop = false;
+                    PAGETOP.stop().animate({ 'opacity': '0' }, 300);
+                    PAGETOP.css('pointer-events', 'none');
+                }
+            }
+        });
+			// element.scrollTop
+    </script>
+
+    <!--JSの読み込み-->
     <script src="../dist/stuScoreInput.bundle.js"></script>
-</body>
 
-</html>
+</body>
