@@ -5,19 +5,11 @@
     <meta charset="UTF-8">
     <title>テスト一覧｜tensile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="../images/favicon.ico">
-    <script src="../jquery-3.6.0.min.js"></script>
-    <script>
-        const openMenu = () => {
-            $('.side_menu').css('animation-name', 'openMenu');
-        }
-
-        const closeMenu = () => {
-            $('.side_menu').css('animation-name', 'closeMenu');
-        }
-
-    </script>
+    <!-- スタイルシート読み込み(必要に応じてパス編集) -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- パスワード入力フォーム用アイコンの読み込み(必要に応じてコメントアウト解除) -->
+    <!-- <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> -->
+    <link rel="icon" href="images/favicon.ico">
 </head>
 
 <body>
@@ -26,13 +18,13 @@
     <header>
         <!-- サイドメニュー表示用ボタン -->
         <div id="menu_button">
-            <a onclick="openMenu();">≡</a>
+            <a id="open">≡</a>
         </div>
 
         <!-- アイコンを表示する場所 -->
         <div id="header_icon" class="side_menu">
-            <a id="close" onclick="closeMenu();">✕</a>
-            <img src='../images/icon.png'>
+            <a id="close">✕</a>
+            <img src="images/icon.png">
             <p>ユーザ名</p>
             <p>ID:UserID</p>
 
@@ -63,30 +55,34 @@
         <div id="breadcrumb">
             <ol>
                 <li><a href="index.html">トップ</a></li>
-                <li><a href="index.html">途中1</a></li>
+                <!-- <li><a href="index.html">途中1</a></li>
                 <li><a href="index.html">途中2</a></li>
-                <li><a href="index.html">途中3</a></li>
-                <li>現在地</li>
+                <li><a href="index.html">途中3</a></li> -->
+                <li>テスト一覧</li>
             </ol>
         </div>
 
         <div id="main">
 
-            <!-- メイン処理 -->
+            <!-- ↓↓↓ここからメイン部分↓↓↓ -->
+
             <h1>テスト一覧</h1>
 
+            <!-- テスト情報一覧のテーブル -->
             <table border="1" id="test-list">
                 <tr>
                     <th>テスト名</th>
                     <th>最高得点</th>
                     <th>最低得点</th>
                 </tr>
+                <!-- 二行目以降　jsで生成 -->
+
             </table>
 
             <button onclick="window.location.href ='./test-create.html'">新規テストの作成</button>
             <button id="show-del-button">テストの削除</button>
 
-            <!-- メイン処理終了 -->
+            <!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
         </div>
 
     </div>
@@ -101,31 +97,12 @@
         </div>
     </footer>
 
-    <!-- トップに戻るボタンのスクリプト -->
-    <script>
-        let showPageTop = false;
-        const PAGETOP = $('#pageTop');
-
-        $(window).scroll(() => {
-            if ($(this).scrollTop() > 10) {
-                if (!showPageTop) {
-                    showPageTop = true;
-                    PAGETOP.stop().animate({ 'opacity': '0.5' }, 300);
-                    PAGETOP.css('pointer-events', 'fill');
-                }
-            } else {
-                if (showPageTop) {
-                    showPageTop = false;
-                    PAGETOP.stop().animate({ 'opacity': '0' }, 300);
-                    PAGETOP.css('pointer-events', 'none');
-                }
-            }
-        });
-			// element.scrollTop
-    </script>
-
-    <!--JSの読み込み-->
-    <script src="../dist/testList.bundle.js"></script>
+    <!-- サイドバーの開閉用js読み込み(必要に応じてコメントアウト, パス編集) -->
+    <script src="./dist/openCloseSidebar.bundle.js"></script>
+    <!-- トップに戻るボタン用js(必要に応じてコメントアウト, パス編集) -->
+    <script src="./dist/scrollToTop.bundle.js"></script>
+    <!-- パスワード入力フォーム用js(必要に応じてコメントアウト解除, パス編集) -->
+    <!-- <script src="./dist/showHidePassword.bundle.js"></script> -->
 </body>
 
 </html>
