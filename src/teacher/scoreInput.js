@@ -3,6 +3,7 @@ import getTestData from "../components/getTestData";
 import getClassList from "../components/getClassList";
 import getTestList from "../components/getTestList";
 import getStuInClass from "../components/getStuInClass";
+import getUid from "../components/getUid";
 import { db } from "../firebase/firebaseConfig";
 import { doc, updateDoc } from "firebase/firestore";
 
@@ -19,16 +20,19 @@ const tbl = document.querySelector("table");
 // 登録ボタンのHTML要素を取得する
 const btn = document.querySelector("#cfm-dialog");
 
-// ログイン中のユーザ（講師）のIDを取得する
-const uid = getUserData().uid;
-
-// ユーザ（講師）の所属しているクラス（複数の場合、配列）を取得する
-const uclasses = getClassList(uid);
+let minScore = 0;
+let maxScore = 100;
 
 /**
  * DBからテスト名を取得し、テストセレクトボックスに与える
  */
 const main = async () => {
+    // ログイン中のユーザ（講師）のIDを取得する
+    const uid = getUserData().uid;
+
+    // ユーザ（講師）の所属しているクラス（複数の場合、配列）を取得する
+    const uclasses = await getClassList(uid);
+
     // クラスを渡し、テスト情報を取得する
     let tests = (
         await Promise.all(
@@ -37,7 +41,11 @@ const main = async () => {
     ).flat();
 
     // テストのデフォルト値を設定する
-    tests.unshift({ test_name: "未選択" });
+    tests.unshift({
+        test_name: "未選択",
+        min_score: Number.MIN_SAFE_INTEGER,
+        max_score: Number.MAX_SAFE_INTEGER,
+    });
 
     // DBから取得したテスト名を走査する
     tests.forEach((test) => {
@@ -62,22 +70,24 @@ const main = async () => {
  * DBからクラスの生徒名を取得し、テーブルを追加する
  */
 const addTable = async () => {
-    // 選択されたテストを渡してテストデータを取得し、テストのクラス名を取得する
-    const testClass = await getTestData(selectBox.value);
-    if (testClass === null) {
+    // 入力欄をリセット
+    tbl.innerHTML = "<tr><th>生徒名</th><th>点数</th></tr>";
+
+    // 選択されたテストを渡してテストデータを取得
+    const testData = await getTestData(selectBox.value);
+    if (testData === null) {
         return;
     }
+
+    // テストのクラス名を取得する
+    const testClass = testData.class_name;
+
+    // テストの最低点数と最高点数を代入
+    minScore = testData.min_score;
+    maxScore = testData.max_score;
 
     // クラスに所属する生徒情報を取得する
-    const stuDatas = await getStuInClass(testClass.class_name);
-    if (stuDatas === null) {
-        return;
-    }
-
-    // 入力があったら、scoreCheckを実行する
-    const scoreInput = (event) => {
-        scoreCheck(event.target.value);
-    };
+    const stuDatas = await getStuInClass(testClass);
 
     // 生徒名を走査する
     stuDatas.forEach((stu) => {
@@ -111,12 +121,20 @@ const addTable = async () => {
 };
 
 /**
+ * 入力欄に操作があったら走る処理
+ * @param {Event} event
+ */
+const scoreInput = (event) => {
+    scoreCheck(event.target.value);
+};
+
+/**
  * 点数入力欄に、点数の最低点未満または最高点より上の値が入力されたら、アラートで通知する関数
- * @param socre 入力された点数
+ * @param {number} score 入力された点数
  */
 const scoreCheck = (score) => {
     // 入力された点数が、テストの点数の範囲外であった場合
-    if (Number(score) < tests.min_score || tests.max_score < Number(score)) {
+    if (Number(score) < minScore || maxScore < Number(score)) {
         // アラートで通知する
         alert(
             "範囲外の点数が入力されました。登録するには、テスト情報を編集して下さい。"
@@ -174,7 +192,11 @@ const cfm = () => {
                     const id = cell[1].children[0].id;
 
                     // 点数を取得する
-                    const score = cell[1].children[0].value;
+                    const score = Number(cell[1].children[0].value);
+
+                    if (!isFinite(score)) {
+                        return;
+                    }
 
                     // 点数の入力があった場合にflgをfalseにする
                     if (String(score) != "") {
