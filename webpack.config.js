@@ -7,7 +7,7 @@ module.exports = {
         openCloseSidebar: "./src/viewComponents/openCloseSidebar.js",
         scrollToTop: "./src/viewComponents/scrollToTop.js",
         showHidePassword: "./src/viewComponents/showHidePassword.js",
-        signup: "./src/auth/signup.js",
+        signup: "./src/auth/signup.ts",
         stuScoreInput: "./src/student/scoreInput.js",
         stuScoreCfm: "./src/student/scoreCfm.js",
         teacherScoreInput: "./src/teacher/scoreInput.js",
