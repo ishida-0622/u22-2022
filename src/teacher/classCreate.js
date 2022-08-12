@@ -11,7 +11,6 @@ const main = async () => {
     //     return;
     // }
 
-
     // // useridを変数に代入
     // const uid = userData.uid;
 
@@ -30,14 +29,11 @@ const main = async () => {
             "</td></tr>"
     );
     $(".del-button").slideToggle(0);
-
 };
-
 
 $(function () {
     $("#add-input-form").on("click", async () => {
-        const addid = document.getElementById('id-text');
-
+        const addid = document.getElementById("id-text");
     });
 });
 

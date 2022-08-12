@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tensile｜sign up</title>
+    <title>tensile｜サインアップ</title>
     <!-- <link rel="stylesheet" href="./css/style.css"> -->
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <style>
@@ -23,6 +23,17 @@
         }
         #hide {
             display: none;
+        }
+        .text-password {
+            border: none;
+        }
+        .password-input-area {
+            border-width: thin;
+            border-style: solid;
+            width: 200px;
+        }
+        #inputed-password {
+            display: inline;
         }
     </style>
 </head>
@@ -51,7 +62,7 @@
                 </p>
                 <p><label for="user-id">ユーザーID</label><input type="text" name="user-id" class="name" id="user-id" placeholder="半角英数字と_のみ" pattern="^\w+$" v-model="userId" @input="idCheck" required><span id="id-used" class="red-text">そのIDは使われています</span></p>
                 <p><label for="email">メールアドレス</label><input type="email" name="email" id="email" placeholder="tensile@example.com" v-model="email" required></p>
-                <p><label for="password">パスワード</label><br><input type="password" name="pass" id="password" class="text-password" minlength="6" placeholder="6文字以上" v-model="password" required><span class="fa fa-eye" id="password-eye"></span></p>
+                <p><label for="password">パスワード</label><br><span class="password-input-area"><input type="password" name="pass" id="inputed-password" class="text-password" minlength="6" placeholder="6文字以上" v-model="password" required><span class="fa fa-eye" id="password-eye"></span></span></p>
                 <p><label for="last-name">苗字</label><input type="text" name="last-name" class="name" id="last-name" placeholder="山田" v-model="lastName" required></p>
                 <p><label for="last-name-kana">苗字(カナ)</label><input type="text" name="last-name-kana" class="name" id="last-name-kana" placeholder="ヤマダ" pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*" v-model="lastNameKana" required></p>
                 <p><label for="first-name">名前</label><input type="text" name="first-name" class="name" id="first-name" placeholder="太郎" v-model="firstName" required></p>
