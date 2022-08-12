@@ -4,7 +4,7 @@ const entries = glob.sync("./src/**/*.js");
 
 module.exports = {
     entry: {
-        signup: "./src/auth/signup.ts",
+        signup: "./src/auth/signup.js",
         stuScoreInput: "./src/student/scoreInput.js",
         stuScoreCfm: "./src/student/scoreCfm.js",
         teacherScoreInput: "./src/teacher/scoreInput.js",
