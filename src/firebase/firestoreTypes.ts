@@ -7,6 +7,58 @@ import {
 
 export type userType = "student" | "teacher" | "parent";
 
+export type userData = {
+    id: string;
+    type: userType;
+    mail: string;
+    tel: string;
+    first_name: string;
+    last_name: string;
+    first_name_kana: string;
+    last_name_kana: string;
+    sex: "0" | "1" | "2" | "9";
+    birth_date: string;
+    children_id?: string[];
+};
+
+export const userDataConverter: FirestoreDataConverter<userData> = {
+    toFirestore(userData: userData): DocumentData {
+        return {
+            id: userData.id,
+            type: userData.type,
+            mail: userData.mail,
+            tel: userData.tel,
+            first_name: userData.first_name,
+            last_name: userData.last_name,
+            first_name_kana: userData.first_name_kana,
+            last_name_kana: userData.last_name_kana,
+            sex: userData.sex,
+            birth_date: userData.birth_date,
+            children_id: userData.children_id,
+        };
+    },
+
+    fromFirestore(
+        snapshot: QueryDocumentSnapshot,
+        options: SnapshotOptions
+    ): userData {
+        const data = snapshot.data(options);
+        return {
+            id: data.id,
+            type: data.type,
+            mail: data.mail,
+            tel: data.tel,
+            first_name: data.first_name,
+            last_name: data.last_name,
+            first_name_kana: data.first_name_kana,
+            last_name_kana: data.last_name_kana,
+            sex: data.sex,
+            birth_date: data.birth_date,
+            children_id: data.children_id,
+        };
+    },
+};
+
 export type stuData = {
     id: string;
     type: userType;

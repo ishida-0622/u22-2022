@@ -9,7 +9,41 @@ exports.idConverter =
     exports.stuTestDataConverter =
     exports.stuClassDataConverter =
     exports.stuDataConverter =
+    exports.userDataConverter =
         void 0;
+exports.userDataConverter = {
+    toFirestore(userData) {
+        return {
+            id: userData.id,
+            type: userData.type,
+            mail: userData.mail,
+            tel: userData.tel,
+            first_name: userData.first_name,
+            last_name: userData.last_name,
+            first_name_kana: userData.first_name_kana,
+            last_name_kana: userData.last_name_kana,
+            sex: userData.sex,
+            birth_date: userData.birth_date,
+            children_id: userData.children_id,
+        };
+    },
+    fromFirestore(snapshot, options) {
+        const data = snapshot.data(options);
+        return {
+            id: data.id,
+            type: data.type,
+            mail: data.mail,
+            tel: data.tel,
+            first_name: data.first_name,
+            last_name: data.last_name,
+            first_name_kana: data.first_name_kana,
+            last_name_kana: data.last_name_kana,
+            sex: data.sex,
+            birth_date: data.birth_date,
+            children_id: data.children_id,
+        };
+    },
+};
 exports.stuDataConverter = {
     toFirestore(stuData) {
         return {
