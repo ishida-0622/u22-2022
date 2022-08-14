@@ -31,7 +31,11 @@ const passwordCollation = async () => {
     }
 
     // ユーザー情報の取得
-    const userData = (await getDoc(doc(db, `users/${user.uid}`).withConverter(userDataConverter))).data();
+    const userData = (
+        await getDoc(
+            doc(db, `users/${user.uid}`).withConverter(userDataConverter)
+        )
+    ).data();
 
     // 存在しなければ終了
     if (!userData) {
@@ -118,7 +122,7 @@ const userDelete = async () => {
         // idから自分のidを削除
         await deleteDoc(doc(db, `id/${userData.id}`));
 
-    // 講師なら
+        // 講師なら
     } else if (userType === "teacher") {
         // 講師情報取得 存在しなければ終了
         const userData = await getTeacherData(uid);
@@ -157,7 +161,7 @@ const userDelete = async () => {
         // idから自分のidを削除
         await deleteDoc(doc(db, `id/${userData.id}`));
 
-    // 保護者なら
+        // 保護者なら
     } else {
         // 保護者情報取得 存在しなければ終了
         const userData = await getParentsData(uid);
