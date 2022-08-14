@@ -1,60 +1,172 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <title>ユーザ情報編集｜tensile</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- スタイルシート読み込み(必要に応じてパス編集) -->
+        <link rel="stylesheet" href="css/style.css" />
+        <!-- パスワード入力フォーム用アイコンの読み込み(必要に応じてコメントアウト解除) -->
+        <!-- <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> -->
+        <link rel="icon" href="images/favicon.ico" />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ユーザ情報編集</title>
-</head>
+    <body>
+        <!-- ヘッダー -->
+        <header>
+            <!-- サイドメニュー表示用ボタン -->
+            <div id="menu_button">
+                <a id="open">≡</a>
+            </div>
 
-<body>
-    <div id="main">
-        <form onsubmit="return false;" name="user_information_edit" id="user_information_edit">
-            <img src="example.png" alt="ユーザの写真" title="user_img">
-            
-            <!--テーブルの表示-->
-            <table border="1" id="user-information">
-                <tr>
-                    <th>苗字</th>
-                    <th>名前</th>
-                </tr>
-                <tr>
-                    <td><input type="text" id="last_name" required></td>
-                    <td><input type="text" id="first_name" required></td>
-                </tr>
-                <tr>
-                    <th>苗字(カナ)</th>
-                    <th>名前(カナ)</th>
-                </tr>
-                <tr>
-                    <td><input type="text" id="last_name_kana" required pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*"></td>
-                    <td><input type="text" id="first_name_kana" required pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*"></td>
-                </tr>
-                <tr>
-                    <th>メールアドレス</th>
-                    <td><input type="email" id="mail" required></td>
-                </tr>
-                <tr>
-                    <th>生年月日</th>
-                    <td><input type="date" id="birth_date" required></td>
-                </tr>
-                <tr>
-                    <th>電話番号</th>
-                    <td><input type="tel" id="tel_number" required pattern="[0-9]{10}"></td>
-                </tr>
-            </table>
+            <!-- アイコンを表示する場所 -->
+            <div id="header_icon" class="side_menu">
+                <a id="close">✕</a>
+                <img src="images/icon.png" />
+                <p>ユーザ名</p>
+                <p>ID:UserID</p>
+            </div>
 
-            <!--情報を送信するボタン-->
-            <input type="submit" id="registration_button" value="登録">
-        </form>
+            <!-- ヘッダ部分 -->
+            <div id="header" onclick="location.href = `index.html`">
+                <p>tensile</p>
+            </div>
+        </header>
 
-        <!--ユーザ情報登録画面に遷移するボタン-->
-        <button onclick="window.location.href ='./user-information.html'">キャンセル</button>
-    </div>
+        <!-- メニュー -->
+        <div id="menu" class="side_menu">
+            <ul>
+                <li class="current"><a href="">生徒検索</a></li>
+                <li><a href="">クラス一覧</a></li>
+                <li><a href="">得点入力</a></li>
+                <li><a href="">テスト追加</a></li>
+                <li><a href="">レート参照</a></li>
+                <li><a href="">生徒切り替え</a></li>
+                <li><a id="logout" href="">ログアウト</a></li>
+            </ul>
+        </div>
+        <!-- メイン -->
+        <div id="maintable" class="praptable">
+            <!-- パンくずリスト -->
+            <div id="breadcrumb">
+                <ol>
+                    <li><a href="index.html">トップ</a></li>
+                    <li><a href="index.html">途中1</a></li>
+                    <li><a href="index.html">途中2</a></li>
+                    <li><a href="index.html">途中3</a></li>
+                    <li>現在地</li>
+                </ol>
+            </div>
 
-    <!--JSの読み込み-->
-    <script src="../dist/stuInformationEdit.bundle.js"></script>
-</body>
+            <div id="main">
+                <!-- ↓↓↓ここからメイン部分↓↓↓ -->
+                <form
+                    onsubmit="return false;"
+                    name="user_information_edit"
+                    id="user_information_edit"
+                >
+                    <img
+                        src="example.png"
+                        alt="ユーザの写真"
+                        title="user_img"
+                    />
 
+                    <!--テーブルの表示-->
+                    <table border="1" id="user-information">
+                        <tr>
+                            <th>苗字</th>
+                            <th>名前</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" id="last_name" required />
+                            </td>
+                            <td>
+                                <input type="text" id="first_name" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>苗字(カナ)</th>
+                            <th>名前(カナ)</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input
+                                    type="text"
+                                    id="last_name_kana"
+                                    required
+                                    pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*"
+                                />
+                            </td>
+                            <td>
+                                <input
+                                    type="text"
+                                    id="first_name_kana"
+                                    required
+                                    pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>メールアドレス</th>
+                            <td><input type="email" id="mail" required /></td>
+                        </tr>
+                        <tr>
+                            <th>生年月日</th>
+                            <td>
+                                <input type="date" id="birth_date" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>電話番号</th>
+                            <td>
+                                <input
+                                    type="tel"
+                                    id="tel_number"
+                                    required
+                                    pattern="[0-9]{10}"
+                                />
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!--情報を送信するボタン-->
+                    <input
+                        type="submit"
+                        id="registration_button"
+                        value="登録"
+                    />
+                </form>
+
+                <!--ユーザ情報登録画面に遷移するボタン-->
+                <button
+                    onclick="window.location.href ='./user-information.html'"
+                >
+                    キャンセル
+                </button>
+                <!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
+            </div>
+        </div>
+
+        <!-- トップに戻るボタン -->
+        <a href="#" id="pageTop">▲</a>
+
+        <!-- フッタ -->
+        <footer>
+            <div id="footernav">
+                <p>フッタ</p>
+            </div>
+        </footer>
+
+        <!--JSの読み込み-->
+        <script src="../dist/stuInformationEdit.bundle.js"></script>
+        <!-- ログアウト用js -->
+        <script src="./dist/logout.bundle.js"></script>
+        <!-- サイドバーの開閉用js読み込み(必要に応じてコメントアウト, パス編集) -->
+        <script src="./dist/openCloseSidebar.bundle.js"></script>
+        <!-- トップに戻るボタン用js(必要に応じてコメントアウト, パス編集) -->
+        <script src="./dist/scrollToTop.bundle.js"></script>
+        <!-- パスワード入力フォーム用js(必要に応じてコメントアウト解除, パス編集) -->
+        <!-- <script src="./dist/showHidePassword.bundle.js"></script> -->
+    </body>
 </html>
