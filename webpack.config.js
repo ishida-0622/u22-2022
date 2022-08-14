@@ -8,6 +8,7 @@ module.exports = {
         scrollToTop: "./src/viewComponents/scrollToTop.js",
         showHidePassword: "./src/viewComponents/showHidePassword.js",
         signup: "./src/auth/signup.ts",
+        logout: "./src/auth/logout.js",
         withdraw: "./src/auth/withdraw.ts",
         stuScoreInput: "./src/student/scoreInput.js",
         stuScoreCfm: "./src/student/scoreCfm.js",
