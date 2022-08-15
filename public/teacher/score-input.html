@@ -1,33 +1,124 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <body>
-        <!-- テストセレクトボックスエリア -->
-        <!-- 項目名の宣言 -->
-        <lavel>テストを選択してください</lavel>
 
-        <!-- テストセレクトボックス -->
-        <div id="test-selectbox"></div>
-        <!-- テストセレクトボックスエリア 終了 -->
+<head>
+    <meta charset="UTF-8">
+    <title>テスト得点入力｜tensile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- スタイルシート読み込み(必要に応じてパス編集) -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- パスワード入力フォーム用アイコンの読み込み(必要に応じてコメントアウト解除) -->
+    <!-- <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> -->
+    <link rel="icon" href="images/favicon.ico">
+</head>
 
-        <!-- 点数入力エリア -->
-        <!-- 項目名の宣言 -->
-        <lavel>点数を入力してください</lavel>
+<body>
 
-        <!-- 生徒名と点数入力欄テーブル -->
-        <table border="1" id="tbl">
-            <!-- カラム名 -->
-            <tr>
-                <th>生徒名</th>
-                <th>点数</th>
-            </tr>
+    <!-- ヘッダー -->
+    <header>
+        <!-- サイドメニュー表示用ボタン -->
+        <div id="menu_button">
+            <a id="open">≡</a>
+        </div>
 
-            <!-- 内容（jsで定義） -->
-        </table>
-        <!-- 点数入力エリア 終了 -->
+        <!-- アイコンを表示する場所 -->
+        <div id="header_icon" class="side_menu">
+            <a id="close">✕</a>
+            <img src="images/icon.png">
+            <p>ユーザ名</p>
+            <p>ID:UserID</p>
 
-        <!-- 登録するボタン -->
-        <button id="cfm-dialog">登録</button>
+        </div>
 
-        <script src="../dist/teacherScoreInput.bundle.js"></script>
-    </body>
+        <!-- ヘッダ部分 -->
+        <div id="header" onclick="location.href = `index.html`">
+            <p>tensile</p>
+        </div>
+    </header>
+
+
+
+    <!-- メニュー -->
+    <div id="menu" class="side_menu">
+        <ul>
+            <li class="current"><a href="">生徒検索</a></li>
+            <li><a href="">クラス一覧</a></li>
+            <li><a href="">得点入力</a></li>
+            <li><a href="">テスト追加</a></li>
+            <li><a href="">レート参照</a></li>
+            <li><a href="">生徒切り替え</a></li>
+        </ul>
+    </div>
+    <!-- メイン -->
+    <div id="maintable" class="praptable">
+        <!-- パンくずリスト -->
+        <div id="breadcrumb">
+            <ol>
+                <li><a href="index.html">トップ</a></li>
+                <!-- <li><a href="index.html">途中1</a></li>
+                <li><a href="index.html">途中2</a></li>
+                <li><a href="index.html">途中3</a></li> -->
+                <li>得点入力</li>
+            </ol>
+        </div>
+
+        <div id="main">
+            <!-- ↓↓↓ここからメイン部分↓↓↓ -->
+
+            <!-- テストセレクトボックスエリア -->
+
+            <!-- 項目名の宣言 -->
+            <lavel>テストを選択してください</lavel>
+            <!-- jsで作成するテストセレクトボックス -->
+            <div id="test-selectbox"></div>
+
+            <!-- テストセレクトボックスエリア 終了 -->
+
+
+            <!-- 点数入力エリア -->
+
+            <!-- 項目名の宣言 -->
+            <lavel>点数を入力してください</lavel>
+
+            <!-- jsで生成する生徒名と点数入力欄テーブル -->
+            <table border="1" id="tbl">
+
+                <tr>
+                    <!-- カラム名 -->
+                    <th>生徒名</th>
+                    <th>点数</th>
+                </tr>
+
+                <!-- 内容（jsで定義） -->
+            </table>
+
+            <!-- 点数入力エリア 終了 -->
+
+
+            <!-- 登録するボタン -->
+            <button id="cfm-dialog">登録</button>
+
+            <!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
+        </div>
+
+    </div>
+
+    <!-- トップに戻るボタン -->
+    <a href="#" id="pageTop">▲</a>
+
+    <!-- フッタ -->
+    <footer>
+        <div id="footernav">
+            <p>フッタ</p>
+        </div>
+    </footer>
+
+    <!-- サイドバーの開閉用js読み込み(必要に応じてコメントアウト, パス編集) -->
+    <script src="./dist/openCloseSidebar.bundle.js"></script>
+    <!-- トップに戻るボタン用js(必要に応じてコメントアウト, パス編集) -->
+    <script src="./dist/scrollToTop.bundle.js"></script>
+    <!-- パスワード入力フォーム用js(必要に応じてコメントアウト解除, パス編集) -->
+    <!-- <script src="./dist/showHidePassword.bundle.js"></script> -->
+</body>
+
 </html>
