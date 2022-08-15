@@ -24,9 +24,9 @@ let uid = "";
  * DBからテスト名を取得し、テストセレクトボックスに与える
  */
 const main = async () => {
-    uid = await getUserData().uid;
+    uid = (await getUserData()).uid;
     // ユーザ（生徒）の所属しているクラス（複数の場合、配列）を取得する
-    const uclasses = getClassList(uid);
+    const uclasses = await getClassList(uid);
 
     // クラスを渡し、テスト情報を取得する
     let tests = (
