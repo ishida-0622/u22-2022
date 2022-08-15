@@ -23,7 +23,6 @@ module.exports = {
         stuInformationEdit: "./src/student/userInformationEdit.js",
         // testList: "./src/teacher/testList.js",
         testCreate: "./src/teacher/testCreate.js",
-        testUpdate: "./src/teacher/testDataUpdate.js",
         studentPerfData: "./src/student/studentPerfData.js",
 
         debugStudent: "./src/debug_student.js",
