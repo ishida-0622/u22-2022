@@ -80,7 +80,7 @@ new Vue({
             )
                 // 成功時
                 .then(async () => {
-                    const user = getUserData();
+                    const user = await getUserData();
                     if (!user) {
                         return;
                     }
@@ -321,7 +321,7 @@ new Vue({
                     !stuDocument ||
                     stuDocument.type !== "student" ||
                     stuDocument.last_name + stuDocument.first_name !==
-                        inputName[i]
+                    inputName[i]
                 ) {
                     return false;
                 }
@@ -379,7 +379,7 @@ new Vue({
 
 // メールの再送信が押された場合の処理 なんかうまくいかないけど優先度低いのでパス
 $(document).on("click", "#retransmission", async () => {
-    const user = getUserData();
+    const user = await getUserData();
     if (!user) {
         console.log("null");
         return;
