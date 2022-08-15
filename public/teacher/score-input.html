@@ -1,39 +1,33 @@
 <!DOCTYPE html>
 <html lang="ja">
+    <body>
+        <!-- テストセレクトボックスエリア -->
+        <!-- 項目名の宣言 -->
+        <lavel>テストを選択してください</lavel>
 
-<body>
+        <!-- テストセレクトボックス -->
+        <div id="test-selectbox"></div>
+        <!-- テストセレクトボックスエリア 終了 -->
 
-    <!-- テストセレクトボックスエリア -->
-    <!-- 項目名の宣言 -->
-    <lavel>テストを選択してください</lavel>
+        <!-- 点数入力エリア -->
+        <!-- 項目名の宣言 -->
+        <lavel>点数を入力してください</lavel>
 
-    <!-- テストセレクトボックス -->
-    <div id = "test-selectbox"></div>
-    <!-- テストセレクトボックスエリア 終了 -->
+        <!-- 生徒名と点数入力欄テーブル -->
+        <table border="1" id="tbl">
+            <!-- カラム名 -->
+            <tr>
+                <th>生徒名</th>
+                <th>点数</th>
+            </tr>
 
+            <!-- 内容（jsで定義） -->
+        </table>
+        <!-- 点数入力エリア 終了 -->
 
-    <!-- 点数入力エリア -->
-    <!-- 項目名の宣言 -->
-    <lavel>点数を入力してください</lavel>
+        <!-- 登録するボタン -->
+        <button id="cfm-dialog">登録</button>
 
-    <!-- 生徒名と点数入力欄テーブル -->
-    <table border="1" id="tbl">
-
-        <!-- カラム名 -->
-        <tr>
-            <th>生徒名</th>
-            <th>点数</th>
-        </tr>
-
-        <!-- 内容（jsで定義） -->
-    </table>
-    <!-- 点数入力エリア 終了 -->
-
-    <!-- 登録するボタン -->
-    <button id="cfm-dialog">登録</button>
-
-    <script src="../dist/teacherScoreInput.bundle.js"></script>
-
-</body>
-
+        <script src="../dist/teacherScoreInput.bundle.js"></script>
+    </body>
 </html>

@@ -1,417 +1,462 @@
 <!DOCTYPE html>
 <html lang="ja">
-	<head>
-		<meta charset="UTF-8">
-		<title>ここにタイトルを入力｜tensile</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="../css/style.css">
-		<link rel="icon" href="../images/favicon.ico">
-		<script src="../jquery-3.6.0.min.js"></script>
-		<script>
-			const openMenu = () => {
-				$('.side_menu').css('animation-name', 'openMenu');
-			}
+    <head>
+        <meta charset="UTF-8" />
+        <title>ここにタイトルを入力｜tensile</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="icon" href="../images/favicon.ico" />
+        <script src="../jquery-3.6.0.min.js"></script>
+        <script>
+            const openMenu = () => {
+                $(".side_menu").css("animation-name", "openMenu");
+            };
 
-			const closeMenu = () => {
-				$('.side_menu').css('animation-name', 'closeMenu');
-			}
-
-		</script>
+            const closeMenu = () => {
+                $(".side_menu").css("animation-name", "closeMenu");
+            };
+        </script>
         <style>
-            #scrollMenu{
+            #scrollMenu {
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
             }
-            .scrollButton{
+            .scrollButton {
                 width: 100%;
                 /* margin: 0; */
             }
         </style>
-	</head>
+    </head>
 
-	<body>
+    <body>
+        <!-- ヘッダー -->
+        <header>
+            <!-- サイドメニュー表示用ボタン -->
+            <div id="menu_button">
+                <a onclick="openMenu();">≡</a>
+            </div>
 
-		<!-- ヘッダー -->
-		<header>
-			<!-- サイドメニュー表示用ボタン -->
-			<div id="menu_button">
-				<a onclick="openMenu();">≡</a>
-			</div>
+            <!-- アイコンを表示する場所 -->
+            <div id="header_icon" class="side_menu">
+                <a id="close" onclick="closeMenu();">✕</a>
+                <img src="../images/icon.png" />
+                <p>ユーザ名</p>
+                <p>ID:UserID</p>
+            </div>
 
-			<!-- アイコンを表示する場所 -->
-			<div id="header_icon" class="side_menu">
-				<a id="close" onclick="closeMenu();">✕</a>
-				<img src = '../images/icon.png'>
-				<p>ユーザ名</p>
-				<p>ID:UserID</p>
+            <!-- ヘッダ部分 -->
+            <div id="header" onclick="location.href = `index.html`">
+                <p>tensile</p>
+            </div>
+        </header>
 
-			</div>
+        <!-- メニュー -->
+        <div id="menu" class="side_menu">
+            <ul>
+                <li class="current"><a href="">生徒検索</a></li>
+                <li><a href="">クラス一覧</a></li>
+                <li><a href="">得点入力</a></li>
+                <li><a href="">テスト追加</a></li>
+                <li><a href="">レート参照</a></li>
+                <li><a href="">生徒切り替え</a></li>
+            </ul>
+        </div>
+        <!-- メイン -->
+        <div id="maintable" class="praptable">
+            <!-- パンくずリスト -->
+            <div id="breadcrumb">
+                <ol>
+                    <li><a href="index.html">トップ</a></li>
+                    <li>現在地</li>
+                </ol>
+            </div>
 
-			<!-- ヘッダ部分 -->
-			<div id="header" onclick="location.href = `index.html`">
-				<p>tensile</p>
-			</div>
-		</header>
+            <div id="main">
+                <!-- ↓↓↓ここからメイン部分↓↓↓ -->
+                <h2>クラスを選択してください</h2>
+                <select id="class">
+                    <option value="-1">選択してください</option>
+                </select>
 
+                <div id="scoreView" style="display: none">
+                    <div class="clearfix">
+                        <h2 class="float">現在のレート:</h2>
+                        <h2 class="float">あいうえお</h2>
+                    </div>
+                    <canvas id="graph" style="max-width: 100vw"></canvas>
+                    <div id="scrollMenu">
+                        <a
+                            class="float"
+                            class="scrollButton"
+                            onclick="changePosition(-1);"
+                            ><=</a
+                        >
+                        <a
+                            class="float"
+                            class="scrollButton"
+                            onclick="changePosition(1);"
+                            >=></a
+                        >
+                    </div>
 
+                    <details>
+                        <summary>今までのレートを見る</summary>
+                        <table border="1" id="rateTable">
+                            <tr>
+                                <th>レート</th>
+                            </tr>
+                            <tr>
+                                <td class="tdNumber">0</td>
+                            </tr>
+                            <tr>
+                                <td class="tdNumber">0</td>
+                            </tr>
+                        </table>
+                    </details>
+                    <details>
+                        <summary>今までの点数を見る</summary>
+                        <table border="1">
+                            <tr>
+                                <th>テスト名</th>
+                                <th>得点</th>
+                            </tr>
+                            <tr>
+                                <td>テスト1</td>
+                                <td class="tdNumber">0</td>
+                            </tr>
+                            <tr>
+                                <td>テスト2</td>
+                                <td class="tdNumber">0</td>
+                            </tr>
+                        </table>
+                    </details>
+                </div>
+                <div id="ifNotSelected">
+                    <h2>クラスを選択するとここに成績が表示されます</h2>
+                </div>
+                <!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
+            </div>
+        </div>
 
-		<!-- メニュー -->
-		<div id="menu" class="side_menu">
-			<ul>
-				<li class="current"><a href="">生徒検索</a></li>
-				<li><a href="">クラス一覧</a></li>
-				<li><a href="">得点入力</a></li>
-				<li><a href="">テスト追加</a></li>
-				<li><a href="">レート参照</a></li>
-				<li><a href="">生徒切り替え</a></li>
-			</ul>
-		</div>
-		<!-- メイン -->
-		<div id="maintable" class="praptable">
-			<!-- パンくずリスト -->
-			<div id="breadcrumb">
-				<ol>
-					<li><a href="index.html">トップ</a></li>
-					<li>現在地</li>
-				</ol>
-			</div>
+        <script>
+            const showGraph = (rate) => {
+                // 背景を塗る------------
+                context.fillStyle = "white";
+                context.fillRect(-1, -1, 512, 267);
 
-			<div id="main">
-				<!-- ↓↓↓ここからメイン部分↓↓↓ -->
-				<h2>クラスを選択してください</h2>
-				<select id="class">
-					<option value="-1">選択してください</option>
-				</select>
+                // スクロールバーを表示------------
+                context.fillStyle = "rgb(37, 128, 212)";
+                context.fillRect(-1, 260.5, 512, 17);
 
-				<div id = "scoreView" style="display: none;">
-					<div class="clearfix">
-						<h2 class = "float">現在のレート:</h2>
-						<h2 class = "float">あいうえお</h2>
-					</div>
-					<canvas id="graph" style="max-width: 100vw;"></canvas>
-					<div id="scrollMenu">
-						<a class = "float" class = "scrollButton" onclick="changePosition(-1);"><=</a>
-						<a class = "float" class = "scrollButton" onclick="changePosition(1);">=></a>
-					</div>
+                context.fillStyle = "rgb(204, 231, 255)";
+                context.fillRect(
+                    (position + 1) * barLength + graphScroll / 2 - 0.5,
+                    260.5,
+                    barLength * Math.min(10, rate.length),
+                    17
+                );
 
-					<details>
-						<summary>今までのレートを見る</summary>
-						<table border="1" id = "rateTable">
-							<tr>
-								<th>レート</th>
-							</tr>
-							<tr>
-								<td class = 'tdNumber'>0</td>
-							</tr>
-							<tr>
-								<td class = 'tdNumber'>0</td>
-							</tr>
-						</table>
-					</details>
-					<details>
-						<summary>今までの点数を見る</summary>
-						<table border="1">
-							<tr>
-								<th>テスト名</th>
-								<th>得点</th>
-							</tr>
-							<tr>
-								<td>テスト1</td>
-								<td class = 'tdNumber'>0</td>
-							</tr>
-							<tr>
-								<td>テスト2</td>
-								<td class = 'tdNumber'>0</td>
-							</tr>
-						</table>
-					</details>
-				</div>
-				<div id = "ifNotSelected">
-					<h2>クラスを選択するとここに成績が表示されます</h2>
-				</div>
-				<!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
-			</div>
+                // 目盛線の表示------------
+                context.strokeStyle = "rgb(204, 231, 255)";
+                context.lineWidth = 1;
+                context.beginPath();
+                for (let i = 0; i < 10; i++) {
+                    context.moveTo(42 + i * 47, 5);
+                    context.lineTo(42 + i * 47, 255);
+                    context.moveTo(63.5, 5 + i * 25);
+                    context.lineTo(512, 5 + i * 25);
+                }
+                context.closePath();
+                context.stroke();
 
-		</div>
+                // グラフの線を描写する------------
+                let start = 42;
+                if (rate.length <= 10) {
+                    start += 47;
+                }
 
-		<script>
+                let started = false;
 
+                context.strokeStyle = "rgb(50, 156, 255)";
+                context.beginPath();
+                rate.forEach((i, ind) => {
+                    if (!isNaN(i)) {
+                        if (!started) {
+                            context.moveTo(
+                                start + ind * 47,
+                                255 - (i / max) * 251
+                            );
+                            started = true;
+                        } else {
+                            context.lineTo(
+                                start + ind * 47,
+                                255 - (i / max) * 251
+                            );
+                        }
+                    }
+                });
+                context.stroke();
 
+                // レートの点を描写する------------
+                let drawX;
+                let drawY;
+                let TextY;
+                let TextrectY;
 
-			const showGraph = (rate) =>{
-				// 背景を塗る------------
-				context.fillStyle = "white";
-				context.fillRect(-1,-1,512,267);
+                context.fillStyle = "rgb(50, 156, 255)";
 
-				// スクロールバーを表示------------
-				context.fillStyle = "rgb(37, 128, 212)";
-				context.fillRect(-1,260.5,512,17);
+                context.font = "20px 'sans-serif'";
+                context.textAlign = "center";
 
-				context.fillStyle = "rgb(204, 231, 255)";
-				context.fillRect((position + 1) * barLength + graphScroll / 2 -0.5,260.5,barLength * Math.min(10, rate.length),17);
+                rate.forEach((i, ind) => {
+                    if (!isNaN(i)) {
+                        drawX = start + ind * 47;
+                        drawY = 255 - (i / max) * 251;
+                        context.beginPath();
+                        context.arc(drawX, drawY, 2, 0, 360);
+                        context.fill();
 
-				// 目盛線の表示------------
-				context.strokeStyle = "rgb(204, 231, 255)";
-				context.lineWidth = 1;
-				context.beginPath();
-				for(let i = 0; i < 10; i++){
-					context.moveTo(42 + i * 47, 5);
-					context.lineTo(42 + i * 47, 255);
-					context.moveTo(63.5, 5 + i * 25);
-					context.lineTo(512, 5 + i * 25);
-				}
-				context.closePath();
-				context.stroke();
+                        if (
+                            Math.abs(mouseX - drawX) < 23.5 &&
+                            mouseY < 260 &&
+                            mouseY > 0
+                        ) {
+                            let textWidth = context.measureText(i)["width"];
+                            if (drawY - 25 > 5) {
+                                context.textBaseline = "bottom";
+                                TextY = drawY - 5;
+                                TextrectY = drawY - 25;
+                            } else {
+                                context.textBaseline = "top";
+                                TextY = drawY + 5;
+                                TextrectY = drawY + 5;
+                            }
 
-				// グラフの線を描写する------------
-				let start = 42;
-				if(rate.length <= 10){
-					start += 47
-				}
+                            context.fillRect(
+                                drawX - textWidth / 2 - 5,
+                                TextrectY,
+                                textWidth + 10,
+                                20
+                            );
+                            context.fillStyle = "rgb(255, 255, 255)";
+                            context.fillText(i, drawX, TextY);
+                            context.fillStyle = "rgb(50, 156, 255)";
+                        }
+                    }
+                });
 
-				let started = false;
+                // グラフより左側にある物を白い四角形で隠す------------
+                context.fillStyle = "white";
+                context.fillRect(0, 0.5, 65, 260);
 
-				context.strokeStyle = "rgb(50, 156, 255)";
-				context.beginPath();
-				rate.forEach((i, ind) => {
-					if(!isNaN(i)){
-						if (!started){
-							context.moveTo(start + ind * 47, 255 - i / max * 251);
-							started = true;
-						} else {
-							context.lineTo(start + ind * 47, 255 - i / max * 251);
-						}
-					}
-				});
-				context.stroke();
+                // グラフの外枠を表示------------
+                context.strokeRect(65, 5, 512, 250);
 
-				// レートの点を描写する------------
-				let drawX;
-				let drawY;
-				let TextY;
-				let TextrectY;
+                // 軸の表示------------
+                context.font = "12px 'sans-serif'";
+                context.textAlign = "right";
+                context.textBaseline = "middle";
+                context.fillStyle = "black";
+                context.beginPath();
+                for (let i = 0; i < 11; i++) {
+                    context.fillText(
+                        Math.round((max / 10) * i),
+                        60,
+                        255 - i * 25
+                    );
+                    context.moveTo(63.5, 255 - i * 25);
+                    context.lineTo(66.5, 255 - i * 25);
+                }
+                context.closePath();
+                context.stroke();
+            };
 
-				context.fillStyle = "rgb(50, 156, 255)";
-
-				context.font = "20px 'sans-serif'";
-				context.textAlign = "center";
-
-
-				rate.forEach((i, ind) => {
-					if(!isNaN(i)){
-						drawX = start + ind * 47;
-						drawY = 255 - i / max * 251;
-						context.beginPath();
-						context.arc(drawX, drawY, 2, 0, 360)
-						context.fill()
-
-						if(Math.abs(mouseX - drawX) < 23.5 && mouseY < 260 && mouseY > 0){
-							let textWidth = context.measureText(i)['width']
-							if (drawY - 25 > 5){
-								context.textBaseline = "bottom";
-								TextY = drawY - 5;
-								TextrectY = drawY -25;
-							} else {
-								context.textBaseline = "top";
-								TextY = drawY + 5;
-								TextrectY = drawY + 5;
-							}
-
-							context.fillRect(drawX - (textWidth / 2) - 5, TextrectY ,textWidth + 10,20);
-							context.fillStyle = "rgb(255, 255, 255)";
-							context.fillText(i, drawX, TextY);
-							context.fillStyle = "rgb(50, 156, 255)";
-
-						}
-
-					}
-				});
-
-
-
-
-
-				// グラフより左側にある物を白い四角形で隠す------------
-				context.fillStyle = "white";
-				context.fillRect(0,0.5,65,260);
-
-				// グラフの外枠を表示------------
-				context.strokeRect(65, 5, 512, 250)
-
-				// 軸の表示------------
-				context.font = "12px 'sans-serif'";
-				context.textAlign = "right";
-				context.textBaseline = "middle";
-				context.fillStyle = "black";
-				context.beginPath();
-				for(let i = 0; i < 11; i++){
-					context.fillText(Math.round(max / 10 * i), 60, 255 - i * 25);
-					context.moveTo(63.5, 255 - i * 25);
-					context.lineTo(66.5, 255 - i * 25);
-				}
-				context.closePath();
-				context.stroke();
-			}
-
-			const changePosition = (distance) => {
-				position = Math.min(Math.max(-1, position + distance), maxPosition)
-				showRate = rate.slice(
-									  Math.max(0, position),
-									  Math.min(rate.length, position + 11)
-									 );
-				showGraph(showRate);
-			}
-
-			// プルダウンメニューの処理------------
-			const classes = ["クラス1", "クラス2", "クラス3"]
-			const classMenu = document.getElementById("class")
-			// プルダウンメニューから選択した場合
-			classMenu.onchange = event => {
-				if (classMenu.value !== "-1"){
-					// クラスを何かしら選択した場合の処理
-					document.getElementById("scoreView").style.display = 'block';
-					document.getElementById("ifNotSelected").style.display = 'none';
-					// レートとして仮置きのものを設定する(FireStoreのレート取得に置き換える)
-					rate = [72, 10, 22, 91, 92, 100, 61, 76, 17, 5, 2, 72, 10, 22, 91, 92, 68, 61, 76, 17, 5, 2];
-					// レートのリストを更新
-					rateTable.innerHTML = "<tr><th>レート</th></tr>"
-					rate.forEach((i) => {
-						rateTable.innerHTML += 	"<tr><td class = 'tdNumber'>" + i + "</td></tr>";
-					});
-
-					rate.push(NaN);
-
-					maxPosition = rate.length - 11;
-					position = maxPosition;
-					showRate = rate.slice(Math.max(0, position), Math.min(rate.length, position + 11));
-					barLength = canvas.width / rate.length
-					showGraph(showRate);
-
-				} else {
-					// 「選択してください」を選択した場合の処理
-					document.getElementById("scoreView").style.display = 'none';
-					document.getElementById("ifNotSelected").style.display = 'block';
-				}
-			}
-			// プルダウンメニューの中に選択肢を追加する
-			classes.forEach((i, ind) => {
-				classMenu.innerHTML += "<option value='" + ind +"'>" + i + "</option>"
-			});
-			// もしもプルダウンメニューの中に選択肢がなかったら
-			if (classes.length === 0){
-				document.getElementById("ifNotSelected").innerHTML = "<h2>クラスに所属していません</h2>"
-			}
-
-			// キャンバスの設定
-			const canvas = document.getElementById("graph");
-			canvas.width = 489;
-			canvas.height = 277;
-            document.getElementById("scrollMenu").style.width = canvas.width + "px"
-			const rect = canvas.getBoundingClientRect();
-
-			window.addEventListener('mousemove', (evt) => {
-										const rect = canvas.getBoundingClientRect();
-										const width = rect.width / canvas.width;
-										const height = rect.height / canvas.height;
-										mouseX = (evt.clientX - rect.left) / width;
-										mouseY = (evt.clientY - rect.top) / height;
-										if(showValue){
-											showGraph(showRate);
-                                            showValue = false
-										}
-									}, false);
-
-            window.addEventListener('mousedown', (evt) => {
-                clickedX = mouseX;
-                clickedY = mouseY;
-                click = true;
-                graphScroll = 0;
-            }, false);
-
-            window.addEventListener('mouseup', (evt) => {
-                click = false;
-                graphScroll = 0;
+            const changePosition = (distance) => {
+                position = Math.min(
+                    Math.max(-1, position + distance),
+                    maxPosition
+                );
+                showRate = rate.slice(
+                    Math.max(0, position),
+                    Math.min(rate.length, position + 11)
+                );
                 showGraph(showRate);
-            }, false);
+            };
 
-            canvas.addEventListener('mousemove', (evt) => {
-                                        if(click){
-                                            graphScroll += mouseX - clickedX;
-                                            clickedX = mouseX;
-                                            console.log(graphScroll);
-                                            if (graphScroll >= barLength && position != maxPosition){
-                                                changePosition(1);
-                                                graphScroll -= barLength;
-                                            }
-                                            if (graphScroll <= -barLength && position != -1){
-                                                changePosition(-1);
-                                                graphScroll += barLength;
-                                            }
-                                        }
-                                        showGraph(showRate);
-                                        showValue = true
-									}, false);
+            // プルダウンメニューの処理------------
+            const classes = ["クラス1", "クラス2", "クラス3"];
+            const classMenu = document.getElementById("class");
+            // プルダウンメニューから選択した場合
+            classMenu.onchange = (event) => {
+                if (classMenu.value !== "-1") {
+                    // クラスを何かしら選択した場合の処理
+                    document.getElementById("scoreView").style.display =
+                        "block";
+                    document.getElementById("ifNotSelected").style.display =
+                        "none";
+                    // レートとして仮置きのものを設定する(FireStoreのレート取得に置き換える)
+                    rate = [
+                        72, 10, 22, 91, 92, 100, 61, 76, 17, 5, 2, 72, 10, 22,
+                        91, 92, 68, 61, 76, 17, 5, 2,
+                    ];
+                    // レートのリストを更新
+                    rateTable.innerHTML = "<tr><th>レート</th></tr>";
+                    rate.forEach((i) => {
+                        rateTable.innerHTML +=
+                            "<tr><td class = 'tdNumber'>" + i + "</td></tr>";
+                    });
 
+                    rate.push(NaN);
 
-			// 二次元グラフィックスのコンテキストを取得
-			const context = canvas.getContext("2d");
-			// その他変数の設定
-			const max = 100
-			let rate;
-			let maxPosition;
-			let position;
-			let showRate;
-			let barLength;
-			let mouseX = 0;
-			let mouseY = 0;
+                    maxPosition = rate.length - 11;
+                    position = maxPosition;
+                    showRate = rate.slice(
+                        Math.max(0, position),
+                        Math.min(rate.length, position + 11)
+                    );
+                    barLength = canvas.width / rate.length;
+                    showGraph(showRate);
+                } else {
+                    // 「選択してください」を選択した場合の処理
+                    document.getElementById("scoreView").style.display = "none";
+                    document.getElementById("ifNotSelected").style.display =
+                        "block";
+                }
+            };
+            // プルダウンメニューの中に選択肢を追加する
+            classes.forEach((i, ind) => {
+                classMenu.innerHTML +=
+                    "<option value='" + ind + "'>" + i + "</option>";
+            });
+            // もしもプルダウンメニューの中に選択肢がなかったら
+            if (classes.length === 0) {
+                document.getElementById("ifNotSelected").innerHTML =
+                    "<h2>クラスに所属していません</h2>";
+            }
+
+            // キャンバスの設定
+            const canvas = document.getElementById("graph");
+            canvas.width = 489;
+            canvas.height = 277;
+            document.getElementById("scrollMenu").style.width =
+                canvas.width + "px";
+            const rect = canvas.getBoundingClientRect();
+
+            window.addEventListener(
+                "mousemove",
+                (evt) => {
+                    const rect = canvas.getBoundingClientRect();
+                    const width = rect.width / canvas.width;
+                    const height = rect.height / canvas.height;
+                    mouseX = (evt.clientX - rect.left) / width;
+                    mouseY = (evt.clientY - rect.top) / height;
+                    if (showValue) {
+                        showGraph(showRate);
+                        showValue = false;
+                    }
+                },
+                false
+            );
+
+            window.addEventListener(
+                "mousedown",
+                (evt) => {
+                    clickedX = mouseX;
+                    clickedY = mouseY;
+                    click = true;
+                    graphScroll = 0;
+                },
+                false
+            );
+
+            window.addEventListener(
+                "mouseup",
+                (evt) => {
+                    click = false;
+                    graphScroll = 0;
+                    showGraph(showRate);
+                },
+                false
+            );
+
+            canvas.addEventListener(
+                "mousemove",
+                (evt) => {
+                    if (click) {
+                        graphScroll += mouseX - clickedX;
+                        clickedX = mouseX;
+                        console.log(graphScroll);
+                        if (
+                            graphScroll >= barLength &&
+                            position != maxPosition
+                        ) {
+                            changePosition(1);
+                            graphScroll -= barLength;
+                        }
+                        if (graphScroll <= -barLength && position != -1) {
+                            changePosition(-1);
+                            graphScroll += barLength;
+                        }
+                    }
+                    showGraph(showRate);
+                    showValue = true;
+                },
+                false
+            );
+
+            // 二次元グラフィックスのコンテキストを取得
+            const context = canvas.getContext("2d");
+            // その他変数の設定
+            const max = 100;
+            let rate;
+            let maxPosition;
+            let position;
+            let showRate;
+            let barLength;
+            let mouseX = 0;
+            let mouseY = 0;
             let showValue = false;
             let clickedX = -1;
             let clickedY = -1;
             let click = false;
             let graphScroll = 0;
-			const rateTable = document.getElementById("rateTable")
+            const rateTable = document.getElementById("rateTable");
 
+            context.translate(0.5, 0.5);
+        </script>
 
+        <!-- トップに戻るボタン -->
+        <a href="#" id="pageTop">▲</a>
 
+        <!-- フッタ -->
+        <footer>
+            <div id="footernav">
+                <p>フッタ</p>
+            </div>
+        </footer>
 
-			context.translate(0.5, 0.5);
+        <!-- トップに戻るボタンのスクリプト -->
+        <script>
+            let showPageTop = false;
+            const PAGETOP = $("#pageTop");
 
-
-
-		</script>
-
-		<!-- トップに戻るボタン -->
-		<a href="#" id="pageTop">▲</a>
-
-		<!-- フッタ -->
-		<footer>
-			<div id="footernav">
-				<p>フッタ</p>
-			</div>
-		</footer>
-
-		<!-- トップに戻るボタンのスクリプト -->
-		<script>
-			let showPageTop = false;
-			const PAGETOP = $('#pageTop');
-
-			$(window).scroll(() => {
-				if ($(this).scrollTop() > 10) {
-					if (!showPageTop) {
-						showPageTop = true;
-						PAGETOP.stop().animate({'opacity': '0.5'}, 300);
-						PAGETOP.css('pointer-events', 'fill');
-					}
-				} else {
-					if (showPageTop) {
-						showPageTop = false;
-						PAGETOP.stop().animate({'opacity': '0'}, 300);
-						PAGETOP.css('pointer-events', 'none');
-					}
-				}
-			});
-			// element.scrollTop
-		</script>
-	</body>
+            $(window).scroll(() => {
+                if ($(this).scrollTop() > 10) {
+                    if (!showPageTop) {
+                        showPageTop = true;
+                        PAGETOP.stop().animate({ opacity: "0.5" }, 300);
+                        PAGETOP.css("pointer-events", "fill");
+                    }
+                } else {
+                    if (showPageTop) {
+                        showPageTop = false;
+                        PAGETOP.stop().animate({ opacity: "0" }, 300);
+                        PAGETOP.css("pointer-events", "none");
+                    }
+                }
+            });
+            // element.scrollTop
+        </script>
+    </body>
 </html>
