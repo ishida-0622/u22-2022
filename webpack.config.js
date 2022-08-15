@@ -25,23 +25,27 @@ module.exports = {
         testCreate: "./src/teacher/testCreate.js",
         testUpdate: "./src/teacher/testDataUpdate.js",
         studentPerfData: "./src/student/studentPerfData.js",
+
+        debugStudent: "./src/debug_student.js",
+        debugTeacher: "./src/debug_teacher.js",
+        debugParents: "./src/debug_parents.js",
     },
     output: {
         path: path.resolve(__dirname, "./public/dist"),
-        filename: "[name].bundle.js"
+        filename: "[name].bundle.js",
     },
     module: {
         rules: [
             {
                 test: /\.ts$/,
-                loader: "ts-loader"
-            }
-        ]
+                loader: "ts-loader",
+            },
+        ],
     },
     resolve: {
         extensions: [".ts", ".js"],
         alias: {
-            "vue$": "vue/dist/vue.esm.js"
-        }
-    }
+            vue$: "vue/dist/vue.esm.js",
+        },
+    },
 };
