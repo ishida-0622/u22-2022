@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Class List</title>
+    </head>
 
-<head>
-    <meta charset="utf-8">
-    <title>Class List</title>
-</head>
+    <body>
+        <h1>クラス一覧</h1>
 
-<body>
-    <h1>クラス一覧</h1>
+        <table border="1" id="class-list">
+            <tr>
+                <th>クラス名</th>
+                <th>講師</th>
+            </tr>
+        </table>
 
-    <table border="1" id = "class-list">
-        <tr>
-            <th>クラス名</th>
-            <th>講師</th>
-        </tr>
-    </table>
-
-    <button onclick="window.location.href ='./class-create.html'">新規クラスの作成</button>
-    <button id = "show-del-button">クラスの削除</button>
-    <script src="../dist/classList.bundle.js"></script>
-</body>
+        <button onclick="window.location.href ='./class-create.html'">
+            新規クラスの作成
+        </button>
+        <button id="show-del-button">クラスの削除</button>
+        <script src="../dist/classList.bundle.js"></script>
+    </body>
 </html>

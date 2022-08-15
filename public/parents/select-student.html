@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <title>生徒選択｜tensile</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- スタイルシート読み込み(必要に応じてパス編集) -->
+        <link rel="stylesheet" href="../css/style.css" />
+        <!-- パスワード入力フォーム用アイコンの読み込み(必要に応じてコメントアウト解除) -->
+        <!-- <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> -->
+        <link rel="icon" href="../images/favicon.ico" />
+    </head>
+
+    <body>
+        <!-- ヘッダー -->
+        <header>
+            <!-- ヘッダ部分 -->
+            <div id="header" onclick="location.href = `../index.html`">
+                <p>tensile</p>
+            </div>
+        </header>
+
+        <!-- メイン -->
+        <div id="maintable" class="praptable">
+            <div id="main">
+                <p>ログインする生徒を選択してください</p>
+                <form action="top-parents.html" method="post">
+                    <!-- 以下プルダウンメニュー(jsから取得) -->
+                    <select name="students" id="select-students-by-parents">
+                        <!-- <option value="studentA">student-name</option> -->
+                    </select>
+
+                    <!-- 選択処理 -->
+                    <div>
+                        <input type="submit" value="決定" />
+                    </div>
+
+                    <!-- ログアウト(処理未追加) -->
+                    <div>
+                        <input
+                            type="button"
+                            value="ログアウト"
+                            onclick="location.href='../login.html'"
+                        />
+                    </div>
+                </form>
+                <!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
+            </div>
+        </div>
+
+        <!-- トップに戻るボタン -->
+        <a href="#" id="pageTop">▲</a>
+
+        <!-- フッタ -->
+        <footer>
+            <div id="footernav">
+                <p>フッタ</p>
+            </div>
+        </footer>
+
+        <!-- サイドバーの開閉用js読み込み(必要に応じてコメントアウト, パス編集) -->
+        <script src="../dist/openCloseSidebar.bundle.js"></script>
+        <!-- トップに戻るボタン用js(必要に応じてコメントアウト, パス編集) -->
+        <script src="../dist/scrollToTop.bundle.js"></script>
+        <!-- パスワード入力フォーム用js(必要に応じてコメントアウト解除, パス編集) -->
+        <!-- <script src="./dist/showHidePassword.bundle.js"></script> -->
+    </body>
+</html>
