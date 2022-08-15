@@ -12,11 +12,9 @@ import { doc, deleteDoc } from "firebase/firestore";
  */
 const main = async () => {
     // ユーザ情報を取得する
-    const userData = getUserData();
+    const userData = await getUserData();
 
-    // 現在ログイン出来ているかどうかを確認する　出来ていなければログイン画面に飛ばす
     if (userData === null) {
-        window.location.href = "/login.html";
         return;
     }
 
