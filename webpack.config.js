@@ -4,6 +4,7 @@ const entries = glob.sync("./src/**/*.js");
 
 module.exports = {
     entry: {
+        init: "./src/init.js",
         openCloseSidebar: "./src/viewComponents/openCloseSidebar.js",
         scrollToTop: "./src/viewComponents/scrollToTop.js",
         showHidePassword: "./src/viewComponents/showHidePassword.js",
