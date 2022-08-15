@@ -1,4 +1,5 @@
 // import getUserData from "../auth/userData";
+import $ from jQuery;
 
 /**
  * クラス作成画面のjs
@@ -11,34 +12,34 @@ const main = async () => {
     //     return;
     // }
 
-
     // // useridを変数に代入
     // const uid = userData.uid;
 
     const uid = "EjQWBubQ3oPR7KDOTplWxCLhe9b2";
 
-    element.insertAdjacentHTML(
-        "beforeend",
-        "<tr><td>" +
-            "生徒名" +
-            "</td><td>" +
-            "生徒ID" +
-            "</td><td>" +
-            "学年" +
-            "</td><td>" +
-            "レート" +
-            "</td></tr>"
-    );
-    $(".del-button").slideToggle(0);
-
+    console.log("mainが実行されています。")
 };
+
 
 
 $(function () {
     $("#add-input-form").on("click", async () => {
-        const addid = document.getElementById('id-text');
-
+        count=addForm(count);
     });
+
+    $("#input-decision").on("click", async () => {
+        console.log("実行されています。");
+        let element = document.getElementById('class-list');
+        element.insertAdjacentHTML(
+            "beforeend",
+            "<tr><td>" +
+                "生徒名1" +
+                "</td><td>" +
+                "生徒ID1" +
+                "</td></tr>"
+        );
+    });
+
 });
 
 // mainを実行
