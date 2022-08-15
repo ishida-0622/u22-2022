@@ -28,7 +28,7 @@ let maxScore = 100;
  */
 const main = async () => {
     // ログイン中のユーザ（講師）のIDを取得する
-    const uid = await getUserData().uid;
+    const uid = (await getUserData()).uid;
 
     // ユーザ（講師）の所属しているクラス（複数の場合、配列）を取得する
     const uclasses = await getClassList(uid);
