@@ -1,45 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <title>ここにタイトルを入力｜tensile</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- スタイルシート読み込み(必要に応じてパス編集) -->
+        <link rel="stylesheet" href="css/style.css" />
+        <!-- パスワード入力フォーム用アイコンの読み込み(必要に応じてコメントアウト解除) -->
+        <!-- <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> -->
+        <link rel="icon" href="images/favicon.ico" />
+    </head>
 
-<head>
-    <meta charset="utf-8">
-    <title>Class Create</title>
-</head>
+    <body>
+        <!-- ヘッダー -->
+        <header>
+            <!-- サイドメニュー表示用ボタン -->
+            <div id="menu_button">
+                <a id="open">≡</a>
+            </div>
 
-<body>
+            <!-- アイコンを表示する場所 -->
+            <div id="header_icon" class="side_menu">
+                <a id="close">✕</a>
+                <img src="images/icon.png" />
+                <p>ユーザ名</p>
+                <p>ID:UserID</p>
+            </div>
 
-    <h1>クラス情報</h1>
-    <label for="className">クラス名</label>
-    <br>
-    <input type="text" id = "className" name="class-name">
+            <!-- ヘッダ部分 -->
+            <div id="header" onclick="location.href = `index.html`">
+                <p>tensile</p>
+            </div>
+        </header>
 
-    <p></p>
+        <!-- メニュー -->
+        <div id="menu" class="side_menu">
+            <ul>
+                <li class="current"><a href="">生徒検索</a></li>
+                <li><a href="">クラス一覧</a></li>
+                <li><a href="">得点入力</a></li>
+                <li><a href="">テスト追加</a></li>
+                <li><a href="">レート参照</a></li>
+                <li><a href="">生徒切り替え</a></li>
+                <li><a id="logout" href="">ログアウト</a></li>
+            </ul>
+        </div>
+        <!-- メイン -->
+        <div id="maintable" class="praptable">
+            <!-- パンくずリスト -->
+            <div id="breadcrumb">
+                <ol>
+                    <li><a href="index.html">トップ</a></li>
+                    <li><a href="index.html">途中1</a></li>
+                    <li><a href="index.html">途中2</a></li>
+                    <li><a href="index.html">途中3</a></li>
+                    <li>現在地</li>
+                </ol>
+            </div>
 
-    <table border="1" id = "class-list">
-        <tr>
-            <th>生徒名</th>
-            <th>生徒ID</th>
-            <th>学年</th>
-            <th>レート</th>
-        </tr>
+            <div id="main">
+                <h1>クラス情報</h1>
+                <p>クラス名</p>
+                <input type="text" id="class-name" />
+                <!-- 改行用　消してもOK -->
+                <p></p>
+                <table border="1" id="class-list">
+                    <tr>
+                        <th>生徒名</th>
+                        <th>生徒ID</th>
+                    </tr>
+                    <!-- ここに要素が追加されていく -->
+                </table>
+                <p>id:</p>
+                <input type="text" id="id-input" />
+                <button id="input-decision">確定</button>
+                <br />
+                <button id="class-create">クラス作成</button>
+                <button id="cancel">キャンセル</button>
+                <script src="../dist/classCreate.bundle.js"></script>
+            </div>
+        </div>
 
-        <!-- ここにjsで設定した要素が追加されていく -->
+        <!-- トップに戻るボタン -->
+        <a href="#" id="pageTop">▲</a>
 
-        <tr>
-            <td><!--<input type="text" id = "name-text"> --></td>
-            <td><input type="text" id="id-text"> </td>
-            <td></td>
-            <td></td>
-        </tr>
+        <!-- フッタ -->
+        <footer>
+            <div id="footernav">
+                <p>フッタ</p>
+            </div>
+        </footer>
 
-        <tr>
-            <td><button id = "add-input-form">+</button></td>
-        </tr>
-    </table>
-
-    <br>
-    <button>クラス作成</button>
-    <button>キャンセル</button>
-    <!-- <script src="../dist/classCreate.bundle.js"></script> -->
-</body>
+        <!-- ログアウト用js -->
+        <script src="./dist/logout.bundle.js"></script>
+        <!-- サイドバーの開閉用js読み込み(必要に応じてコメントアウト, パス編集) -->
+        <script src="./dist/openCloseSidebar.bundle.js"></script>
+        <!-- トップに戻るボタン用js(必要に応じてコメントアウト, パス編集) -->
+        <script src="./dist/scrollToTop.bundle.js"></script>
+        <!-- パスワード入力フォーム用js(必要に応じてコメントアウト解除, パス編集) -->
+        <!-- <script src="./dist/showHidePassword.bundle.js"></script> -->
+    </body>
 </html>

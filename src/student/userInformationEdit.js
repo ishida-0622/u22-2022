@@ -8,10 +8,8 @@ import { doc, updateDoc } from "firebase/firestore";
  * ユーザ情報参照画面のjs
  */
 const main = async () => {
-    // 現在ログイン出来ているかどうかを確認　出来ていなければログイン画面に飛ばす
-    const userData = getUserData();
+    const userData = await getUserData();
     if (userData === null) {
-        window.location.href = "/login.html";
         return;
     }
 
@@ -95,4 +93,5 @@ $(function () {
 });
 
 // mainを実行
+// setTimeout(main, 600);
 main();
