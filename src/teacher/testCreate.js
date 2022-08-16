@@ -4,6 +4,7 @@ import { db } from "../firebase/firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 import getTestData from "../components/getTestData";
 import getClassList from "../components/getClassList";
+import getClassData from "../components/getClassData";
 
 /**
  * ユーザ情報参照画面のjs
@@ -39,18 +40,31 @@ const main = async () => {
 const testRegister = async () => {
     // テスト名をHTMLから取得し変数に代入
     const testName = document.getElementById("test_name").value;
+    const className = document.getElementById("class_name").value;
+    const date = document.getElementById("date").value;
 
     // HTML要素を取得し、変数に代入
     const setTestData = {
         test_name: testName,
-        class_name: document.getElementById("class_name").value,
-        max_score: document.getElementById("max_score").value,
-        min_score: document.getElementById("min_score").value,
+        date: date,
+        class_name: className,
+        max_score: Number(document.getElementById("max_score").value),
+        min_score: Number(document.getElementById("min_score").value),
         test_overview: document.getElementById("test_overview").value,
     };
 
     // 受け取った情報を送信
     await setDoc(doc(db, `tests/${testName}`), setTestData);
+
+    const stuTestData = {
+        test_name: testName,
+        date: date,
+        score: null,
+    };
+    const studentList = (await getClassData(className)).students;
+    studentList.forEach(async (uid) => {
+        await setDoc(doc(db, `users/${uid}/tests/${testName}`), stuTestData);
+    });
 };
 
 $(function () {
@@ -63,17 +77,18 @@ $(function () {
         // 「OK」時の処理開始 ＋ 確認ダイアログの表示
         if (
             window.confirm(
-                "以下の内容で登録してもよろしいですか？\n\nテスト名：" +
-                    document.getElementById("test_name").value +
-                    "\nクラス名：" +
-                    document.getElementById("class_name").value +
-                    "\n最高点：" +
-                    // 点数をintからstringに変更
-                    String(document.getElementById("max_score").value) +
-                    "\n最低点：" +
-                    String(document.getElementById("min_score").value) +
-                    "\n[概要]\n" +
-                    document.getElementById("test_overview").value
+                `
+                以下の内容で登録してもよろしいですか？\n
+                テスト名：${document.getElementById("test_name").value}
+                クラス名：${document.getElementById("class_name").value}
+                最高点：${String(document.getElementById("max_score").value)}
+                最低点：${String(document.getElementById("min_score").value)}
+                実施日：${document
+                    .getElementById("date")
+                    .value.replaceAll("-", "/")}
+                [概要]
+                ${document.getElementById("test_overview").value}
+                `
             )
         ) {
             // 取得した内容が"null"で無い場合、アラートを表示してreturn
