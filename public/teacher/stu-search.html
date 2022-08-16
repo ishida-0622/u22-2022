@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>stu search</title>
-</head>
-<body>
-    <div id="app">
-        <input type="text" name="input" id="search-input" v-model="inputValue" @input="search">
-        <div v-for="val in studentList" :key="val.id" id="result">
-            {{ val.last_name }} {{ val.first_name }} <button @click="pageTransition(val.id)">詳細</button>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>stu search</title>
+    </head>
+    <body>
+        <div id="app">
+            <input
+                type="text"
+                name="input"
+                id="search-input"
+                v-model="inputValue"
+                @input="search"
+            />
+            <div v-for="val in studentList" :key="val.id" id="result">
+                {{ val.last_name }} {{ val.first_name }}
+                <button @click="pageTransition(val.id)">詳細</button>
+            </div>
         </div>
-    </div>
-    <script src="../dist/stuSearch.bundle.js"></script>
-</body>
+        <!-- ログイン確認処理含む初期化処理js読み込み(必要に応じてパス編集) -->
+        <script src="../dist/init.bundle.js"></script>
+        <script src="../dist/stuSearch.bundle.js"></script>
+    </body>
 </html>

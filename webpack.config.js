@@ -1,14 +1,18 @@
-const path = require('path');
+const path = require("path");
 const glob = require("glob");
 const entries = glob.sync("./src/**/*.js");
 
 module.exports = {
     entry: {
-        signup: "./src/auth/signup.js",
+        init: "./src/init.js",
+        openCloseSidebar: "./src/viewComponents/openCloseSidebar.js",
+        scrollToTop: "./src/viewComponents/scrollToTop.js",
+        showHidePassword: "./src/viewComponents/showHidePassword.js",
+        signup: "./src/auth/signup.ts",
+        logout: "./src/auth/logout.js",
+        withdraw: "./src/auth/withdraw.ts",
         stuScoreInput: "./src/student/scoreInput.js",
-        stuScoreCfm: "./src/student/scoreCfm.js",
         teacherScoreInput: "./src/teacher/scoreInput.js",
-        teacherScoreCfm: "./src/teacher/scoreCfm.js",
         classList: "./src/teacher/classList.js",
         stuSearch: "./src/teacher/stuSearch.ts",
         classCreate: "./src/teacher/classCreate.js",
@@ -18,23 +22,26 @@ module.exports = {
         stuInformationEdit: "./src/student/userInformationEdit.js",
         // testList: "./src/teacher/testList.js",
         testCreate: "./src/teacher/testCreate.js",
-        classInfomation: "./src/teacher/classInfomation.js"
+        studentPerfData: "./src/student/studentPerfData.js",
+
+        debugLogin: "./src/debug/debugLogin.js",
     },
     output: {
-        path: path.resolve(__dirname, './public/dist'),
-        filename: "[name].bundle.js"
+        path: path.resolve(__dirname, "./public/dist"),
+        filename: "[name].bundle.js",
     },
     module: {
         rules: [
             {
                 test: /\.ts$/,
-                loader: 'ts-loader'
-            }
-        ]
+                loader: "ts-loader",
+            },
+        ],
     },
     resolve: {
+        extensions: [".ts", ".js"],
         alias: {
-            'vue$': 'vue/dist/vue.esm.js'
-        }
-    }
+            vue$: "vue/dist/vue.esm.js",
+        },
+    },
 };

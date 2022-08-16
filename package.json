@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "all": "run-s fmt build",
     "build": "webpack --mode development",
-    "fmt": "prettier --write src/**/*.{js,ts,html,css}"
+    "fmt": "prettier --write {src,public}/**/*.{js,ts,html,css}"
   },
   "keywords": [],
   "author": "",
