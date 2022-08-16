@@ -3,6 +3,7 @@ import getClassList from "../components/getClassList";
 import getTestList from "../components/getTestList";
 import { db } from "../firebase/firebaseConfig";
 import { doc, updateDoc } from "firebase/firestore";
+import getTestData from "../components/getTestData";
 
 // 各HTML要素を取得する
 // テストセレクトボックスを含む要素を取得する
@@ -19,6 +20,8 @@ const btn = document.querySelector("#cfm-dialog");
 
 // ログイン中のユーザ（生徒）のIDを取得する
 let uid = "";
+let minScore = 0;
+let maxScore = 100;
 
 /**
  * DBからテスト名を取得し、テストセレクトボックスに与える
@@ -32,7 +35,11 @@ const main = async () => {
     let tests = (
         await Promise.all(uclasses.map(async (val) => await getTestList(val)))
     ).flat();
-    tests.unshift({ test_name: "未選択" });
+    tests.unshift({
+        test_name: "未選択",
+        min_score: Number.MIN_SAFE_INTEGER,
+        max_score: Number.MAX_SAFE_INTEGER,
+    });
 
     // DBから取得したテスト名を走査する
     tests.forEach((test) => {
@@ -58,15 +65,19 @@ const main = async () => {
  */
 const scoreInput = () => {
     // 入力された値が最低点未満または最高点より上だった場合
-    if (
-        scoreInputArea.value < tests.min_score ||
-        tests.max_score < scoreInputArea.value
-    ) {
+    if (scoreInputArea.value < minScore || maxScore < scoreInputArea.value) {
         // アラートで通知する
         alert(
             "テストの点数範囲外です。登録するにはテスト情報を更新してください。"
         );
     }
+};
+
+const selectboxChange = async () => {
+    const selected = selectBox.value;
+    const testData = await getTestData(selected);
+    minScore = testData.min_score;
+    maxScore = testData.max_score;
 };
 
 /**
@@ -118,8 +129,10 @@ const cfm = async () => {
 // ページがロードされたら、テストセレクトボックスを表示する
 window.addEventListener("load", main);
 
+selectBox.addEventListener("change", selectboxChange);
+
 // 点数を入力されたら、不正な点数がないかどうかチェックする
-window.addEventListener("change", scoreInput);
+scoreInputArea.addEventListener("change", scoreInput);
 
 // 登録するボタンをクリックされたら、登録の意思を確認するダイアログを表示する
 btn.addEventListener("click", cfm);
