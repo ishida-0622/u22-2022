@@ -4,6 +4,7 @@ import getTestList from "../components/getTestList";
 import { db } from "../firebase/firebaseConfig";
 import { doc, updateDoc } from "firebase/firestore";
 import getTestData from "../components/getTestData";
+import rateUpdate from "../rate/rateUpdate";
 
 // 各HTML要素を取得する
 // テストセレクトボックスを含む要素を取得する
@@ -119,7 +120,8 @@ const cfm = async () => {
         if (result) {
             // 入力された情報をDBへ更新する
             await scoreUpdate(uid, selectBox.value, scoreInputArea.value);
-
+            // レートを更新
+            await rateUpdate(uid, selectBox.value, scoreInputArea.value);
             // 完了をアラートで通知する
             alert("登録が完了しました");
         } // キャンセルを選択されたら、何もしない

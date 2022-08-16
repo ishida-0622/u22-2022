@@ -4,6 +4,7 @@ import getClassList from "../components/getClassList";
 import getTestList from "../components/getTestList";
 import getStuInClass from "../components/getStuInClass";
 import getUid from "../components/getUid";
+import rateUpdate from "../rate/rateUpdate";
 import { db } from "../firebase/firebaseConfig";
 import { doc, updateDoc } from "firebase/firestore";
 
@@ -210,6 +211,7 @@ const cfm = () => {
 
                         // DBを更新する
                         await scoreUpdate(uidStu, selectBox.value, score);
+                        await rateUpdate(uidStu, selectBox.value, score);
                     }
                 }
             });
