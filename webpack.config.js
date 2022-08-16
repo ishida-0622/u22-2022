@@ -4,6 +4,7 @@ const entries = glob.sync("./src/**/*.js");
 
 module.exports = {
     entry: {
+        init: "./src/init.js",
         openCloseSidebar: "./src/viewComponents/openCloseSidebar.js",
         scrollToTop: "./src/viewComponents/scrollToTop.js",
         showHidePassword: "./src/viewComponents/showHidePassword.js",
@@ -11,9 +12,7 @@ module.exports = {
         logout: "./src/auth/logout.js",
         withdraw: "./src/auth/withdraw.ts",
         stuScoreInput: "./src/student/scoreInput.js",
-        stuScoreCfm: "./src/student/scoreCfm.js",
         teacherScoreInput: "./src/teacher/scoreInput.js",
-        teacherScoreCfm: "./src/teacher/scoreCfm.js",
         classList: "./src/teacher/classList.js",
         stuSearch: "./src/teacher/stuSearch.ts",
         classCreate: "./src/teacher/classCreate.js",

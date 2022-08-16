@@ -10,22 +10,13 @@ import getClassList from "../components/getClassList";
 import getClassData from "../components/getClassData";
 import deleteCollection from "../components/deleteCollection";
 
-const main = async () => {
-    // ログインしているか
-    const user = getUserData();
-    if (!user) {
-        window.location.href = "/login.html";
-        return;
-    }
-};
-
 /**
  * パスワードの照合
  * 成功時にユーザーの削除処理を呼び出す
  */
 const passwordCollation = async () => {
     // ログイン中のユーザーの情報の取得 ログインしていなかったら終了
-    const user = getUserData();
+    const user = await getUserData();
     if (!user) {
         return;
     }
@@ -67,7 +58,7 @@ const passwordCollation = async () => {
  */
 const userDelete = async () => {
     // ログイン中のユーザーの情報の取得 ログインしていなかったら終了
-    const user = getUserData();
+    const user = await getUserData();
     if (!user) {
         return;
     }
@@ -188,8 +179,6 @@ const userDelete = async () => {
             alert("削除処理に失敗しました");
         });
 };
-
-main();
 
 // 確認しましたボタンを押したら画面切り替え
 $("#cfm-button").on("click", () => {

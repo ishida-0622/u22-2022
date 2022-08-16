@@ -13,14 +13,8 @@ new Vue({
     },
     methods: {
         init: async function () {
-            // デバッグするなら下のコメントアウト削除
-            // await (await import("../auth/login")).default("god.yamada@example.com", "godyamada")
-
-            const user = getUserData();
-
-            // ログインしているユーザーがいない場合ログイン画面に飛ばす
-            if (user === null) {
-                window.location.href = "/login.html";
+            const user = await getUserData();
+            if (!user) {
                 return;
             }
             this.uid = user.uid;

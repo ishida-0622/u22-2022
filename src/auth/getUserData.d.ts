@@ -1,2 +1,2 @@
 import { User } from "firebase/auth";
-export default function getUserData(): User | null;
+export default function getUserData(): Promise<User | null>;

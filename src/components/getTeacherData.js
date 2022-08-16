@@ -16,9 +16,8 @@ const getTeacherData = async (uid) => {
     // データを変数に代入
     const firestoreData = firestoreDocument.data();
 
-    // データが無かったらエラー出力して終了
+    // データが無かったらnullを返却
     if (firestoreData === undefined) {
-        console.error("undefined");
         return null;
     }
 

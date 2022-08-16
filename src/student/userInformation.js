@@ -5,10 +5,8 @@ import getStuData from "../components/getStuData";
  * ユーザ情報参照画面のjs
  */
 const main = async () => {
-    // 現在ログイン出来ているかどうかを確認　出来ていなければログイン画面に飛ばす
-    const userData = getUserData();
+    const userData = await getUserData();
     if (userData === null) {
-        window.location.href = "/login.html";
         return;
     }
 
@@ -57,4 +55,5 @@ const main = async () => {
     document.getElementById("tel").innerHTML = tel;
 };
 
+// setTimeout(main, 700);
 main();
