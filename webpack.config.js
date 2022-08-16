@@ -24,9 +24,7 @@ module.exports = {
         testCreate: "./src/teacher/testCreate.js",
         studentPerfData: "./src/student/studentPerfData.js",
 
-        debugStudent: "./src/debug_student.js",
-        debugTeacher: "./src/debug_teacher.js",
-        debugParents: "./src/debug_parents.js",
+        debugLogin: "./src/debug/debugLogin.js",
     },
     output: {
         path: path.resolve(__dirname, "./public/dist"),
