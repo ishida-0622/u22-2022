@@ -6,10 +6,12 @@
     <title>テスト一覧｜tensile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- スタイルシート読み込み(必要に応じてパス編集) -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <!-- パスワード入力フォーム用アイコンの読み込み(必要に応じてコメントアウト解除) -->
     <!-- <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> -->
     <link rel="icon" href="images/favicon.ico">
+    <!-- メイン処理jsファイルの読み込み -->
+    <script src="../dist/testList.bundle.js"></script>
 </head>
 
 <body>
@@ -58,12 +60,11 @@
                 <!-- <li><a href="index.html">途中1</a></li>
                 <li><a href="index.html">途中2</a></li>
                 <li><a href="index.html">途中3</a></li> -->
-                <li>テスト一覧</li>
+                <li>現在地</li>
             </ol>
         </div>
 
         <div id="main">
-
             <!-- ↓↓↓ここからメイン部分↓↓↓ -->
 
             <h1>テスト一覧</h1>
@@ -97,10 +98,12 @@
         </div>
     </footer>
 
+    <!-- ログイン確認処理含む初期化処理js読み込み(必要に応じてパス編集) -->
+    <script src="../dist/init.bundle.js"></script>
     <!-- サイドバーの開閉用js読み込み(必要に応じてコメントアウト, パス編集) -->
-    <script src="./dist/openCloseSidebar.bundle.js"></script>
+    <script src="../dist/openCloseSidebar.bundle.js"></script>
     <!-- トップに戻るボタン用js(必要に応じてコメントアウト, パス編集) -->
-    <script src="./dist/scrollToTop.bundle.js"></script>
+    <script src="../dist/scrollToTop.bundle.js"></script>
     <!-- パスワード入力フォーム用js(必要に応じてコメントアウト解除, パス編集) -->
     <!-- <script src="./dist/showHidePassword.bundle.js"></script> -->
 </body>
