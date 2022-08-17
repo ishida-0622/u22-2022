@@ -24,6 +24,7 @@ module.exports = {
         testCreate: "./src/teacher/testCreate.js",
         studentPerfData: "./src/student/studentPerfData.js",
         classInformation: "./src/teacher/classInformation.js",
+        // classEdit: "./src/teacher/classEdit.js",
 
         debugLogin: "./src/debug/debugLogin.js",
     },
