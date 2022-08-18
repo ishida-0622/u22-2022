@@ -1,27 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
     <head>
         <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>stu search</title>
+        <title>生徒検索｜tensile</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- スタイルシート読み込み(必要に応じてパス編集) -->
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="icon" href="../images/favicon.ico" />
+        <style>
+            [v-cloak] {
+                display: none;
+            }
+        </style>
     </head>
+
     <body>
-        <div id="app">
-            <input
-                type="text"
-                name="input"
-                id="search-input"
-                v-model="inputValue"
-                @input="search"
-            />
-            <div v-for="val in studentList" :key="val.id" id="result">
-                {{ val.last_name }} {{ val.first_name }}
-                <button @click="pageTransition(val.id)">詳細</button>
+        <!-- ヘッダー -->
+        <header>
+            <!-- サイドメニュー表示用ボタン -->
+            <div id="menu_button">
+                <a id="open">≡</a>
+            </div>
+
+            <!-- アイコンを表示する場所 -->
+            <div id="header_icon" class="side_menu">
+                <a id="close">✕</a>
+                <img src="../images/icon.png" />
+                <p id="user-name">ユーザ名</p>
+                <p id="user-id">ID:UserID</p>
+            </div>
+
+            <!-- ヘッダ部分 -->
+            <div id="header" onclick="location.href = `index.html`">
+                <p>tensile</p>
+            </div>
+        </header>
+
+        <!-- メニュー -->
+        <div id="menu" class="side_menu">
+            <ul>
+                <li class="current"><a href="">生徒検索</a></li>
+                <li><a href="">クラス一覧</a></li>
+                <li><a href="">得点入力</a></li>
+                <li><a href="">テスト追加</a></li>
+                <li><a href="">レート参照</a></li>
+                <li><a id="logout" href="">ログアウト</a></li>
+            </ul>
+        </div>
+        <!-- メイン -->
+        <div id="maintable" class="praptable">
+            <!-- パンくずリスト -->
+            <div id="breadcrumb">
+                <ol>
+                    <li><a href="index.html">トップ</a></li>
+                    <li>生徒検索</li>
+                </ol>
+            </div>
+
+            <div id="main">
+                <!-- ↓↓↓ここからメイン部分↓↓↓ -->
+                <div id="app">
+                    <label for="search-input">生徒名を入力:</label>
+                    <input
+                        type="text"
+                        name="input"
+                        id="search-input"
+                        v-model="inputValue"
+                        @input="search"
+                    />
+                    <div id="result">
+                        <p v-for="val in studentList" :key="val.id" v-cloak>
+                            {{ val.last_name }} {{ val.first_name }}({{ val.id
+                            }})
+                            <button @click="pageTransition(val.id)">
+                                詳細
+                            </button>
+                        </p>
+                    </div>
+                </div>
+                <!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
             </div>
         </div>
+
+        <!-- トップに戻るボタン -->
+        <a href="#" id="pageTop">▲</a>
+
+        <!-- フッタ -->
+        <footer>
+            <div id="footernav">
+                <p>フッタ</p>
+            </div>
+        </footer>
+
         <!-- ログイン確認処理含む初期化処理js読み込み(必要に応じてパス編集) -->
         <script src="../dist/init.bundle.js"></script>
+        <!-- ログアウト用js読み込み(必要に応じてコメントアウト, パス編集) -->
+        <script src="../dist/logout.bundle.js"></script>
+        <!-- サイドバーの開閉用js読み込み(必要に応じてコメントアウト, パス編集) -->
+        <script src="../dist/openCloseSidebar.bundle.js"></script>
+        <!-- トップに戻るボタン用js(必要に応じてコメントアウト, パス編集) -->
+        <script src="../dist/scrollToTop.bundle.js"></script>
         <script src="../dist/stuSearch.bundle.js"></script>
     </body>
 </html>
