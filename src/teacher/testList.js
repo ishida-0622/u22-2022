@@ -32,30 +32,27 @@ const main = async () => {
     ).flat();
 
     // テスト一覧を表示するテーブル部分のHTML要素を取得する
-    const element = document.getElementById("#test-list");
+    const element = document.getElementById("test-list");
 
     // テスト情報を走査し、テスト一覧の表示する
     testList.forEach(async (test) => {
-        // テスト情報がある場合
-        if (test !== null) {
-            // tableの中身を表示
-            element.insertAdjacentHTML(
-                "beforeend",
-                "<tr><td>" +
-                    // テスト名
-                    test.test_name +
-                    "</td><td>" +
-                    // テストの最高得点
-                    test.max_score +
-                    "</td><td>" +
-                    // テストの最高得点
-                    test.min_score +
-                    // テスト削除ボタンで表示非表示の切り替え
-                    `</td><td class = "del-button"><button id = "${test.test_name}" class="del-test-button">消去</button></td></tr>`
-            );
-            $(".del-button").slideToggle(0);
-        }
+        // tableの中身を表示
+        element.insertAdjacentHTML(
+            "beforeend",
+            "<tr><td>" +
+                // テスト名
+                test.test_name +
+                "</td><td>" +
+                // テストの最高得点
+                test.max_score +
+                "</td><td>" +
+                // テストの最低得点
+                test.min_score +
+                // テスト削除ボタンで表示非表示の切り替え
+                `</td><td class = "del-button"><button id = "${test.test_name}" class="del-test-button">消去</button></td></tr>`
+        );
     });
+    $(".del-button").slideToggle(0);
 };
 
 /**
@@ -79,7 +76,6 @@ const delTest = async (testName) => {
     await deleteDoc(doc(db, `tests/${testName}`));
 };
 
-// クリックをされた時、delTestを実行
 $(function () {
     $("#show-del-button").on("click", async () => {
         // 削除ボタンを表示する
@@ -94,14 +90,12 @@ $(function () {
             location.reload();
         }
 
-        // 「OK」時の処理終了
         // 「キャンセル」時の処理開始
         else {
             // 警告ダイアログを表示
             window.alert("キャンセルされました");
         }
-        // 「キャンセル」時の処理終了
     });
 });
-// mainを実行
+
 main();
