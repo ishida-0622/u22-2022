@@ -1,7 +1,8 @@
-import getUserData from "../auth/getUserData";
 import $ from "jquery";
+import getUserData from "../auth/getUserData";
 import getStuData from "../components/getStuData";
 import getUid from "../components/getUid";
+import getClassData from "../components/getClassData";
 import { setDoc, doc } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 
@@ -12,9 +13,8 @@ let stuids = new Set();
  */
 const main = async () => {
     // 現在ログイン出来ているかどうかを確認　出来ていなければログイン画面に飛ばす
-    const userData = getUserData();
+    const userData = await getUserData();
     if (userData === null) {
-        window.location.href = "/login.html";
         return;
     }
 };
@@ -41,12 +41,17 @@ $(function () {
         const className = document.getElementById("class-name").value;
 
         if (className == "") {
-            alert("クラス名を入力してください。");
+            alert("クラス名を入力してください");
+            return;
+        }
+
+        if ((await getClassData(className)) !== null) {
+            alert("そのクラス名はすでに存在します");
             return;
         }
 
         if (stuids.size === 0) {
-            alert("生徒を追加してください。");
+            alert("生徒を追加してください");
             return;
         }
 
@@ -62,7 +67,7 @@ $(function () {
         }
 
         // 担当講師のUserIDを取得
-        const userData = getUserData();
+        const userData = await getUserData();
         const uid = userData.uid;
 
         // DBに登録するデータを作成
@@ -116,7 +121,7 @@ $(function () {
         const id = document.getElementById("id-input").value;
 
         if (id === "") {
-            alert("idを入力してください。");
+            alert("idを入力してください");
             return;
         }
 
@@ -125,22 +130,23 @@ $(function () {
         const userData = await getStuData(uid);
 
         if (userData === null) {
-            alert("存在しない生徒です。");
+            alert("存在しない生徒です");
             return;
         }
 
         if (stuids.has(id)) {
-            alert("既に登録されている生徒です。");
+            alert("既に登録されている生徒です");
             document.getElementById("id-input").value = "";
             return;
         }
 
         // ダイアログの表示
         if (
-            window.confirm(
+            !window.confirm(
                 "この生徒を登録してもよろしいですか？\n" +
-                    `生徒名:${userData.last_name} ${userData.first_name} 生徒ID:${id}`
-            ) === false
+                    `生徒名:${userData.last_name} ${userData.first_name}\n` +
+                    `生徒ID:${id}`
+            )
         ) {
             return;
         }
