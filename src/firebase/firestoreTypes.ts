@@ -111,6 +111,7 @@ export const stuDataConverter: FirestoreDataConverter<stuData> = {
 export type rateType = {
     date: string;
     score: number;
+    test_name: string;
 };
 
 export type stuClassData = {
