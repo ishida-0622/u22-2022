@@ -2,13 +2,11 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8" />
-        <title>ユーザ情報編集｜tensile</title>
+        <title>登録情報編集｜tensile</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <!-- スタイルシート読み込み(必要に応じてパス編集) -->
         <link rel="stylesheet" href="../css/style.css" />
-        <!-- パスワード入力フォーム用アイコンの読み込み(必要に応じてコメントアウト解除) -->
-        <!-- <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> -->
-        <link rel="icon" href="images/favicon.ico" />
+        <link rel="icon" href="../images/favicon.ico" />
     </head>
 
     <body>
@@ -22,13 +20,13 @@
             <!-- アイコンを表示する場所 -->
             <div id="header_icon" class="side_menu">
                 <a id="close">✕</a>
-                <img src="images/icon.png" />
-                <p>ユーザ名</p>
-                <p>ID:UserID</p>
+                <img id="icon" src="../images/icon.png" />
+                <p id="user-name"></p>
+                <p id="user-id"></p>
             </div>
 
             <!-- ヘッダ部分 -->
-            <div id="header" onclick="location.href = `index.html`">
+            <div id="header" onclick="location.href = `./`">
                 <p>tensile</p>
             </div>
         </header>
@@ -36,12 +34,10 @@
         <!-- メニュー -->
         <div id="menu" class="side_menu">
             <ul>
-                <li class="current"><a href="">生徒検索</a></li>
-                <li><a href="">クラス一覧</a></li>
-                <li><a href="">得点入力</a></li>
-                <li><a href="">テスト追加</a></li>
-                <li><a href="">レート参照</a></li>
-                <li><a href="">生徒切り替え</a></li>
+                <li><a href="./stu-search.html">生徒検索</a></li>
+                <li><a href="./class-list.html">クラス一覧</a></li>
+                <li><a href="./score-input.html">得点入力</a></li>
+                <li><a href="./test-create.html">テスト追加</a></li>
                 <li><a id="logout" href="">ログアウト</a></li>
             </ul>
         </div>
@@ -50,11 +46,9 @@
             <!-- パンくずリスト -->
             <div id="breadcrumb">
                 <ol>
-                    <li><a href="index.html">トップ</a></li>
-                    <li><a href="index.html">途中1</a></li>
-                    <li><a href="index.html">途中2</a></li>
-                    <li><a href="index.html">途中3</a></li>
-                    <li>現在地</li>
+                    <li><a href="./">トップ</a></li>
+                    <li><a href="./user-information.html">登録情報</a></li>
+                    <li>登録情報編集</li>
                 </ol>
             </div>
 
@@ -124,7 +118,7 @@
                                     type="tel"
                                     id="tel_number"
                                     required
-                                    pattern="[0-9]{10}"
+                                    pattern="[0-9]{10,11}"
                                 />
                             </td>
                         </tr>
@@ -168,7 +162,5 @@
         <script src="../dist/openCloseSidebar.bundle.js"></script>
         <!-- トップに戻るボタン用js(必要に応じてコメントアウト, パス編集) -->
         <script src="../dist/scrollToTop.bundle.js"></script>
-        <!-- パスワード入力フォーム用js(必要に応じてコメントアウト解除, パス編集) -->
-        <!-- <script src="../dist/showHidePassword.bundle.js"></script> -->
     </body>
 </html>
