@@ -9,7 +9,7 @@ const getNowYMD = () => {
     const y = dt.getFullYear();
     const m = ("00" + (dt.getMonth() + 1)).slice(-2);
     const d = ("00" + dt.getDate()).slice(-2);
-    const result = y + m + d;
+    const result = [y, m, d].join("-");
     return result;
 };
 
@@ -30,7 +30,7 @@ const rateUpdate = async (uid, testName, score) => {
     const scoreList = rate.map((val) => val.score);
 
     // rateCalcにscoreを渡して新しいレートを算出してnewScoreに代入
-    const newScore = rateCalc(scoreList);
+    const newScore = rateCalc(scoreList.concat([score]));
 
     // nweScoreと今日の日付を{date: 日付, score: newScore}の形式でnewRateに代入
     const date = getNowYMD();
