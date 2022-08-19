@@ -7,9 +7,9 @@ $("form").on("submit", async () => {
     const pass = $("#password").val();
     await signInWithEmailAndPassword(auth, mail, pass)
         .then(() => {
-            $("p").text("ログイン完了");
+            $("#debug").text("ログイン完了");
         })
         .catch(() => {
-            $("p").text("ログイン失敗");
+            $("#debug").text("ログイン失敗");
         });
 });
