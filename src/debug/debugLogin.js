@@ -4,7 +4,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 
 $("form").on("submit", async () => {
     const mail = $("#email").val();
-    const pass = $("#password").val();
+    const pass = $("#inputed-password").val();
     await signInWithEmailAndPassword(auth, mail, pass)
         .then(() => {
             $("#debug").text("ログイン完了");
