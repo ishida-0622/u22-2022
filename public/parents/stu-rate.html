@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <title>レート参照｜tensile</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- スタイルシート読み込み(必要に応じてパス編集) -->
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="icon" href="../images/favicon.ico" />
+        <style>
+            #canvas-area {
+                width: 80%;
+                height: 400px;
+                margin-left: 10%;
+                margin-bottom: 50px;
+                visibility: hidden;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- ヘッダー -->
+        <header>
+            <!-- サイドメニュー表示用ボタン -->
+            <div id="menu_button">
+                <a id="open">≡</a>
+            </div>
+
+            <!-- アイコンを表示する場所 -->
+            <div id="header_icon" class="side_menu">
+                <a id="close">✕</a>
+                <img id="icon" src="../images/icon.png" />
+                <p id="user-name"></p>
+                <p id="user-id"></p>
+            </div>
+
+            <!-- ヘッダ部分 -->
+            <div id="header" onclick="location.href=`./?id=${new URL(location.href).searchParams.get('id')}`">
+                <p>tensile</p>
+            </div>
+        </header>
+
+        <!-- メニュー -->
+        <div id="menu" class="side_menu">
+            <ul>
+                <!-- <li><a href="" onclick="location.href=`./`">生徒情報</a></li> -->
+                <li class="current"><a href="./">レート参照</a></li>
+                <li><a href="./select-student.html">生徒切り替え</a></li>
+                <li><a href="./user-infromation.html">登録情報</a></li>
+                <li><a id="logout" href="">ログアウト</a></li>
+            </ul>
+        </div>
+        <!-- メイン -->
+        <div id="maintable" class="praptable">
+            <!-- パンくずリスト -->
+            <div id="breadcrumb">
+                <ol>
+                    <li>
+                        <a href="" onclick="location.href=`./?id=${new URL(location.href).searchParams.get('id')}`">トップ</a>
+                        <li>レート参照</li>
+                    </li>
+                </ol>
+            </div>
+
+            <div id="main" style="text-align: center">
+                <!-- ↓↓↓ここからメイン部分↓↓↓ -->
+                <h1><span id="stu-name"></span>各クラスのレート</h1>
+                <div id="canvas-area">
+                    <label for="class-select">
+                        クラスを選択してください<br>
+                        <select name="class-select" id="class-select">
+                            <option value="all" selected>全てのクラス</option>
+                        </select>
+                    </label>
+                    <canvas id="rate"></canvas>
+                </div>
+                <!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
+            </div>
+        </div>
+
+        <!-- トップに戻るボタン -->
+        <a href="#" id="pageTop">▲</a>
+
+        <!-- フッタ -->
+        <footer>
+            <div id="footernav">
+                <p>フッタ</p>
+            </div>
+        </footer>
+
+        <!-- ログイン確認処理含む初期化処理js読み込み(必要に応じてパス編集) -->
+        <script src="../dist/init.bundle.js"></script>
+        <!-- ログアウト用js読み込み(必要に応じてコメントアウト, パス編集) -->
+        <script src="../dist/logout.bundle.js"></script>
+        <!-- サイドバーの開閉用js読み込み(必要に応じてコメントアウト, パス編集) -->
+        <script src="../dist/openCloseSidebar.bundle.js"></script>
+        <!-- トップに戻るボタン用js(必要に応じてコメントアウト, パス編集) -->
+        <script src="../dist/scrollToTop.bundle.js"></script>
+        <script src="../dist/stuRate.bundle.js"></script>
+    </body>
+</html>
