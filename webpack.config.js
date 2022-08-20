@@ -30,6 +30,8 @@ module.exports = {
         studentPerfData: "./src/student/studentPerfData.js",
         classInformation: "./src/teacher/classInformation.js",
         // classEdit: "./src/teacher/classEdit.js",
+        parentIndex: "./src/parents/index.ts",
+        stuRate: "./src/parents/stuRate.ts",
 
         debugLogin: "./src/debug/debugLogin.js",
     },
