@@ -11,6 +11,7 @@ module.exports = {
         signup: "./src/auth/signup.ts",
         login: "./src/auth/login.ts",
         logout: "./src/auth/logout.js",
+        passwordReset: "./src/auth/passwordReset.ts",
         withdraw: "./src/auth/withdraw.ts",
         stuScoreInput: "./src/student/scoreInput.js",
         teacherScoreInput: "./src/teacher/scoreInput.js",
