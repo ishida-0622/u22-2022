@@ -7,6 +7,43 @@
         <!-- スタイルシート読み込み(必要に応じてパス編集) -->
         <link rel="stylesheet" href="../css/style.css" />
         <link rel="icon" href="../images/favicon.ico" />
+        <style>
+            #canvas-area {
+                margin-left: 20%;
+                width: 80%;
+                height: 300px;
+            }
+            @media (max-width: 750px) {
+                #menu {
+                    width: 20%;
+                    height: 100vw;
+                    min-height: calc(100vh - var(--headerHeight));
+                    top: var(--headerHeight);
+                    background-color: var(--menuBg);
+                    display: block;
+                    position: fixed;
+                    padding-bottom: auto;
+                }
+                #menu_button {
+                    width: 20%;
+                    height: var(--headerHeight);
+                    background: var(--bgColor);
+                    line-height: var(--headerHeight);
+                }
+                #header_icon {
+                    position: absolute;
+                    width: 20%;
+                    background: var(--bgColor);
+                    height: var(--headerHeight);
+                }
+                #header_icon img {
+                    width: 100%;
+                }
+                #header {
+                    width: 80%;
+                }
+            }
+        </style>
     </head>
 
     <body>
@@ -14,19 +51,18 @@
         <header>
             <!-- サイドメニュー表示用ボタン -->
             <div id="menu_button">
-                <a id="open">≡</a>
+                <p id="open"></p>
             </div>
 
             <!-- アイコンを表示する場所 -->
             <div id="header_icon" class="side_menu">
-                <a id="close">✕</a>
                 <img id="icon" src="../images/icon.png" />
                 <p id="user-name"></p>
                 <p id="user-id"></p>
             </div>
 
             <!-- ヘッダ部分 -->
-            <div id="header" onclick="location.href = `./`">
+            <div id="header" onclick="location.href = ``">
                 <p>tensile</p>
             </div>
         </header>
@@ -34,8 +70,16 @@
         <!-- メニュー -->
         <div id="menu" class="side_menu">
             <ul>
-                <li><a href="">レート参照</a></li>
+                <!-- <li><a href="">生徒情報</a></li> -->
+                <li>
+                    <a
+                        href=""
+                        onclick="location.href=`./stu-rate.html?id=${new URL(location.href).searchParams.get('id')}`"
+                        >レート参照
+                    </a>
+                </li>
                 <li><a href="./select-student.html">生徒切り替え</a></li>
+                <li><a href="./user-infromation.html">登録情報</a></li>
                 <li><a id="logout" href="">ログアウト</a></li>
             </ul>
         </div>
@@ -44,12 +88,22 @@
             <!-- パンくずリスト -->
             <div id="breadcrumb">
                 <ol>
-                    <li><a href="./">トップ</a></li>
+                    <li>
+                        <a href="" class="to-index" style="margin-left: 20%"
+                            >トップ</a
+                        >
+                    </li>
                 </ol>
             </div>
 
-            <div id="main">
+            <div id="main" style="text-align: center">
                 <!-- ↓↓↓ここからメイン部分↓↓↓ -->
+                <h1 style="margin-left: 20%">
+                    <span id="stu-name"></span>各クラスのレート
+                </h1>
+                <div id="canvas-area">
+                    <canvas id="all-rate"></canvas>
+                </div>
                 <!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
             </div>
         </div>
@@ -72,5 +126,6 @@
         <script src="../dist/openCloseSidebar.bundle.js"></script>
         <!-- トップに戻るボタン用js(必要に応じてコメントアウト, パス編集) -->
         <script src="../dist/scrollToTop.bundle.js"></script>
+        <script src="../dist/parentIndex.bundle.js"></script>
     </body>
 </html>
