@@ -16,7 +16,7 @@ $("form").on("submit", async () => {
     // 入力された値を取得
     let email = $("#email").val() as string;
     const id = $("#id").val() as string;
-    const password = $("#password").val() as string;
+    const password = $("#inputed-password").val() as string;
 
     // IDでのログインだった場合
     if (!isEmailLogin) {
