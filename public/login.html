@@ -2,44 +2,87 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Login</title>
+        <title>ログイン｜tensile</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- スタイルシート読み込み(必要に応じてパス編集) -->
+        <link rel="stylesheet" href="css/style.css" />
+        <!-- パスワード入力フォーム用アイコンの読み込み(必要に応じてコメントアウト解除) -->
+        <link
+            href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+            rel="stylesheet"
+        />
+        <link rel="icon" href="images/favicon.ico" />
         <style>
             .hide {
                 display: none;
             }
         </style>
     </head>
+
     <body>
-        <h1>Login</h1>
-        <form onsubmit="return false">
-            <p class="def">
-                メールアドレス：
-                <label for="email"></label>
-                <input type="email" name="email" id="email" />
-                <input type="button" class="change" value="IDでログイン" />
-            </p>
-            <p class="hide">
-                ID：
-                <label for="id"></label>
-                <input type="text" name="id" id="id" />
-                <input
-                    type="button"
-                    class="change"
-                    value="メールアドレスでログイン"
-                />
-            </p>
-            <p>
-                パスワード：
-                <label for="password"></label>
-                <input type="password" name="pass" id="password" />
-            </p>
-            <input type="submit" value="submit" />
-        </form>
-        <p></p>
+        <!-- ヘッダー -->
+        <header>
+            <!-- ヘッダ部分 -->
+            <div id="header" onclick="location.href = `index.html`">
+                <p>tensile</p>
+            </div>
+        </header>
+
+        <!-- メイン -->
+        <div id="maintable" class="praptable">
+            <div id="main">
+                <!-- ↓↓↓ここからメイン部分↓↓↓ -->
+                <h1>Login</h1>
+                <form onsubmit="return false">
+                    <p class="def">
+                        メールアドレス：
+                        <label for="email"></label>
+                        <input type="email" name="email" id="email" />
+                        <a href="" class="change" onclick="return false"
+                            >IDでログイン</a
+                        >
+                    </p>
+                    <p class="hide">
+                        ID：
+                        <label for="id"></label>
+                        <input type="text" name="id" id="id" />
+                        <a href="" class="change" onclick="return false"
+                            >メールアドレスでログイン</a
+                        >
+                    </p>
+                    <p>
+                        パスワード：
+                        <label for="password"></label>
+                        <input
+                            type="password"
+                            name="pass"
+                            class="text-password"
+                            id="inputed-password"
+                        />
+                        <span class="fa fa-eye" id="password-eye"></span>
+                    </p>
+                    <input type="submit" value="submit" />
+                </form>
+                <a href="./password-reset.html">パスワードを忘れた方はこちら</a>
+                <p id="debug"></p>
+                <!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
+            </div>
+        </div>
+
+        <!-- フッタ -->
+        <footer>
+            <div id="footernav">
+                <p>フッタ</p>
+            </div>
+        </footer>
+
         <!-- デバッグの際はコメントアウト解除 -->
         <!-- <script src="./dist/debugLogin.bundle.js"></script> -->
         <!-- デバッグの際はコメントアウト -->
         <script src="./dist/login.bundle.js"></script>
+        <!-- ログイン確認処理含む初期化処理js読み込み(必要に応じてパス編集) -->
+        <script src="./dist/init.bundle.js"></script>
+        <!-- パスワード入力フォーム用js(必要に応じてコメントアウト解除, パス編集) -->
+        <script src="./dist/showHidePassword.bundle.js"></script>
     </body>
 </html>
