@@ -12,6 +12,7 @@ module.exports = {
         login: "./src/auth/login.ts",
         logout: "./src/auth/logout.js",
         passwordReset: "./src/auth/passwordReset.ts",
+        passwordChange: "./src/auth/passwordChange.ts",
         withdraw: "./src/auth/withdraw.ts",
         stuScoreInput: "./src/student/scoreInput.js",
         teacherScoreInput: "./src/teacher/scoreInput.js",
@@ -31,6 +32,7 @@ module.exports = {
         studentPerfData: "./src/student/studentPerfData.js",
         classInformation: "./src/teacher/classInformation.js",
         // classEdit: "./src/teacher/classEdit.js",
+        teacherIndex: "./src/teacher/index.ts",
         parentIndex: "./src/parents/index.ts",
         stuRate: "./src/parents/stuRate.ts",
 
