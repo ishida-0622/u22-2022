@@ -32,6 +32,7 @@ module.exports = {
         studentPerfData: "./src/student/studentPerfData.js",
         classInformation: "./src/teacher/classInformation.js",
         // classEdit: "./src/teacher/classEdit.js",
+        stuIndex: "./src/student/index.ts",
         teacherIndex: "./src/teacher/index.ts",
         parentIndex: "./src/parents/index.ts",
         stuRate: "./src/parents/stuRate.ts",
