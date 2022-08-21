@@ -7,6 +7,65 @@
         <!-- スタイルシート読み込み(必要に応じてパス編集) -->
         <link rel="stylesheet" href="../css/style.css" />
         <link rel="icon" href="images/favicon.ico" />
+        <style>
+            :root {
+                --classNameWidth: 60%;
+            }
+            #maintable {
+                width: calc(100% - var(--menuWeight));
+                margin-left: var(--menuWeight);
+            }
+            table {
+                width: 75%;
+            }
+            #class-name {
+                width: var(--classNameWidth);
+            }
+            #button-area {
+                width: 3em;
+                text-align: center;
+            }
+            #main .button {
+                text-align: center;
+            }
+            #main .button a {
+                margin: 0;
+            }
+            @media (max-width: 750px) {
+                #menu {
+                    width: 20%;
+                    height: 100vw;
+                    min-height: calc(100vh - var(--headerHeight));
+                    top: var(--headerHeight);
+                    background-color: var(--menuBg);
+                    display: block;
+                    position: fixed;
+                    padding-bottom: auto;
+                }
+                #menu_button {
+                    width: 20%;
+                    height: var(--headerHeight);
+                    background: var(--bgColor);
+                    line-height: var(--headerHeight);
+                }
+                #header_icon {
+                    position: absolute;
+                    width: 20%;
+                    background: var(--bgColor);
+                    height: var(--headerHeight);
+                }
+                #header_icon img {
+                    width: 100%;
+                }
+                #header {
+                    width: 80%;
+                }
+                #maintable {
+                    width: 80%;
+                    margin-left: 20%;
+                }
+            }
+        </style>
     </head>
 
     <body>
@@ -14,19 +73,18 @@
         <header>
             <!-- サイドメニュー表示用ボタン -->
             <div id="menu_button">
-                <a id="open">≡</a>
+                <p id="open"></p>
             </div>
 
             <!-- アイコンを表示する場所 -->
             <div id="header_icon" class="side_menu">
-                <a id="close">✕</a>
                 <img id="icon" src="../images/icon.png" />
                 <p id="user-name"></p>
                 <p id="user-id"></p>
             </div>
 
             <!-- ヘッダ部分 -->
-            <div id="header" onclick="location.href = `./`">
+            <div id="header" onclick="location.href = ``">
                 <p>tensile</p>
             </div>
         </header>
@@ -35,7 +93,6 @@
         <div id="menu" class="side_menu">
             <ul>
                 <li><a href="./stu-search.html">生徒検索</a></li>
-                <li><a href="./class-list.html">クラス一覧</a></li>
                 <li><a href="./score-input.html">得点入力</a></li>
                 <li><a href="./test-create.html">テスト追加</a></li>
                 <li><a id="logout" href="">ログアウト</a></li>
@@ -46,12 +103,27 @@
             <!-- パンくずリスト -->
             <div id="breadcrumb">
                 <ol>
-                    <li><a href="./">トップ</a></li>
+                    <li>トップ</li>
                 </ol>
             </div>
 
             <div id="main">
                 <!-- ↓↓↓ここからメイン部分↓↓↓ -->
+                <h1>所属クラス一覧</h1>
+                <table border="1" id="class-list">
+                    <tr>
+                        <th id="class-name">クラス名</th>
+                        <th>講師</th>
+                        <th id="button-area"></th>
+                    </tr>
+                </table>
+
+                <a
+                    href=""
+                    onclick="window.location.href ='./class-create.html'"
+                >
+                    新規クラスの作成
+                </a>
                 <!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
             </div>
         </div>
@@ -74,5 +146,6 @@
         <script src="../dist/openCloseSidebar.bundle.js"></script>
         <!-- トップに戻るボタン用js(必要に応じてコメントアウト, パス編集) -->
         <script src="../dist/scrollToTop.bundle.js"></script>
+        <script src="../dist/teacherIndex.bundle.js"></script>
     </body>
 </html>
