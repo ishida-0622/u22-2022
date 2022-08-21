@@ -2,7 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8" />
-        <title>クラス概要変更｜tensile</title>
+        <title>クラス情報変更｜tensile</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <!-- スタイルシート読み込み(必要に応じてパス編集) -->
         <link rel="stylesheet" href="../css/style.css" />
@@ -49,8 +49,13 @@
             <div id="breadcrumb">
                 <ol>
                     <li><a href="./">トップ</a></li>
-                    <li><a href="./class-information.html"></a>クラス情報</li>
-                    <li>クラス概要変更</li>
+                    <li>
+                        <a
+                            href="javascript:location.href = `./class-information.html?class_name=${new URL(location.href).searchParams.get('class_name')}`"
+                            >クラス情報</a
+                        >
+                    </li>
+                    <li>クラス情報変更</li>
                 </ol>
             </div>
 
