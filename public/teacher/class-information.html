@@ -71,7 +71,8 @@
                         <th>レート</th>
                     </tr>
                 </table>
-                <a href="./class-information-edit.html"
+                <a
+                    href="javascript:location.href = `./class-information-edit.html?class_name=${new URL(location.href).searchParams.get('class_name')}`"
                     >生徒の追加・削除・クラス情報変更</a
                 >
                 <!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
