@@ -6,7 +6,47 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <!-- スタイルシート読み込み(必要に応じてパス編集) -->
         <link rel="stylesheet" href="../css/style.css" />
-        <link rel="icon" href="../images/favicon.ico" />
+        <link rel="icon" href="images/favicon.ico" />
+        <style>
+            #maintable {
+                width: calc(100% - var(--menuWeight));
+                margin-left: var(--menuWeight);
+            }
+            @media (max-width: 750px) {
+                #menu {
+                    width: 20%;
+                    height: 100vw;
+                    min-height: calc(100vh - var(--headerHeight));
+                    top: var(--headerHeight);
+                    background-color: var(--menuBg);
+                    display: block;
+                    position: fixed;
+                    padding-bottom: auto;
+                }
+                #menu_button {
+                    width: 20%;
+                    height: var(--headerHeight);
+                    background: var(--bgColor);
+                    line-height: var(--headerHeight);
+                }
+                #header_icon {
+                    position: absolute;
+                    width: 20%;
+                    background: var(--bgColor);
+                    height: var(--headerHeight);
+                }
+                #header_icon img {
+                    width: 100%;
+                }
+                #header {
+                    width: 80%;
+                }
+                #maintable {
+                    width: 80%;
+                    margin-left: 20%;
+                }
+            }
+        </style>
     </head>
 
     <body>
@@ -14,19 +54,18 @@
         <header>
             <!-- サイドメニュー表示用ボタン -->
             <div id="menu_button">
-                <a id="open">≡</a>
+                <p id="open"></p>
             </div>
 
             <!-- アイコンを表示する場所 -->
             <div id="header_icon" class="side_menu">
-                <a id="close">✕</a>
                 <img id="icon" src="../images/icon.png" />
                 <p id="user-name"></p>
                 <p id="user-id"></p>
             </div>
 
             <!-- ヘッダ部分 -->
-            <div id="header" onclick="location.href = `./`">
+            <div id="header" onclick="location.href = ``">
                 <p>tensile</p>
             </div>
         </header>
@@ -45,79 +84,16 @@
             <!-- パンくずリスト -->
             <div id="breadcrumb">
                 <ol>
-                    <li><a href="./">トップ</a></li>
+                    <li>トップ</li>
                 </ol>
             </div>
 
             <div id="main">
                 <!-- ↓↓↓ここからメイン部分↓↓↓ -->
-                <h1>見出し1</h1>
-                <p>
-                    本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文
-                </p>
-                <h2>見出し2</h2>
-                <p>
-                    本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文
-                </p>
-
-                <a href="">ボタンテスト</a>
-
-                <ul>
-                    <li>項目1</li>
-                    <li>項目2</li>
-                    <li>項目3</li>
-                    <li>項目4</li>
-                    <li>項目5</li>
-                    <li>項目6</li>
-                </ul>
-
-                <details>
-                    <summary>折り畳みテスト</summary>
-                    <p>折り畳み内容1</p>
-                    <p>折り畳み内容2</p>
-                    <p>折り畳み内容3</p>
-                    <p>折り畳み内容4</p>
-                    <p>折り畳み内容5</p>
-                    <p>折り畳み内容6</p>
-                    <p>折り畳み内容7</p>
-                    <p>折り畳み内容8</p>
-                    <p>折り畳み内容9</p>
-                    <p>折り畳み内容10</p>
-                </details>
-
-                <table border="1">
-                    <tr>
-                        <th>見出し1</th>
-                        <th>見出し2</th>
-                    </tr>
-                    <tr>
-                        <td>内容1-1</td>
-                        <td>内容2-1</td>
-                    </tr>
-                    <tr>
-                        <td>内容1-2</td>
-                        <td>内容2-2</td>
-                    </tr>
-                </table>
-
-                <form>
-                    <textarea name="msg" required></textarea>
-                    <input type="button" value="フォームボタンテスト" />
-                </form>
-                <img src="images/icon.png" />
-                <p>画像のテストです</p>
-
-                <div class="clearfix">
-                    <img src="images/icon.png" class="float" />
-                    <p>
-                        classを"float"に設定すると文字が要素の右に回り込むようになっています
-                    </p>
-                    <p>
-                        ただし使用する際にclassを"clearfix"にしたdiv要素で囲まないとそれ以降に書かれた文字も回り込んだり末尾に置いた際表示がおかしくなります
-                    </p>
+                <h1><span id="stu-name"></span>各クラスのレート</h1>
+                <div id="canvas-area">
+                    <canvas id="all-rate"></canvas>
                 </div>
-
-                <p>この文字は回り込みません</p>
                 <!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
             </div>
         </div>
@@ -140,5 +116,6 @@
         <script src="../dist/openCloseSidebar.bundle.js"></script>
         <!-- トップに戻るボタン用js(必要に応じてコメントアウト, パス編集) -->
         <script src="../dist/scrollToTop.bundle.js"></script>
+        <script src="../dist/stuIndex.bundle.js"></script>
     </body>
 </html>
