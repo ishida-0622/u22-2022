@@ -7,15 +7,21 @@ const main = async () => {
     const user = await getUserData();
     const url = location.pathname;
     if (user) {
-        if (url === "/login.html" || url === "/signup.html") {
-            location.href = "/";
-        }
-
         const userData = (
             await getDoc(
                 doc(db, `users/${user.uid}`).withConverter(userDataConverter)
             )
         ).data();
+
+        if (url === "/login.html" || url === "/signup.html") {
+            if (userData.type === "student") {
+                location.href = "/student/";
+            } else if (userData.type === "teacher") {
+                location.href = "/teacher/";
+            } else {
+                location.href = "/parents/";
+            }
+        }
 
         const idElement = document.getElementById("user-id");
         if (idElement) {
