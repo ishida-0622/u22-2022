@@ -2,13 +2,14 @@ import { db } from "../firebase/firebaseConfig";
 import getUserData from "./getUserData";
 import $ from "jquery";
 import { deleteDoc, doc, getDoc, updateDoc } from "firebase/firestore";
-import { idConverter, userDataConverter } from "../firebase/firestoreTypes";
+import { userDataConverter } from "../firebase/firestoreTypes";
 import getStuData from "../components/getStuData";
 import getTeacherData from "../components/getTeacherData";
 import getParentsData from "../components/getParentsData";
 import getClassList from "../components/getClassList";
 import getClassData from "../components/getClassData";
 import deleteCollection from "../components/deleteCollection";
+import { EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth";
 
 /**
  * パスワードの照合
@@ -33,24 +34,25 @@ const passwordCollation = async () => {
         return;
     }
 
-    // パスワードの取得
-    const pass = (
-        await getDoc(doc(db, `id/${userData.id}`).withConverter(idConverter))
-    ).data()?.password;
-
     // 入力されたパスワードの取得
-    const inputPass = $("#inputed-password").val();
+    const inputPass = $("#inputed-password").val() as string;
 
-    // 一致したらユーザー削除処理を呼び出す
-    if (pass && inputPass && pass === inputPass) {
-        await userDelete();
-        $("#menu_button").hide();
-        $("#header_icon").hide();
-        $("#menu").hide();
-        $("#breadcrumb").hide();
-    } else {
-        alert("パスワードが一致しません");
-    }
+    const credential = EmailAuthProvider.credential(
+        user.email ?? "",
+        inputPass
+    );
+    await reauthenticateWithCredential(user, credential)
+        .then(async () => {
+            await userDelete();
+            $("#menu_button").hide();
+            $("#header_icon").hide();
+            $("#menu").hide();
+            $("#breadcrumb").hide();
+        })
+        .catch((e) => {
+            alert("パスワードが一致しません");
+            console.error(e.code);
+        });
 };
 
 /**

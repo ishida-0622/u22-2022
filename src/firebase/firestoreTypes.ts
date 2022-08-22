@@ -349,14 +349,12 @@ export const classDataConverter: FirestoreDataConverter<classData> = {
 
 export type id = {
     uid: string;
-    password: string;
 };
 
 export const idConverter: FirestoreDataConverter<id> = {
     toFirestore(id: id): DocumentData {
         return {
             uid: id.uid,
-            password: id.password,
         };
     },
 
@@ -367,7 +365,6 @@ export const idConverter: FirestoreDataConverter<id> = {
         const data = snapshot.data(options);
         return {
             uid: data.uid,
-            password: data.password,
         };
     },
 };

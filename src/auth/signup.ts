@@ -101,7 +101,6 @@ new Vue({
                             // DB登録用のデータ(id/)
                             const userIdData: id = {
                                 uid: user.uid,
-                                password: this.password,
                             };
 
                             // DBに登録
@@ -321,7 +320,7 @@ new Vue({
                     !stuDocument ||
                     stuDocument.type !== "student" ||
                     stuDocument.last_name + stuDocument.first_name !==
-                    inputName[i]
+                        inputName[i]
                 ) {
                     return false;
                 }
