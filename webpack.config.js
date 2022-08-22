@@ -31,7 +31,7 @@ module.exports = {
         testCreate: "./src/teacher/testCreate.js",
         studentPerfData: "./src/student/studentPerfData.js",
         classInformation: "./src/teacher/classInformation.js",
-        // classEdit: "./src/teacher/classEdit.js",
+        classEdit: "./src/teacher/classEdit.js",
         stuIndex: "./src/student/index.ts",
         teacherIndex: "./src/teacher/index.ts",
         parentIndex: "./src/parents/index.ts",
