@@ -16,6 +16,9 @@
             .hide {
                 display: none;
             }
+            body {
+                text-align: center;
+            }
         </style>
     </head>
 
@@ -35,23 +38,24 @@
                 <h1>Login</h1>
                 <form onsubmit="return false">
                     <p class="def">
-                        メールアドレス：
+                        メールアドレス<br />
                         <label for="email"></label>
-                        <input type="email" name="email" id="email" />
+                        <input type="email" name="email" id="email" /><br />
                         <a href="" class="change" onclick="return false"
                             >IDでログイン</a
                         >
                     </p>
                     <p class="hide">
-                        ID：
+                        ID<br />
                         <label for="id"></label>
-                        <input type="text" name="id" id="id" />
+                        <input type="text" name="id" id="id" /><br />
                         <a href="" class="change" onclick="return false"
                             >メールアドレスでログイン</a
                         >
                     </p>
+                    <br />
                     <p>
-                        パスワード：
+                        パスワード<br />
                         <label for="password"></label>
                         <input
                             type="password"
@@ -61,9 +65,22 @@
                         />
                         <span class="fa fa-eye" id="password-eye"></span>
                     </p>
-                    <input type="submit" value="submit" />
+                    <br />
+                    <input type="submit" value="ログイン" />
                 </form>
-                <a href="./password-reset.html">パスワードを忘れた方はこちら</a>
+                <br />
+                <section>
+                    <p>
+                        <a href="./password-reset.html"
+                            >パスワードを忘れた方はこちら</a
+                        >
+                    </p>
+                    <p>
+                        <a href="./signup.html"
+                            >アカウント作成がまだの方はこちら</a
+                        >
+                    </p>
+                </section>
                 <p id="debug"></p>
                 <!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
             </div>
