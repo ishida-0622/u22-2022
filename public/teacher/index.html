@@ -31,6 +31,9 @@
             #main .button a {
                 margin: 0;
             }
+            .hide {
+                display: none;
+            }
             @media (max-width: 750px) {
                 #menu {
                     width: 20%;
@@ -110,20 +113,21 @@
             <div id="main">
                 <!-- ↓↓↓ここからメイン部分↓↓↓ -->
                 <h1>所属クラス一覧</h1>
-                <table border="1" id="class-list">
-                    <tr>
-                        <th id="class-name">クラス名</th>
-                        <th>講師</th>
-                        <th id="button-area"></th>
-                    </tr>
-                </table>
-
-                <a
-                    href=""
-                    onclick="window.location.href ='./class-create.html'"
-                >
-                    新規クラスの作成
-                </a>
+                <section id="class-table">
+                    <div class="def">
+                        <table border="1" id="class-list">
+                            <tr>
+                                <th id="class-name">クラス名</th>
+                                <th>講師</th>
+                                <th id="button-area"></th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="hide">
+                        <p>クラスに所属していません</p>
+                    </div>
+                </section>
+                <a href="./class-create.html"> 新規クラスの作成 </a>
                 <!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
             </div>
         </div>

@@ -23,6 +23,11 @@ const main = async () => {
         return;
     }
 
+    if (classList.length === 0) {
+        $(".def").hide();
+        $(".hide").show();
+    }
+
     // クラス一覧の表示
     classList.forEach(async (value) => {
         // クラスデータを取得
