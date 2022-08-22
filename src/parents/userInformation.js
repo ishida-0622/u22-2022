@@ -34,12 +34,12 @@ const main = async () => {
     }
 
     const mail = parentData.mail;
-    const birthday = parentData.birth_date;
+    const birthday = parentData.birth_date.split("-");
 
     // 年、月、日をbirthdayから切り出して変数に代入
-    const year = birthday.substring(0, 4);
-    const month = birthday.substring(4, 6);
-    const day = birthday.substring(6, 8);
+    const year = birthday[0];
+    const month = birthday[1];
+    const day = birthday[2];
 
     const tel = parentData.tel;
 
