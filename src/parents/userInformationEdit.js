@@ -1,8 +1,8 @@
 import getUserData from "../auth/getUserData";
-import getStuData from "../components/getStuData";
 import $ from "jquery";
 import { db } from "../firebase/firebaseConfig";
 import { doc, updateDoc } from "firebase/firestore";
+import getParentsData from "../components/getParentsData";
 
 /**
  * ユーザ情報参照画面のjs
@@ -17,22 +17,17 @@ const main = async () => {
     const uid = userData.uid;
 
     // stuDataを変数に代入
-    const stuData = await getStuData(uid);
+    const parentData = await getParentsData(uid);
 
     // ユーザ情報のドキュメントを取り出して変数に代入
-    const firstName = stuData.first_name;
-    const lastName = stuData.last_name;
-    const firstNameKana = stuData.first_name_kana;
-    const lastNameKana = stuData.last_name_kana;
-    const mail = stuData.mail;
-    const birthday = stuData.birth_date;
+    const firstName = parentData.first_name;
+    const lastName = parentData.last_name;
+    const firstNameKana = parentData.first_name_kana;
+    const lastNameKana = parentData.last_name_kana;
+    const mail = parentData.mail;
+    const birthday = parentData.birth_date;
 
-    // 年、月、日をbirthdayから切り出して変数に代入
-    const year = birthday.substring(0, 4);
-    const month = birthday.substring(4, 6);
-    const day = birthday.substring(6, 8);
-
-    const tel = stuData.tel;
+    const tel = parentData.tel;
 
     // HTML要素を取得し、ユーザ情報を表示
     document.getElementById("first_name").value = firstName;
@@ -40,8 +35,7 @@ const main = async () => {
     document.getElementById("first_name_kana").value = firstNameKana;
     document.getElementById("last_name_kana").value = lastNameKana;
     document.getElementById("mail").value = mail;
-    document.getElementById("birth_date").value =
-        year + "-" + month + "-" + day;
+    document.getElementById("birth_date").value = birthday;
     document.getElementById("tel_number").value = tel;
 };
 
@@ -51,9 +45,6 @@ const userEdit = async () => {
     //userIDを変数に代入
     const uid = userData.uid;
 
-    // replaceAllの処理のため先に生年月日を変数に代入
-    const birthDate = document.getElementById("birth_date").value;
-
     // HTML要素を取得し、変数に代入
     const updateUserData = {
         first_name: document.getElementById("first_name").value,
@@ -61,10 +52,7 @@ const userEdit = async () => {
         first_name_kana: document.getElementById("first_name_kana").value,
         last_name_kana: document.getElementById("last_name_kana").value,
         mail: document.getElementById("mail").value,
-
-        // replaceAllで type="date" の内容を変形
-        birth_date: birthDate.replaceAll("-", ""),
-
+        birth_date: document.getElementById("birth_date").value,
         tel: document.getElementById("tel_number").value,
     };
 
@@ -74,23 +62,13 @@ const userEdit = async () => {
 
 $(function () {
     $("#user_information_edit").on("submit", async () => {
-        // 「OK」時の処理開始 ＋ 確認ダイアログの表示
         if (window.confirm("編集してもよろしいですか？")) {
             await userEdit();
-
-            // ユーザ情報参照画面に遷移
             window.location.href = "./user-information.html";
-        }
-        // 「OK」時の処理終了
-
-        // 「キャンセル」時の処理開始
-        else {
-            // 警告ダイアログを表示
+        } else {
             window.alert("キャンセルされました");
         }
-        // 「キャンセル」時の処理終了
     });
 });
 
-// mainを実行
 main();
