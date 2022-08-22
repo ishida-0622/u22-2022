@@ -5,7 +5,8 @@ import { userDataConverter } from "./firebase/firestoreTypes";
 
 const main = async () => {
     const user = await getUserData();
-    const url = location.pathname;
+    const path = location.pathname;
+    const folder = path.split("/")[1];
     if (user) {
         const userData = (
             await getDoc(
@@ -13,12 +14,31 @@ const main = async () => {
             )
         ).data();
 
-        if (url === "/login.html" || url === "/signup.html") {
-            if (userData.type === "student") {
+        if (userData.type === "student") {
+            if (
+                path === "/login.html" ||
+                path === "/signup.html" ||
+                folder === "teacher" ||
+                folder === "parents"
+            ) {
                 location.href = "/student/";
-            } else if (userData.type === "teacher") {
+            }
+        } else if (userData.type === "teacher") {
+            if (
+                path === "/login.html" ||
+                path === "/signup.html" ||
+                folder === "student" ||
+                folder === "parents"
+            ) {
                 location.href = "/teacher/";
-            } else {
+            }
+        } else {
+            if (
+                path === "/login.html" ||
+                path === "/signup.html" ||
+                folder === "student" ||
+                folder === "teacher"
+            ) {
                 location.href = "/parents/";
             }
         }
@@ -32,7 +52,7 @@ const main = async () => {
             nameElement.textContent = userData.last_name + userData.first_name;
         }
     } else {
-        if (url !== "/login.html" && url !== "/signup.html") {
+        if (path !== "/login.html" && path !== "/signup.html") {
             location.href = "/login.html";
         }
     }
