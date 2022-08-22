@@ -9,36 +9,36 @@
         <!-- パスワード入力フォーム用アイコンの読み込み(必要に応じてコメントアウト解除) -->
         <!-- <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> -->
         <link rel="icon" href="../images/favicon.ico" />
-		<style>
-			#scrollMenu{
-				display: flex;
-				flex-direction: row;
-				justify-content: space-between;
-				width: 100%;
+        <style>
+            #scrollMenu {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
                 max-width: 100%;
-			}
+            }
 
-			#classList{
-				max-width: 100%;
-			}
+            #classList {
+                max-width: 100%;
+            }
 
-            #graph{
+            #graph {
                 max-width: 100vw;
                 clear: both;
             }
 
-			.scrollButton{
-				width: 100%;
-			}
+            .scrollButton {
+                width: 100%;
+            }
 
-            #mainContent{
+            #mainContent {
                 display: none;
             }
 
-            #pleaseWait{
+            #pleaseWait {
                 display: block;
             }
-		</style>
+        </style>
     </head>
 
     <body>
@@ -63,47 +63,43 @@
             </div>
         </header>
 
+        <!-- メニュー -->
+        <div id="menu" class="side_menu">
+            <ul>
+                <li><a href="">クラス一覧</a></li>
+                <li><a href="./score-input.html">得点入力</a></li>
+                <li class="current"><a href="">レート参照</a></li>
+                <li><a id="logout" href="">ログアウト</a></li>
+            </ul>
+        </div>
+        <!-- メイン -->
+        <div id="maintable" class="praptable">
+            <!-- パンくずリスト -->
+            <div id="breadcrumb">
+                <ol>
+                    <li><a href="./">トップ</a></li>
+                    <li>レート参照</li>
+                </ol>
+            </div>
 
-		<!-- メニュー -->
-		<div id="menu" class="side_menu">
-			<ul>
-				<li><a href="">生徒検索</a></li>
-				<li><a href="">クラス一覧</a></li>
-				<li><a href="">得点入力</a></li>
-				<li><a href="">テスト追加</a></li>
-				<li class="current"><a href="">レート参照</a></li>
-				<li><a href="">生徒切り替え</a></li>
-				<li><a id="logout" href="">ログアウト</a></li>
-			</ul>
-		</div>
-		<!-- メイン -->
-		<div id="maintable" class="praptable">
-			<!-- パンくずリスト -->
-			<div id="breadcrumb">
-				<ol>
-					<li><a href="../index.html">トップ</a></li>
-					<li>現在地</li>
-				</ol>
-			</div>
-
-			<div id="main">
-				<!-- ↓↓↓ここからメイン部分↓↓↓ -->
-                <div id = "mainContent">
+            <div id="main">
+                <!-- ↓↓↓ここからメイン部分↓↓↓ -->
+                <div id="mainContent">
                     <h2>クラスを選択してください</h2>
                     <select id="classList">
                         <option value="-1">選択してください</option>
                     </select>
 
-                    <div id = "scoreView" style="display: none;">
+                    <div id="scoreView" style="display: none">
                         <div class="clearfix">
-                            <h2 class = "float">現在のレート:</h2>
-                            <h2 class = "float" id = "currentRate">あいうえお</h2>
+                            <h2 class="float">現在のレート:</h2>
+                            <h2 class="float" id="currentRate">あいうえお</h2>
                         </div>
 
                         <canvas id="graph"></canvas>
                         <div id="scrollMenu">
-                            <a class = "float" class = "scrollButton" id="prev"><=</a>
-                            <a class = "float" class = "scrollButton" id="next">=></a>
+                            <a class="float" id="prev">&lt;=</a>
+                            <a class="float" id="next">=&gt;</a>
                         </div>
 
                         <details>
@@ -115,26 +111,26 @@
                                         <th>レート</th>
                                     </tr>
                                 </thead>
-                                <tbody id = "rateTable">
+                                <tbody id="rateTable">
                                     <tr>
-                                        <td class = 'tdNumber'>0</td>
+                                        <td class="tdNumber">0</td>
                                     </tr>
                                     <tr>
-                                        <td class = 'tdNumber'>0</td>
+                                        <td class="tdNumber">0</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </details>
                     </div>
-                    <div id = "ifNotSelected">
+                    <div id="ifNotSelected">
                         <h2>クラスを選択するとここに成績が表示されます</h2>
                     </div>
                 </div>
-                <div id = "pleaseWait">
+                <div id="pleaseWait">
                     <h2>しばらくお待ちください</h2>
                     <h2>時間がかかる場合再読み込みをお願いいたします</h2>
                 </div>
-				<!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
+                <!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
             </div>
         </div>
 
