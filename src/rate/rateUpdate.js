@@ -1,8 +1,12 @@
 import { db } from "../firebase/firebaseConfig";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import getTestData from "../components/getTestData";
-import { stuClassDataConverter } from "../firebase/firestoreTypes";
+import {
+    stuClassDataConverter,
+    stuTestDataConverter,
+} from "../firebase/firestoreTypes";
 import rateCalc from "./rateCalc";
+import getTestList from "../components/getTestList";
 
 const getNowYMD = () => {
     const dt = new Date();
@@ -26,11 +30,38 @@ const rateUpdate = async (uid, testName, score) => {
         )
     ).data().rate;
 
-    // mapを使ってrateからscoreを抜き出してscoreに代入
-    const scoreList = rate.map((val) => val.score);
+    // テスト一覧を日付の昇順にソートしたもの
+    const testList = (await getTestList(className)).sort(
+        (a, b) => a.date - b.date
+    );
+
+    // 各テストの正解率
+    const scores = (
+        await Promise.all(
+            testList.map(async (val) => {
+                const score = (
+                    await getDoc(
+                        doc(
+                            db,
+                            `users/${uid}/tests/${val.test_name}`
+                        ).withConverter(stuTestDataConverter)
+                    )
+                ).data()?.score;
+                return score
+                    ? [
+                          Math.round(
+                              ((score - val.min_score) /
+                                  (val.max_score - val.min_score)) *
+                                  100
+                          ),
+                      ]
+                    : [];
+            })
+        )
+    ).flat();
 
     // rateCalcにscoreを渡して新しいレートを算出してnewScoreに代入
-    const newScore = rateCalc(scoreList.concat([score]));
+    const newScore = rateCalc(scores);
 
     // nweScoreと今日の日付を{date: 日付, score: newScore}の形式でnewRateに代入
     const date = getNowYMD();
