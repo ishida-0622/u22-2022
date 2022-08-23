@@ -11,11 +11,9 @@ import getClassData from "../components/getClassData";
  */
 const main = async () => {
     const userData = await getUserData();
-    if (userData === null) {
+    if (!userData) {
         return;
     }
-
-    // useridを変数に代入
     const uid = userData.uid;
 
     // getClassListでuidに対応したクラス名の配列を取得
@@ -69,20 +67,32 @@ const testRegister = async () => {
 
 $(function () {
     $("#test-create").on("submit", async () => {
+        const maxScore = document.getElementById("max_score").value;
+        const minScore = document.getElementById("min_score").value;
+        if (maxScore < minScore) {
+            alert("最高点は最低点以上で入力してください");
+            return;
+        }
+
         // getTestDataでテスト名に対応した要素を取得、存在しない場合は"null"が返ってくる
         const isTestExist = await getTestData(
             document.getElementById("test_name").value
         );
 
-        // 「OK」時の処理開始 ＋ 確認ダイアログの表示
+        // 取得した内容がnullで無い場合、アラートを表示してreturn
+        if (isTestExist) {
+            window.alert("そのテスト名は既に使われていまs");
+            return;
+        }
+
         if (
             window.confirm(
                 `
                 以下の内容で登録してもよろしいですか？\n
                 テスト名：${document.getElementById("test_name").value}
                 クラス名：${document.getElementById("class_name").value}
-                最高点：${String(document.getElementById("max_score").value)}
-                最低点：${String(document.getElementById("min_score").value)}
+                最高点：${maxScore}
+                最低点：${minScore}
                 実施日：${document
                     .getElementById("date")
                     .value.replaceAll("-", "/")}
@@ -91,27 +101,12 @@ $(function () {
                 `
             )
         ) {
-            // 取得した内容が"null"で無い場合、アラートを表示してreturn
-            if (isTestExist !== null) {
-                window.alert("そのテスト名は既に存在しています");
-                return;
-            }
-
             await testRegister();
-
-            // トップ画面に遷移
-            window.location.href = "test-list.html";
-        }
-        // 「OK」時の処理終了
-
-        // 「キャンセル」時の処理開始
-        else {
-            // 警告ダイアログを表示
+            window.location.href = "./";
+        } else {
             window.alert("キャンセルされました");
         }
-        // 「キャンセル」時の処理終了
     });
 });
 
-// mainを実行
 main();
