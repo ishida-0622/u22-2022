@@ -59,3 +59,11 @@ const main = async () => {
 };
 
 main();
+
+const toInfo = () => {
+    location.href = "./user-information.html";
+};
+
+if (document.getElementById("icon")) {
+    document.getElementById("icon").onclick = toInfo;
+}
