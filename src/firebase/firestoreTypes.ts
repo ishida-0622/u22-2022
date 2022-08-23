@@ -291,6 +291,8 @@ export const parentDataConverter: FirestoreDataConverter<parentData> = {
 export type testData = {
     test_name: string;
     class_name: string;
+    date: string;
+    test_overview: string;
     max_score: number;
     min_score: number;
 };
@@ -300,6 +302,8 @@ export const testDataConverter: FirestoreDataConverter<testData> = {
         return {
             test_name: testData.test_name,
             class_name: testData.class_name,
+            date: testData.date,
+            test_overview: testData.test_overview,
             max_score: testData.max_score,
             min_score: testData.min_score,
         };
@@ -313,6 +317,8 @@ export const testDataConverter: FirestoreDataConverter<testData> = {
         return {
             test_name: data.test_name,
             class_name: data.class_name,
+            date: data.date,
+            test_overview: data.test_overview,
             max_score: data.max_score,
             min_score: data.min_score,
         };
