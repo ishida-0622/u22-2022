@@ -10,7 +10,7 @@ import getStuData from "./getStuData";
  */
 const getStuPerfData = async (uid) => {
     // 生徒でなかった場合はnullを返却
-    if (getStuData(uid) === null) {
+    if (!(await getStuData(uid))) {
         return null;
     }
 
