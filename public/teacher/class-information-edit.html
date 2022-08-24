@@ -9,6 +9,39 @@
         <!-- パスワード入力フォーム用アイコンの読み込み(必要に応じてコメントアウト解除) -->
         <!-- <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> -->
         <link rel="icon" href="images/favicon.ico" />
+        <style>
+            #main table {
+                width: 100%;
+                margin: 1% 0;
+            }
+            .name-area {
+                width: 45%;
+            }
+            .button-area {
+                width: 4rem;
+                text-align: center;
+            }
+            #main form {
+                width: 60%;
+                margin-left: 20%;
+            }
+            #registration {
+                display: block;
+                margin: 0 auto;
+            }
+            @media (max-width: 750px) {
+                #main table {
+                    width: calc(100% - 10px);
+                }
+                .name-area {
+                    width: 45%;
+                }
+                .button-area {
+                    width: 4rem;
+                    text-align: center;
+                }
+            }
+        </style>
     </head>
 
     <body>
@@ -22,7 +55,7 @@
             <!-- アイコンを表示する場所 -->
             <div id="header_icon" class="side_menu">
                 <a id="close">✕</a>
-                <img src="images/icon.png" />
+                <img src="../images/icon.png" />
                 <p id="user-name"></p>
                 <p id="user-id"></p>
             </div>
@@ -37,7 +70,6 @@
         <div id="menu" class="side_menu">
             <ul>
                 <li><a href="./stu-search.html">生徒検索</a></li>
-                <li><a href="./class-list.html">クラス一覧</a></li>
                 <li><a href="./score-input.html">得点入力</a></li>
                 <li><a href="./test-create.html">テスト追加</a></li>
                 <li><a id="logout" href="">ログアウト</a></li>
@@ -68,16 +100,36 @@
                 >
                     <p>クラス名</p>
                     <input type="text" id="class_name" required />
-                    <div id="teachers">講師</div>
-                    <label for="teacher_id">ID:</label>
+                    <br />
+                    <table id="teachers" border="1">
+                        <tr>
+                            <th class="name-area">講師名</th>
+                            <th class="id-area">ID</th>
+                            <th class="button-area"></th>
+                        </tr>
+                    </table>
                     <input
                         type="text"
-                        id="teacher_id"
+                        id="teacher-id"
                         placeholder="講師のIDを入力"
                     />
-                    <button id="add">追加</button>
+                    <button id="add-teacher">追加</button>
                     <br />
-                    <input type="submit" value="決定" id="registration" />
+                    <table id="students" border="1">
+                        <tr>
+                            <th class="name-area">生徒名</th>
+                            <th class="id-area">ID</th>
+                            <th class="button-area"></th>
+                        </tr>
+                    </table>
+                    <input
+                        type="text"
+                        id="student-id"
+                        placeholder="生徒のIDを入力"
+                    />
+                    <button id="add-student">追加</button>
+                    <br />
+                    <input type="submit" value="変更を登録" id="registration" />
                 </form>
                 <!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
             </div>
