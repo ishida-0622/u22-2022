@@ -9,13 +9,15 @@ const main = async () => {
     const param = url.searchParams;
     const className = param.get("class_name");
 
-    const classInformtion = await getClassData(className);
-    const teacherInformtion = await getTeacherData(classInformtion.teachers[0]);
+    const classInformation = await getClassData(className);
+    const teacherInformation = await getTeacherData(
+        classInformation.teachers[0]
+    );
     const teacherName =
-        teacherInformtion.last_name + teacherInformtion.first_name;
+        teacherInformation.last_name + teacherInformation.first_name;
 
     const studentListElement = document.getElementById("student-list");
-    classInformtion.students.forEach(async (uid) => {
+    classInformation.students.forEach(async (uid) => {
         const studentData = await getStuData(uid);
         const studentRates = (await getStuPerfData(uid)).filter(
             (val) => val.class_name === className
