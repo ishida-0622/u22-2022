@@ -35,7 +35,6 @@
         <div id="menu" class="side_menu">
             <ul>
                 <li><a href="./stu-search.html">生徒検索</a></li>
-                <li><a href="./class-list.html">クラス一覧</a></li>
                 <li><a href="./score-input.html">得点入力</a></li>
                 <li><a href="./test-create.html">テスト追加</a></li>
                 <li><a id="logout" href="">ログアウト</a></li>
@@ -47,7 +46,6 @@
             <div id="breadcrumb">
                 <ol>
                     <li><a href="./">トップ</a></li>
-                    <li><a href="./class-list.html">クラス一覧</a></li>
                     <li>クラス情報</li>
                 </ol>
             </div>
@@ -59,15 +57,17 @@
                     <label for="class_name">クラス名:</label
                     ><span id="class_name"></span>
                 </p>
-                <p>
-                    <label for="teacher_name">代表講師名:</label
-                    ><span id="teacher_name"></span>
-                </p>
+                <table border="1" id="teacher-list">
+                    <tr>
+                        <th>講師名</th>
+                        <th>ID</th>
+                    </tr>
+                </table>
 
                 <table border="1" id="student-list">
                     <tr>
                         <th>生徒名</th>
-                        <th>生徒ID</th>
+                        <th>ID</th>
                         <th>レート</th>
                     </tr>
                 </table>
