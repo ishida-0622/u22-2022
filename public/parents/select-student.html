@@ -7,6 +7,11 @@
         <!-- スタイルシート読み込み(必要に応じてパス編集) -->
         <link rel="stylesheet" href="../css/style.css" />
         <link rel="icon" href="../images/favicon.ico" />
+        <style>
+            form {
+                margin-bottom: 3%;
+            }
+        </style>
     </head>
 
     <body>
@@ -24,22 +29,15 @@
                 <p>ログインする生徒を選択してください</p>
                 <form action="./" method="get">
                     <!-- 以下プルダウンメニュー(jsから取得) -->
-                    <select name="id" id="select-students-by-parents">
+                    <select name="id" id="select-students-by-parents" required>
                         <option value="" disabled selected>
                             選択してください
                         </option>
                     </select>
-
-                    <!-- 選択処理 -->
-                    <div>
-                        <input type="submit" value="決定" />
-                    </div>
-
-                    <!-- ログアウト(処理未追加) -->
-                    <div>
-                        <input type="button" id="logout" value="ログアウト" />
-                    </div>
+                    <input type="submit" value="決定" />
                 </form>
+                <a href="./add-child.html">生徒を追加</a>
+                <a href="" id="logout">ログアウト</a>
                 <!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
             </div>
         </div>
