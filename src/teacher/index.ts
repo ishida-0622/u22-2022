@@ -26,6 +26,7 @@ const main = async () => {
     if (classList.length === 0) {
         $(".def").hide();
         $(".hide").show();
+        return;
     }
 
     // クラス一覧の表示
@@ -63,28 +64,6 @@ const main = async () => {
     });
 };
 
-// /**
-//  * クラスを削除する
-//  * @param className クラス名
-//  */
-// const delClass = async (className: string) => {
-//     // クラスデータを取得
-//     const document = await getClassData(className);
-
-//     if (!document) {
-//         return;
-//     }
-
-//     // teachers/class/className の一致する class-name を削除する
-//     document.teachers.forEach(async (teacherName) => {
-//         await deleteDoc(doc(db, `users/${teacherName}/class/${className}`));
-//     });
-
-//     // classのclassNameのドキュメントを削除する関数
-//     await deleteDoc(doc(db, `class/${className}`));
-// };
-
-// mainを実行
 main();
 
 $("#open").trigger("click");
