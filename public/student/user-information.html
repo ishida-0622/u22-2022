@@ -22,9 +22,9 @@
             <!-- アイコンを表示する場所 -->
             <div id="header_icon" class="side_menu">
                 <a id="close">✕</a>
-                <img src="images/icon.png" />
-                <p>ユーザ名</p>
-                <p>ID:UserID</p>
+                <img id="icon" src="../images/icon.png" />
+                <p id="user-name"></p>
+                <p id="user-id"></p>
             </div>
 
             <!-- ヘッダ部分 -->
@@ -36,12 +36,9 @@
         <!-- メニュー -->
         <div id="menu" class="side_menu">
             <ul>
-                <li><a href="">生徒検索</a></li>
-                <li><a href="">クラス一覧</a></li>
-                <li><a href="">得点入力</a></li>
-                <li><a href="">テスト追加</a></li>
-                <li><a href="">レート参照</a></li>
-                <li><a href="">生徒切り替え</a></li>
+                <li><a href="./class-list.html">クラス一覧</a></li>
+                <li><a href="./score-input.html">得点入力</a></li>
+                <li><a href="./student-perf-data.html">レート参照</a></li>
                 <li><a id="logout" href="">ログアウト</a></li>
             </ul>
         </div>
@@ -50,8 +47,8 @@
             <!-- パンくずリスト -->
             <div id="breadcrumb">
                 <ol>
-                    <li><a href="index.html">トップ</a></li>
-                    <li>現在地</li>
+                    <li><a href="./">トップ</a></li>
+                    <li>ユーザー情報</li>
                 </ol>
             </div>
 
@@ -93,11 +90,7 @@
                         <td id="tel"></td>
                     </tr>
                 </table>
-                <button
-                    onclick="window.location.href ='./user-information-edit.html'"
-                >
-                    登録情報編集
-                </button>
+                <a href="./user-information-edit.html">編集する</a>
                 <!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
             </div>
         </div>
@@ -122,7 +115,5 @@
         <script src="../dist/openCloseSidebar.bundle.js"></script>
         <!-- トップに戻るボタン用js(必要に応じてコメントアウト, パス編集) -->
         <script src="../dist/scrollToTop.bundle.js"></script>
-        <!-- パスワード入力フォーム用js(必要に応じてコメントアウト解除, パス編集) -->
-        <!-- <script src="../dist/showHidePassword.bundle.js"></script> -->
     </body>
 </html>
