@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <title>ここにタイトルを入力｜tensile</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- スタイルシート読み込み(必要に応じてパス編集) -->
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="icon" href="../images/favicon.ico" />
+        <style>
+            input {
+                display: block;
+                margin: 0 0 1% 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- ヘッダー -->
+        <header>
+            <!-- ヘッダ部分 -->
+            <div id="header" onclick="location.href = `./`">
+                <p>tensile</p>
+            </div>
+        </header>
+
+        <!-- メイン -->
+        <div id="maintable" class="praptable">
+            <!-- パンくずリスト -->
+            <div id="breadcrumb">
+                <ol>
+                    <li><a href="./select-student.html">生徒選択</a></li>
+                    <li>生徒追加</li>
+                </ol>
+            </div>
+
+            <div id="main">
+                <!-- ↓↓↓ここからメイン部分↓↓↓ -->
+                <h3>追加する生徒のIDと名前を入力してください</h3>
+                <form onsubmit="return false">
+                    <label for="children-id">ID</label
+                    ><input
+                        type="text"
+                        name="children-id"
+                        id="children-id"
+                        placeholder="2人以上はカンマ区切り"
+                        pattern="^[\w,]+(?<!,)$"
+                        required
+                    />
+                    <label for="children-name">名前(フルネーム,空白無し)</label
+                    ><input
+                        type="text"
+                        name="children-name"
+                        id="children-name"
+                        placeholder="2人以上はカンマ区切り"
+                        pattern="^[\S,]+(?<!,)$"
+                        required
+                    />
+                    <input type="submit" value="追加" />
+                </form>
+                <a href="./select-student.html">生徒選択に戻る</a>
+                <!-- ↑↑↑メイン部分ここで終わり↑↑↑ -->
+            </div>
+        </div>
+
+        <!-- トップに戻るボタン -->
+        <a href="#" id="pageTop">▲</a>
+
+        <!-- フッタ -->
+        <footer>
+            <div id="footernav">
+                <small>&copy; copyright.Built with Firebase</small>
+            </div>
+        </footer>
+
+        <!-- ログイン確認処理含む初期化処理js読み込み(必要に応じてパス編集) -->
+        <script src="../dist/init.bundle.js"></script>
+        <!-- ログアウト用js読み込み(必要に応じてコメントアウト, パス編集) -->
+        <script src="../dist/logout.bundle.js"></script>
+        <!-- サイドバーの開閉用js読み込み(必要に応じてコメントアウト, パス編集) -->
+        <script src="../dist/openCloseSidebar.bundle.js"></script>
+        <!-- トップに戻るボタン用js(必要に応じてコメントアウト, パス編集) -->
+        <script src="../dist/scrollToTop.bundle.js"></script>
+        <script src="../dist/addChild.bundle.js"></script>
+    </body>
+</html>
