@@ -7,6 +7,20 @@
         <!-- スタイルシート読み込み(必要に応じてパス編集) -->
         <link rel="stylesheet" href="../css/style.css" />
         <link rel="icon" href="../images/favicon.ico" />
+        <style>
+            table {
+                width: 75%;
+            }
+            .name-area {
+                width: 50%;
+            }
+            .rate-area {
+                width: 10%;
+            }
+            #main {
+                padding-bottom: 5%;
+            }
+        </style>
     </head>
 
     <body>
@@ -53,22 +67,25 @@
             <div id="main">
                 <!-- ↓↓↓ここからメイン部分↓↓↓ -->
                 <h1>クラス情報</h1>
-                <p>
-                    <label for="class_name">クラス名:</label
-                    ><span id="class_name"></span>
-                </p>
+                <h3>
+                    <label for="class_name">クラス名</label><br />
+                    <span id="class_name"></span>
+                </h3>
+
+                <h3>講師一覧</h3>
                 <table border="1" id="teacher-list">
                     <tr>
-                        <th>講師名</th>
-                        <th>ID</th>
+                        <th class="name-area">講師名</th>
+                        <th class="id-area">ID</th>
                     </tr>
                 </table>
 
+                <h3>生徒一覧</h3>
                 <table border="1" id="student-list">
                     <tr>
-                        <th>生徒名</th>
-                        <th>ID</th>
-                        <th>レート</th>
+                        <th class="name-area">生徒名</th>
+                        <th class="id-area">ID</th>
+                        <th class="rate-area">レート</th>
                     </tr>
                 </table>
                 <a
