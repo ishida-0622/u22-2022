@@ -36,6 +36,7 @@ module.exports = {
         teacherIndex: "./src/teacher/index.ts",
         parentIndex: "./src/parents/index.ts",
         stuRate: "./src/parents/stuRate.ts",
+        addChild: "./src/parents/addChild.ts",
 
         debugLogin: "./src/debug/debugLogin.js",
     },
