@@ -1,260 +1,253 @@
 @charset "utf-8";
 /* カスタムプロパティの設定 */
 :root {
-	--headerHeight: 150px;
-	--menuWeight: 250px;
-	--buttonColor: rgb(50, 156, 255);
-	--buttonHover: rgb(42, 144, 240);
-	--buttonCurrent: rgb(37, 128, 212);
-	--bgColor: rgb(237, 247, 255);
-	--footerColor: rgb(45, 154, 255);
-	--menuBg: rgb(204, 231, 255);
+    --headerHeight: 150px;
+    --menuWeight: 250px;
+    --buttonColor: rgb(50, 156, 255);
+    --buttonHover: rgb(42, 144, 240);
+    --buttonCurrent: rgb(37, 128, 212);
+    --bgColor: rgb(237, 247, 255);
+    --footerColor: rgb(45, 154, 255);
+    --menuBg: rgb(204, 231, 255);
 }
 
 /* メニューを開く・閉じるanimationの設定 */
 @keyframes openMenu {
-	0% {
-		left: calc(-1 * var(--menuWeight));
-	}
-	100% {
-		left: 0;
-	}
+    0% {
+        left: calc(-1 * var(--menuWeight));
+    }
+    100% {
+        left: 0;
+    }
 }
 
 @keyframes closeMenu {
-	0% {
-		left: 0;
-	}
-	100% {
-		left: calc(-1 * var(--menuWeight));
-	}
+    0% {
+        left: 0;
+    }
+    100% {
+        left: calc(-1 * var(--menuWeight));
+    }
 }
 
 /* 画面幅を767px以下にした場合、メニューの幅を少し小さくする */
-@media screen and (max-width:767px){
-	:root {
-		--menuWeight: 150px;
-	}
+@media screen and (max-width: 767px) {
+    :root {
+        --menuWeight: 150px;
+    }
 }
 
 /* スクロールをスムーズにする */
 html {
-	scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 /* ページ全体の設定 */
-body{
-	width: 100%;
-	margin: 0 auto;
-	overflow-y:scroll;
+body {
+    width: 100%;
+    margin: 0 auto;
+    overflow-y: scroll;
 }
 
 /* リンクの設定 */
-a{
-	background-color: var(--buttonColor);
-	text-decoration: none;
-	color: white;
-	padding: 0 5px;
+a {
+    background-color: var(--buttonColor);
+    text-decoration: none;
+    color: white;
+    padding: 0 5px;
 }
 
-a:hover{
-	background-color: var(--buttonHover);
+a:hover {
+    background-color: var(--buttonHover);
 }
-
-
 
 /* ヘッダーの設定 */
-header{
-	top: 0;
-	width: 100vw;
-	height: var(--headerHeight);
-	position: fixed;
-	text-align: center;
-	display: flex;
+header {
+    top: 0;
+    width: 100vw;
+    height: var(--headerHeight);
+    position: fixed;
+    text-align: center;
+    display: flex;
 }
 
-#header{
-	height: var(--headerHeight);
+#header {
+    height: var(--headerHeight);
 
-	left: var(--menuWeight);
-	flex-grow: 1;
+    left: var(--menuWeight);
+    flex-grow: 1;
 
-	background: var(--buttonColor);
-	color: rgb(50, 64, 255);
-	font-size: 80px;
-	font-weight: bold;
-	font-style: italic;
-	vertical-align: middle;
+    background: var(--buttonColor);
+    color: rgb(50, 64, 255);
+    font-size: 80px;
+    font-weight: bold;
+    font-style: italic;
+    vertical-align: middle;
 }
 
-#header:hover{
-	background: var(--buttonHover);
+#header:hover {
+    background: var(--buttonHover);
 }
 
-#header p{
-	margin: 0 auto;
-	line-height: var(--headerHeight);
+#header p {
+    margin: 0 auto;
+    line-height: var(--headerHeight);
 }
 
 /* メニューを開く用のボタンの設定 */
-#menu_button{
-	width: var(--menuWeight);
-	height: var(--headerHeight);
+#menu_button {
+    width: var(--menuWeight);
+    height: var(--headerHeight);
 
-	background: var(--bgColor);
-	line-height:var(--headerHeight);
-
+    background: var(--bgColor);
+    line-height: var(--headerHeight);
 }
 
-#menu_button a{
-	display: inline-block;
-	vertical-align: middle;
-	font-size: 100px;
-	width: 100px;
-	height: 100px;
-	line-height:100px;
+#menu_button a {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 100px;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
 }
 
 /* ヘッダーアイコン部分の設定 */
-#header_icon{
-	position: absolute;
-	width: var(--menuWeight);
-	background: var(--bgColor);
-	height: var(--headerHeight);
+#header_icon {
+    position: absolute;
+    width: var(--menuWeight);
+    background: var(--bgColor);
+    height: var(--headerHeight);
 }
 
-#header_icon table{
-	width: 100%;
+#header_icon table {
+    width: 100%;
 }
 
-#header_icon img{
-	border-radius: 50%;
-	width: 100px;
-
+#header_icon img {
+    border-radius: 50%;
+    width: 100px;
 }
 
-#header_icon p{
-	margin-block-start: 0;
-	margin-block-end: 0;
+#header_icon p {
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
-
 
 /* メニューボタンの設定 */
-#close{
-	float: right;
-	position: absolute;
-	right: 0;
-	top: 0;
+#close {
+    float: right;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 /* メニューの設定 */
-#menu{
-	width: var(--menuWeight);
-	height: 100vw;
-	min-height: calc(100vh - var(--headerHeight));
+#menu {
+    width: var(--menuWeight);
+    height: 100vw;
+    min-height: calc(100vh - var(--headerHeight));
 
-	top: var(--headerHeight);
+    top: var(--headerHeight);
 
-	background-color: var(--menuBg);
+    background-color: var(--menuBg);
 
-	display: block;
-	position: fixed;
+    display: block;
+    position: fixed;
 
-	padding-bottom: auto;
+    padding-bottom: auto;
 }
 
-#menu ul{
-	padding: 0;
-	margin: 0;
+#menu ul {
+    padding: 0;
+    margin: 0;
 }
-#menu ul li{
-	list-style: none;
-	text-align: center;
-	margin-bottom: 1px;
+#menu ul li {
+    list-style: none;
+    text-align: center;
+    margin-bottom: 1px;
 }
-#menu ul li a{
-	display: block;
-	padding: 4px;
-}
-
-#menu ul li.current a{
-	background-color: var(--buttonCurrent);
+#menu ul li a {
+    display: block;
+    padding: 4px;
 }
 
-.side_menu{
-	left:calc(-1 * var(--menuWeight));
-	animation-fill-mode: both;
-	animation-duration: 0.5s;
-	animation-timing-function: ease-out;
+#menu ul li.current a {
+    background-color: var(--buttonCurrent);
+}
+
+.side_menu {
+    left: calc(-1 * var(--menuWeight));
+    animation-fill-mode: both;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
 }
 
 /* メイン部分の設定 */
-#maintable{
-	margin-top: var(--headerHeight);
-	background-color: var(--bgColor);
-	margin-bottom: 24px;
+#maintable {
+    margin-top: var(--headerHeight);
+    background-color: var(--bgColor);
+    margin-bottom: 24px;
 }
-#main{
-	width: calc(100% - var(--menuWeight));
-	width: 100%;
-	min-height: calc(100vh - 184px - 24px);
-}
-
-th{
-	font-weight: normal;
-}
-#main h1{
-	background-color: rgb(255, 255, 255);
-	border-left: rgb(110, 185, 255) solid 15px;
-	margin-top: 0;
+#main {
+    width: calc(100% - var(--menuWeight));
+    width: 100%;
+    min-height: calc(100vh - 184px - 24px);
 }
 
-#main h2{
-	width: auto;
-
-	padding-right: 0;
+th {
+    font-weight: normal;
+}
+#main h1 {
+    background-color: rgb(255, 255, 255);
+    border-left: rgb(110, 185, 255) solid 15px;
+    margin-top: 0;
 }
 
-.float{
-	float: left;
+#main h2 {
+    width: auto;
+
+    padding-right: 0;
 }
 
-
-
-#main p{
-	line-height: 1.6;
-	margin: 0;
-	margin-left: 5px;
-	margin-right: 5px;
+.float {
+    float: left;
 }
 
-#main a{
-	margin: 5px;
+#main p {
+    line-height: 1.6;
+    margin: 0;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
-#main table{
-	margin: 5px;
-	border-collapse: collapse;
+#main a {
+    margin: 5px;
 }
 
-#main th{
+#main table {
+    margin: 5px;
+    border-collapse: collapse;
+}
+
+#main th {
     text-align: center;
-	background-color: rgb(139, 199, 255);
+    background-color: rgb(139, 199, 255);
 }
-#main tr{
-	background-color: rgb(255, 255, 255);
+#main tr {
+    background-color: rgb(255, 255, 255);
 }
 
 #main tr:nth-child(odd) {
-	background: rgb(238, 238, 238);
+    background: rgb(238, 238, 238);
 }
 
-.tdNumber{
+.tdNumber {
     text-align: right;
 }
 
-#main textarea{
-	max-width: calc(100% - 10px);
+#main textarea {
+    max-width: calc(100% - 10px);
 }
 
 /* #main canvas{
@@ -265,77 +258,75 @@ th{
     content: "";
     display: block;
     clear: both;
- }
+}
 
 /* パンくずリストの設定 */
-#breadcrumb{
-	width: 100vw;
-	height: 24px;
+#breadcrumb {
+    width: 100vw;
+    height: 24px;
 
-	background-color: var(--menuBg);
+    background-color: var(--menuBg);
 
-	display: table-cell;
-	padding: 5px 0;
-	top: var(--headerHeight);
+    display: table-cell;
+    padding: 5px 0;
+    top: var(--headerHeight);
 }
-#breadcrumb ol{
-	margin: 0;
-	list-style: none;
-	margin-left: 10px;
-	padding: 0;
-
+#breadcrumb ol {
+    margin: 0;
+    list-style: none;
+    margin-left: 10px;
+    padding: 0;
 }
-#breadcrumb ol li{
-	display: inline;
+#breadcrumb ol li {
+    display: inline;
 }
-#breadcrumb ol li::after{
-	content: " >";
+#breadcrumb ol li::after {
+    content: " >";
 }
-#breadcrumb ol li:last-child::after{
-	content: none;
+#breadcrumb ol li:last-child::after {
+    content: none;
 }
 
 /* 折り畳みの設定 */
-summary{
-	margin-bottom: 10px;
+summary {
+    margin-bottom: 10px;
 }
 
 /* トップに戻るボタンの設定 */
-#pageTop{
-	width: 80px;
-	height: 80px;
+#pageTop {
+    width: 80px;
+    height: 80px;
 
-	right: 10px;
-	bottom: 50px;
+    right: 10px;
+    bottom: 50px;
 
-	position: fixed;
-	vertical-align: middle;
-	text-align: center;
-	font-size: 50px;
-	padding: 0;
-	border-radius: 50%;
-	pointer-events:none;
-	opacity:0;
+    position: fixed;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 50px;
+    padding: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
 }
 
 /* フッタの設定 */
-footer{
-	width: 100%;
+footer {
+    width: 100%;
 
-	bottom: 0;
-	float: left;
+    bottom: 0;
+    float: left;
 
-	background-color: var(--footerColor);
-	text-align: center;
-	position: fixed;
-
+    background-color: var(--footerColor);
+    text-align: center;
+    position: fixed;
 }
 
-footer p{
-	color: #ffffff;
-	margin-block-start: 0;
-	margin-block-end: 0;
-	margin: 0;
+footer p {
+    color: #ffffff;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin: 0;
 }
 
 /* パスワード入力エリアのデザイン */
@@ -351,8 +342,8 @@ footer p{
 /* パスワード入力エリアここまで */
 
 /* スマホ用の設定 */
-@media screen and (max-width:470px){
-	#header{
-		font-size: 50px;
-	}
+@media screen and (max-width: 470px) {
+    #header {
+        font-size: 50px;
+    }
 }
