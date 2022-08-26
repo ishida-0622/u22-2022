@@ -16,7 +16,8 @@ const main = async () => {
 
     // 1人ならページ遷移
     if (children.length === 1) {
-        location.href = `./?id=${children[0]}`;
+        const child = await getStuData(children[0]);
+        location.href = `./?id=${child!.id}`;
         return;
     }
 
