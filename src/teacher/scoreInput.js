@@ -113,6 +113,9 @@ const addTable = async () => {
         // 各セルのidを各生徒idで設定する
         element.id = stu.id;
 
+        element.max = testData.max_score;
+        element.min = testData.min_score;
+
         // 入力欄に操作があったら、scoreInputを実行する
         element.addEventListener("input", scoreInput);
 

@@ -79,6 +79,8 @@ const selectboxChange = async () => {
     const testData = await getTestData(selected);
     minScore = testData.min_score;
     maxScore = testData.max_score;
+    scoreInputArea.min = testData.min_score;
+    scoreInputArea.max = testData.max_score;
 };
 
 /**
