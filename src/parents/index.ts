@@ -5,6 +5,8 @@ import getClassList from "../components/getClassList";
 import getRate from "../components/getRate";
 import { rateType } from "../firebase/firestoreTypes";
 import $ from "jquery";
+import getParentsData from "../components/getParentsData";
+import getUserData from "../auth/getUserData";
 
 /**クラス名とそのクラスのレートの配列*/
 let rateList: {
@@ -19,7 +21,6 @@ const main = async () => {
     // GETで与えられたidを取得
     const id = new URL(location.href).searchParams.get("id");
     if (!id) {
-        alert("生徒が選択されていません");
         location.href = "./select-student.html";
         return;
     }
@@ -27,12 +28,25 @@ const main = async () => {
     // idをもとにuidを取得
     const uid = await getUid(id);
     if (!uid) {
+        location.href = "./select-student.html";
+        return;
+    }
+
+    const user = await getUserData();
+    if (!user) {
+        location.href = "./select-student.html";
+        return;
+    }
+    const parentData = await getParentsData(user.uid);
+    if (!parentData?.children_id.some((v) => v === uid)) {
+        location.href = "./select-student.html";
         return;
     }
 
     // 生徒情報を取得
     const studentData = await getStuData(uid);
     if (!studentData) {
+        location.href = "./select-student.html";
         return;
     }
 
