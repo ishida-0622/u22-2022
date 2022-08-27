@@ -13,9 +13,6 @@
         />
         <link rel="icon" href="images/favicon.ico" />
         <style>
-            .hide {
-                display: none;
-            }
             body {
                 text-align: center;
             }
@@ -37,21 +34,18 @@
                 <!-- ↓↓↓ここからメイン部分↓↓↓ -->
                 <h1>Login</h1>
                 <form onsubmit="return false">
-                    <p class="def">
-                        メールアドレス<br />
-                        <label for="email"></label>
-                        <input type="email" name="email" id="email" /><br />
-                        <a href="" class="change" onclick="return false"
-                            >IDでログイン</a
-                        >
-                    </p>
-                    <p class="hide">
-                        ID<br />
-                        <label for="id"></label>
-                        <input type="text" name="id" id="id" /><br />
-                        <a href="" class="change" onclick="return false"
-                            >メールアドレスでログイン</a
-                        >
+                    <p>
+                        <span id="login-type">メールアドレス</span><br />
+                        <label for="email-or-id"></label>
+                        <input
+                            type="email"
+                            name="email-or-id"
+                            id="email-or-id"
+                            required
+                        /><br />
+                        <a href="" id="change" onclick="return false">
+                            IDでログイン
+                        </a>
                     </p>
                     <br />
                     <p>
