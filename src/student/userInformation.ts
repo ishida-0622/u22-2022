@@ -1,3 +1,4 @@
+import fileDownload from "../storage/fileDownload";
 import getUserData from "../auth/getUserData";
 import getStuData from "../components/getStuData";
 
@@ -6,7 +7,7 @@ import getStuData from "../components/getStuData";
  */
 const main = async () => {
     const userData = await getUserData();
-    if (userData === null) {
+    if (!userData) {
         return;
     }
 
@@ -15,6 +16,9 @@ const main = async () => {
 
     // stuDataを変数に代入
     const stuData = await getStuData(uid);
+    if (!stuData) {
+        return;
+    }
 
     // ユーザ情報のドキュメントを取り出して変数に代入
     const firstName = stuData.first_name;
@@ -23,15 +27,7 @@ const main = async () => {
     const lastNameKana = stuData.last_name_kana;
     const sexNum = stuData.sex;
 
-    //デフォルトでは性別無し
-    let sex = "";
-
-    // "sex"の番号によって性別を判定
-    if (sexNum === "1") {
-        sex = "男";
-    } else {
-        sex = "女";
-    }
+    const sex = sexNum === "1" ? "男" : sexNum === "2" ? "女" : "その他";
 
     const mail = stuData.mail;
     const birthday = stuData.birth_date.split("-");
@@ -44,16 +40,23 @@ const main = async () => {
     const tel = stuData.tel;
 
     // HTML要素を取得し、ユーザ情報を表示
-    document.getElementById("first_name").innerHTML = firstName;
-    document.getElementById("last_name").innerHTML = lastName;
-    document.getElementById("first_name_kana").innerHTML = firstNameKana;
-    document.getElementById("last_name_kana").innerHTML = lastNameKana;
-    document.getElementById("sex").innerHTML = sex;
-    document.getElementById("mail").innerHTML = mail;
-    document.getElementById("birth_date").innerHTML =
+    document.getElementById("first_name")!.textContent = firstName;
+    document.getElementById("last_name")!.textContent = lastName;
+    document.getElementById("first_name_kana")!.textContent = firstNameKana;
+    document.getElementById("last_name_kana")!.textContent = lastNameKana;
+    document.getElementById("sex")!.textContent = sex;
+    document.getElementById("mail")!.textContent = mail;
+    document.getElementById("birth_date")!.textContent =
         year + "/" + month + "/" + day;
-    document.getElementById("tel").innerHTML = tel;
+    document.getElementById("tel")!.textContent = tel;
+
+    const image = await fileDownload(uid);
+    const imageElement = document.getElementById(
+        "user-img"
+    ) as HTMLImageElement | null;
+    if (image && imageElement) {
+        imageElement.src = image;
+    }
 };
 
-// setTimeout(main, 700);
 main();
