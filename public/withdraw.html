@@ -22,36 +22,12 @@
     <body>
         <!-- ヘッダー -->
         <header>
-            <!-- サイドメニュー表示用ボタン -->
-            <div id="menu_button">
-                <a id="open">≡</a>
-            </div>
-
-            <!-- アイコンを表示する場所 -->
-            <div id="header_icon" class="side_menu">
-                <a id="close">✕</a>
-                <img src="images/icon.png" />
-                <p>ユーザ名</p>
-                <p>ID:UserID</p>
-            </div>
-
             <!-- ヘッダ部分 -->
             <div id="header" onclick="location.href = `index.html`">
                 <p>tensile</p>
             </div>
         </header>
 
-        <!-- メニュー -->
-        <div id="menu" class="side_menu">
-            <ul>
-                <li><a href="">生徒検索</a></li>
-                <li><a href="">クラス一覧</a></li>
-                <li><a href="">得点入力</a></li>
-                <li><a href="">テスト追加</a></li>
-                <li><a href="">レート参照</a></li>
-                <li><a href="">生徒切り替え</a></li>
-            </ul>
-        </div>
         <!-- メイン -->
         <div id="maintable" class="praptable">
             <!-- パンくずリスト -->
@@ -76,6 +52,11 @@
                         一度退会すると再度登録しても、情報を復元することは2度とできません。
                     </p>
                     <input type="button" value="確認しました" id="cfm-button" />
+                    <input
+                        type="button"
+                        value="戻る"
+                        onclick="history.back()"
+                    />
                 </section>
                 <section id="cfm" class="hide">
                     <p>パスワードを入力してください</p>
