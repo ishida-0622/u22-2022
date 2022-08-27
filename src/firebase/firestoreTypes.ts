@@ -141,7 +141,7 @@ export const stuClassDataConverter: FirestoreDataConverter<stuClassData> = {
 
 export type stuTestData = {
     test_name: string;
-    score: number;
+    score: number | null;
 };
 
 export const stuTestDataConverter: FirestoreDataConverter<stuTestData> = {
