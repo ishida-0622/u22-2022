@@ -70,7 +70,7 @@ $("form").on("submit", async () => {
             } else if (userType === "teacher") {
                 location.href = "./teacher/";
             } else {
-                location.href = "./parents/";
+                location.href = "./parents/select-student.html";
             }
         })
 

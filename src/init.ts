@@ -40,7 +40,7 @@ const main = async () => {
                 folder === "student" ||
                 folder === "teacher"
             ) {
-                location.href = "/parents/";
+                location.href = "/parents/select-student.html";
             }
         }
 
