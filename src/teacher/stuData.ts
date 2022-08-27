@@ -4,6 +4,7 @@ import Chart from "chart.js/auto";
 import getClassList from "../components/getClassList";
 import getRate from "../components/getRate";
 import { rateType } from "../firebase/firestoreTypes";
+import fileDownload from "../storage/fileDownload";
 
 /**クラス名とそのクラスのレートの配列*/
 let rateList: {
@@ -48,6 +49,11 @@ const main = async () => {
             ? "女"
             : "その他"
     }`;
+
+    const image = await fileDownload(uid);
+    if (image) {
+        (document.getElementById("stu-icon") as HTMLImageElement).src = image;
+    }
 
     // クラス一覧を取得
     const classList = await getClassList(uid);
