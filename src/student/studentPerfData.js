@@ -122,7 +122,9 @@ const showGraph = (showRate, position) => {
             // もしもマウスが近くにあったら、値を表示する
             if (Math.abs(mouseX - drawX) < 23.5 && mouseY < 260 && mouseY > 0) {
                 context.font = "20px 'sans-serif'";
-                let textWidth = context.measureText(i["score"])["width"];
+                let textWidth = context.measureText(
+                    Math.round(i["score"] * 10) / 10
+                )["width"];
                 if (drawY - 25 > 5) {
                     // 外枠を超えないなら点の上に表示するように設定する
                     context.textBaseline = "bottom";
@@ -142,7 +144,11 @@ const showGraph = (showRate, position) => {
                     20
                 );
                 context.fillStyle = "rgb(255, 255, 255)";
-                context.fillText(i["score"], drawX, TextY);
+                context.fillText(
+                    Math.round(i["score"] * 10) / 10,
+                    drawX,
+                    TextY
+                );
             }
         }
     });
@@ -333,7 +339,7 @@ document.getElementById("next").onclick = () => {
 const Start = async () => {
     // ユーザデータを取得
     const USER_DATA = await getUserData();
-    const UID = await USER_DATA["uid"];
+    const UID = USER_DATA["uid"];
     // 成績データを取得
     const stuPerfData = await getStuPerfData(UID);
 
@@ -409,7 +415,7 @@ CLASS_MENU.onchange = () => {
                 "<tr><td class = 'tdNumber'>" +
                 dateFormat(i["date"], false) +
                 "</td><td class = 'tdNumber'>" +
-                i["score"] +
+                Math.round(i["score"] * 10) / 10 +
                 "</td></tr>";
         });
 
@@ -424,7 +430,7 @@ CLASS_MENU.onchange = () => {
 
         // 現在のレートの部分に末尾のレートを表示
         document.getElementById("currentRate").innerText =
-            rate.slice(-2)[0]["score"];
+            Math.round(rate.slice(-2)[0]["score"] * 10) / 10;
 
         // スクロールバーの長さの単位を決める
         barLength = CANVAS.width / rate.length;
