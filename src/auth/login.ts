@@ -14,14 +14,14 @@ let isEmailLogin = true;
 
 $("form").on("submit", async () => {
     // 入力された値を取得
-    let email = $("#email").val() as string;
-    const id = $("#id").val() as string;
+    const emailOrId = $("#email-or-id").val() as string;
+    let email = emailOrId;
     const password = $("#inputed-password").val() as string;
 
     // IDでのログインだった場合
     if (!isEmailLogin) {
         // uid取得
-        const uid = await getUid(id);
+        const uid = await getUid(emailOrId);
         if (!uid) {
             alert("IDが間違っています");
             return;
@@ -89,14 +89,19 @@ $("form").on("submit", async () => {
         });
 });
 
+const inputElement = document.getElementById("email-or-id") as HTMLInputElement;
+const loginTypeText = document.getElementById("login-type") as HTMLSpanElement;
+const changeButton = document.getElementById("change") as HTMLAnchorElement;
 // IDでログイン or メールアドレスでログインが押されたら
-$(".change").on("click", () => {
+$("#change").on("click", () => {
     if (isEmailLogin) {
-        $(".hide").show();
-        $(".def").hide();
+        inputElement.type = "text";
+        loginTypeText.textContent = "ID";
+        changeButton.textContent = "メールアドレスでログイン";
     } else {
-        $(".hide").hide();
-        $(".def").show();
+        inputElement.type = "email";
+        loginTypeText.textContent = "メールアドレス";
+        changeButton.textContent = "IDでログイン";
     }
     isEmailLogin = !isEmailLogin;
 });
