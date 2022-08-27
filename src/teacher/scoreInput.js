@@ -6,7 +6,8 @@ import getStuInClass from "../components/getStuInClass";
 import getUid from "../components/getUid";
 import rateUpdate from "../rate/rateUpdate";
 import { db } from "../firebase/firebaseConfig";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { stuTestDataConverter } from "../firebase/firestoreTypes";
 
 // 各HTML要素を取得する
 // テストセレクトボックスを含む要素を取得する
@@ -23,6 +24,9 @@ const btn = document.querySelector("#cfm-dialog");
 
 let minScore = 0;
 let maxScore = 100;
+
+const maxScoreElement = document.getElementById("max-score");
+const minScoreElement = document.getElementById("min-score");
 
 /**
  * DBからテスト名を取得し、テストセレクトボックスに与える
@@ -76,7 +80,7 @@ const addTable = async () => {
 
     // 選択されたテストを渡してテストデータを取得
     const testData = await getTestData(selectBox.value);
-    if (testData === null) {
+    if (!testData) {
         return;
     }
 
@@ -86,12 +90,14 @@ const addTable = async () => {
     // テストの最低点数と最高点数を代入
     minScore = testData.min_score;
     maxScore = testData.max_score;
+    maxScoreElement.textContent = maxScore;
+    minScoreElement.textContent = minScore;
 
     // クラスに所属する生徒情報を取得する
     const stuDatas = await getStuInClass(testClass);
 
     // 生徒名を走査する
-    stuDatas.forEach((stu) => {
+    stuDatas.forEach(async (stu) => {
         // テーブルに１行追加する
         const row = tbl.insertRow(-1);
 
@@ -115,6 +121,17 @@ const addTable = async () => {
 
         element.max = testData.max_score;
         element.min = testData.min_score;
+
+        const stuUid = await getUid(stu.id);
+        const score = (
+            await getDoc(
+                doc(
+                    db,
+                    `users/${stuUid}/tests/${testData.test_name}`
+                ).withConverter(stuTestDataConverter)
+            )
+        ).data().score;
+        element.value = score ? score : "";
 
         // 入力欄に操作があったら、scoreInputを実行する
         element.addEventListener("input", scoreInput);
