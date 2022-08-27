@@ -4,6 +4,7 @@ import {
     createUserWithEmailAndPassword,
     AuthErrorCodes,
     sendEmailVerification,
+    signOut,
 } from "firebase/auth";
 import getUserData from "./getUserData";
 import $ from "jquery";
@@ -117,15 +118,13 @@ new Vue({
                             $("#signup").remove();
                             $("<p>", {
                                 html: `
-                        ${this.email}にメールを送信しました<br>
-                        URLをクリックして登録を完了させてください<br>
-                        メールが届かない場合は再送信やアドレスの確認を行ってください
-                        `,
+                                    ${this.email}にメールを送信しました<br>
+                                    URLをクリックして登録を完了させてください<br>
+                                    メールが届かない場合はアドレスの確認や迷惑メールの確認を行ってください
+                                    `,
                             }).appendTo("#after");
-                            $("<button>", {
-                                id: "retransmission",
-                                text: "メールの再送信",
-                            }).appendTo("#after");
+
+                            await signOut(auth);
                         });
                 })
 
@@ -378,14 +377,4 @@ new Vue({
             this.childrenList = [];
         },
     },
-});
-
-// メールの再送信が押された場合の処理 なんかうまくいかないけど優先度低いのでパス
-$(document).on("click", "#retransmission", async () => {
-    const user = await getUserData();
-    if (!user) {
-        console.log("null");
-        return;
-    }
-    await sendEmailVerification(user);
 });
