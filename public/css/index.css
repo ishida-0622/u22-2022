@@ -56,7 +56,7 @@ html, body{
 }
 
 /* リンクの設定 */
-a{
+a {
     text-decoration: none;
     position: relative;
     display: inline-block;
@@ -113,6 +113,11 @@ header{
 	line-height: var(--headerHeight);
 }
 
+div#list ul li a {
+    position: static;
+    border-bottom: solid #31aae2 2px;
+}
+
 /* メニューを開く用のボタンの設定 */
 #menu_button{
 	width: var(--menuWeight);
@@ -139,6 +144,29 @@ header{
     background-color: var(--buttonHover);
 }
 
+/* ヘッダーアイコン部分の設定 */
+#header_icon{
+	position: absolute;
+	width: var(--menuWeight);
+	background: var(--bgColor);
+	height: var(--headerHeight);
+}
+
+#header_icon table{
+	width: 100%;
+}
+
+#header_icon img{
+	border-radius: 50%;
+	width: 100px;
+
+}
+
+#header_icon p{
+	margin-block-start: 0;
+	margin-block-end: 0;
+}
+
 /* メニューボタンの設定 */
 #close{
 	float: right;
@@ -161,6 +189,7 @@ header{
 	position: fixed;
 
 	padding-bottom: auto;
+    z-index: 100;
 }
 
 #menu ul{
@@ -319,6 +348,43 @@ table {
 .table-base th {
     width: 100px;
     text-align: center;
+}
+
+#header_link {
+    width: 200px;
+    height: 150px;
+}
+
+#header_link div {
+    height: 50%;
+    line-height: 75px;
+    vertical-align: middle;
+    border: none;
+    margin: 0;
+}
+
+#header_login {
+    background-color: #72d2ff;
+}
+
+#header_login a {
+    color: #004d70;
+}
+
+#header_login:hover {
+    background-color: #3eb3e9;
+}
+
+#header_signup {
+    background-color: #70f8ff;
+}
+
+#header_signup a {
+    color: #006065;
+}
+
+#header_signup:hover {
+    background-color: #31d9e2;
 }
 
 /* スマホ用の設定 */
