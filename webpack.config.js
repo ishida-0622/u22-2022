@@ -38,8 +38,6 @@ module.exports = {
         parentIndex: "./src/parents/index.ts",
         stuRate: "./src/parents/stuRate.ts",
         addChild: "./src/parents/addChild.ts",
-
-        debugLogin: "./src/debug/debugLogin.js",
     },
     output: {
         path: path.resolve(__dirname, "./public/dist"),
