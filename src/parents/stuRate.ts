@@ -116,7 +116,7 @@ const allDraw = () => {
                     return Math.max(
                         ...val.rate
                             .filter((v) => v.date === date)
-                            .map((v) => v.score)
+                            .map((v) => Math.round(v.score * 10) / 10)
                     );
                 } else {
                     return null;
@@ -190,7 +190,9 @@ if (document.querySelector("select")) {
                     {
                         borderColor: "#005AFF",
                         label: selectedClass,
-                        data: selectedClassRate.rate.map((val) => val.score),
+                        data: selectedClassRate.rate.map(
+                            (val) => Math.round(val.score * 10) / 10
+                        ),
                     },
                 ],
             },

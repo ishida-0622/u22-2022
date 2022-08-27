@@ -117,7 +117,9 @@ document.querySelector("select")!.onchange = () => {
             datasets: [
                 {
                     label: selectedClass,
-                    data: selectedClassRate.rate.map((val) => val.score),
+                    data: selectedClassRate.rate.map(
+                        (val) => Math.round(val.score * 10) / 10
+                    ),
                 },
             ],
         },
