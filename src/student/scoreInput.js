@@ -2,9 +2,10 @@ import getUserData from "../auth/getUserData";
 import getClassList from "../components/getClassList";
 import getTestList from "../components/getTestList";
 import { db } from "../firebase/firebaseConfig";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import getTestData from "../components/getTestData";
 import rateUpdate from "../rate/rateUpdate";
+import { stuTestDataConverter } from "../firebase/firestoreTypes";
 
 // 各HTML要素を取得する
 // テストセレクトボックスを含む要素を取得する
@@ -81,6 +82,14 @@ const selectboxChange = async () => {
     maxScore = testData.max_score;
     scoreInputArea.min = testData.min_score;
     scoreInputArea.max = testData.max_score;
+    const score = (
+        await getDoc(
+            doc(db, `users/${uid}/tests/${selected}`).withConverter(
+                stuTestDataConverter
+            )
+        )
+    ).data().score;
+    scoreInputArea.value = score ? score : "";
 };
 
 /**
