@@ -43,6 +43,7 @@
                 <li><a href="">レート参照</a></li>
                 <li><a href="">生徒切り替え</a></li>
                 <li><a id="logout" href="">ログアウト</a></li>
+                <li><a href="/withdraw.html">退会</a></li>
             </ul>
         </div>
         <!-- メイン -->
@@ -67,6 +68,13 @@
                         src="../images/icon.png"
                         alt="ユーザの写真"
                         title="user_img"
+                        id="user-img"
+                    />
+                    <input
+                        type="file"
+                        name="icon-file"
+                        id="icon-file"
+                        accept="image/*"
                     />
 
                     <!--テーブルの表示-->
@@ -106,23 +114,13 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>メールアドレス</th>
-                            <td><input type="email" id="mail" required /></td>
-                        </tr>
-                        <tr>
-                            <th>生年月日</th>
-                            <td>
-                                <input type="date" id="birth_date" required />
-                            </td>
-                        </tr>
-                        <tr>
                             <th>電話番号</th>
                             <td>
                                 <input
                                     type="tel"
                                     id="tel_number"
                                     required
-                                    pattern="[0-9]{10}"
+                                    pattern="[0-9]{10,11}"
                                 />
                             </td>
                         </tr>
