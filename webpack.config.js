@@ -4,7 +4,7 @@ const entries = glob.sync("./src/**/*.js");
 
 module.exports = {
     entry: {
-        init: "./src/init.js",
+        init: "./src/init.ts",
         openCloseSidebar: "./src/viewComponents/openCloseSidebar.js",
         scrollToTop: "./src/viewComponents/scrollToTop.js",
         showHidePassword: "./src/viewComponents/showHidePassword.js",
@@ -20,12 +20,12 @@ module.exports = {
         stuSearch: "./src/teacher/stuSearch.ts",
         stuData: "./src/teacher/stuData.ts",
         classCreate: "./src/teacher/classCreate.js",
-        teacherInformation: "./src/teacher/userInformation.js",
-        teacherInformationEdit: "./src/teacher/userInformationEdit.js",
-        stuInformation: "./src/student/userInformation.js",
-        stuInformationEdit: "./src/student/userInformationEdit.js",
-        parentsInformation: "./src/parents/userInformation.js",
-        parentsInformationEdit: "./src/parents/userInformationEdit.js",
+        teacherInformation: "./src/teacher/userInformation.ts",
+        teacherInformationEdit: "./src/teacher/userInformationEdit.ts",
+        stuInformation: "./src/student/userInformation.ts",
+        stuInformationEdit: "./src/student/userInformationEdit.ts",
+        parentsInformation: "./src/parents/userInformation.ts",
+        parentsInformationEdit: "./src/parents/userInformationEdit.ts",
         selectChildren: "./src/parents/selectChildren.ts",
         testList: "./src/teacher/testList.js",
         testCreate: "./src/teacher/testCreate.js",
