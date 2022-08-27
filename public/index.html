@@ -20,9 +20,24 @@
             <a id="open">≡</a>
         </div>
 
+        <!-- アイコンを表示する場所 -->
+        <div id="header_icon" class="side_menu">
+            <a id="close">✕</a>
+            <img id="icon" src="images/tensile.png" />
+            <p id="user-name"></p>
+            <p id="user-id"></p>
+        </div>
+
         <!-- ヘッダ部分 -->
         <div id="header" onclick="location.href = `index.html`">
             <p>tensile</p>
+        </div>
+
+        <div id="header_link">
+            <div id="header_login"><a href="login.html">ログインはこちら</a></div>
+            <div id="header_signup"><a href="signup.html">サインアップはこちら</a></div>
+            <!-- <div><small><a href="login.html">ログインはこちら</a></small></div>
+            <div><small><a href="signup.html">サインアップはこちら</a></small></div> -->
         </div>
     </header>
 
@@ -277,7 +292,7 @@
 
             <div id="developer">
                 <h2>開発者について</h2>
-                <p>開発者：東京情報クリエイター工学院専門学校 プログラミング部（以下「当団体」といいます。）</p>
+                <p>開発者：<a href="https://www.o-hara.ac.jp/senmon/school/tokyo_it/" target="_blank">東京情報クリエイター工学院専門学校</a> プログラミング部（以下「当団体」といいます。）</p>
                 <p>開発経緯：<a href="https://u22procon.com/" target="_blank">U-22プログラミング・コンテスト2022</a>への応募作品</p>
                 <p>本サービスtensileは、<a
                         href="#rule">上記規約</a>に同意いただいた上での会員登録を必要とはしますが、完全フリーでの提供をしております。理由はいたって単純で、あくまで試用であること、並びに開発者が学習、コンテストの一環として作り上げた作品（システム）であるからです。<br>
@@ -291,8 +306,6 @@
 
     <footer>
         <div id="footernav">
-            <a href="login.html">ログインはこちら</a>
-            <a href="signup.html">サインアップはこちら</a>
             <small>&copy; copyright.Built with Firebase</small>
         </div>
     </footer>
@@ -301,6 +314,5 @@
     <script src="./dist/openCloseSidebar.bundle.js"></script>
     <!-- トップに戻るボタン用js(必要に応じてコメントアウト, パス編集) -->
     <script src="./dist/scrollToTop.bundle.js"></script>
-
 </body>
 </html>
