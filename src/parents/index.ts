@@ -116,7 +116,7 @@ const allDraw = () => {
                     return Math.max(
                         ...val.rate
                             .filter((v) => v.date === date)
-                            .map((v) => v.score)
+                            .map((v) => Math.round(v.score * 10) / 10)
                     );
                 } else {
                     return null;
