@@ -50,11 +50,6 @@ $(function () {
             return;
         }
 
-        if (stuids.size === 0) {
-            alert("生徒を追加してください");
-            return;
-        }
-
         if (!window.confirm("このクラスを登録してもよろしいですか？")) {
             return;
         }
@@ -105,7 +100,7 @@ $(function () {
         await setDoc(doc(db, "class", className), classData);
 
         alert("追加されました");
-        window.location.href = "./class-list.html";
+        window.location.href = "./";
     });
 
     // キャンセルボタンの処理
