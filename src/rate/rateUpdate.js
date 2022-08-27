@@ -8,18 +8,10 @@ import {
 import rateCalc from "./rateCalc";
 import getTestList from "../components/getTestList";
 
-const getNowYMD = () => {
-    const dt = new Date();
-    const y = dt.getFullYear();
-    const m = ("00" + (dt.getMonth() + 1)).slice(-2);
-    const d = ("00" + dt.getDate()).slice(-2);
-    const result = [y, m, d].join("-");
-    return result;
-};
-
 const rateUpdate = async (uid, testName, score) => {
+    const testData = await getTestData(testName);
     // テスト名からクラス名を取ってきてclassNameに代入
-    const className = (await getTestData(testName)).class_name;
+    const className = testData.class_name;
 
     // uidとクラス名をもとに生徒の対象クラスのレートを取得してrateに代入
     const rate = (
@@ -64,7 +56,7 @@ const rateUpdate = async (uid, testName, score) => {
     const newScore = rateCalc(scores);
 
     // nweScoreと今日の日付を{date: 日付, score: newScore}の形式でnewRateに代入
-    const date = getNowYMD();
+    const date = testData.date;
     const newRate = {
         date: date,
         score: newScore,
