@@ -18,6 +18,10 @@ import {
     id,
 } from "../firebase/firestoreTypes";
 import zip from "../components/zip";
+import getYMD from "../components/getYMD";
+
+const dateElement = document.getElementById("birth-date") as HTMLInputElement;
+dateElement.max = getYMD();
 
 new Vue({
     el: "#app",
