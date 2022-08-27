@@ -8,8 +8,7 @@ const fileDownload = async (path: string): Promise<string | null> => {
             .then((url) => {
                 resolve(url);
             })
-            .catch((e) => {
-                console.log(e);
+            .catch(() => {
                 reject(null);
             });
     });
