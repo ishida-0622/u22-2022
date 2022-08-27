@@ -41,6 +41,7 @@
                 <li><a href="./test-list.html">テスト一覧</a></li>
                 <li><a href="./test-create.html">テスト追加</a></li>
                 <li><a id="logout" href="">ログアウト</a></li>
+                <li><a href="/withdraw.html">退会</a></li>
             </ul>
         </div>
         <!-- メイン -->
@@ -57,7 +58,10 @@
                 <!-- ↓↓↓ここからメイン部分↓↓↓ -->
                 <label>テストを選択してください</label>
                 <div id="test-selectbox"></div>
-                <label>点数を入力してください</label>
+                <label>
+                    点数を入力してください(上限<span id="max-score"></span
+                    >点、下限<span id="min-score"></span>点)
+                </label>
                 <table border="1" id="tbl">
                     <tr>
                         <!-- カラム名 -->
@@ -88,5 +92,6 @@
         <script src="../dist/openCloseSidebar.bundle.js"></script>
         <!-- トップに戻るボタン用js(必要に応じてコメントアウト, パス編集) -->
         <script src="../dist/scrollToTop.bundle.js"></script>
+        <script src="../dist/logout.bundle.js"></script>
     </body>
 </html>
