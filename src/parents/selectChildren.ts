@@ -14,13 +14,6 @@ const main = async () => {
         return;
     }
 
-    // 1人ならページ遷移
-    if (children.length === 1) {
-        const child = await getStuData(children[0]);
-        location.href = `./?id=${child!.id}`;
-        return;
-    }
-
     const selectBox = document.querySelector("select");
 
     // セレクトボックスに追加
