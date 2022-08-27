@@ -28,8 +28,8 @@ const calcRate = (scores) => {
 	const len = scores.length;
 
     if(len < 3) {
-        // スコアそのままを返す
-        return scores[len-1];
+        // スコアそのままを圧縮して返す
+        return (scores[len-1] - 50) * 0.92 + 50;
     } else if (len < 5) {
         // 一次式で近似して、現在のレートを返却
         const elements = calcApproximatedCurve(scores, 1);	//ax+b -> [a, b]
