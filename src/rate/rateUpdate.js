@@ -23,8 +23,8 @@ const rateUpdate = async (uid, testName, score) => {
     ).data().rate;
 
     // テスト一覧を日付の昇順にソートしたもの
-    const testList = (await getTestList(className)).sort(
-        (a, b) => a.date - b.date
+    const testList = (await getTestList(className)).sort((a, b) =>
+        a.date < b.date ? -1 : 1
     );
 
     // 各テストの正解率
@@ -60,6 +60,7 @@ const rateUpdate = async (uid, testName, score) => {
     const newRate = {
         date: date,
         score: newScore,
+        test_name: testName,
     };
 
     // rateの末尾にnewRateを追加
