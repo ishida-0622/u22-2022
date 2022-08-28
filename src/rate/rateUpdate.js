@@ -53,7 +53,7 @@ const rateUpdate = async (uid, testName, score) => {
     ).flat();
 
     // rateCalcにscoreを渡して新しいレートを算出してnewScoreに代入
-    const newScore = rateCalc(scores);
+    const newScore = Math.round(rateCalc(scores) * 10) / 10;
 
     // nweScoreと今日の日付を{date: 日付, score: newScore}の形式でnewRateに代入
     const date = testData.date;
