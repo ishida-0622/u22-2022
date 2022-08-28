@@ -58,7 +58,10 @@ $(function () {
 
         // 追加される生徒IDをUserIDに変換
         for (let val of stuids) {
-            stuUids.push(await getUid(val));
+            const stuUid = await getUid(val);
+            if (stuUid) {
+                stuUids.push(stuUid);
+            }
         }
 
         // 担当講師のUserIDを取得
@@ -84,20 +87,20 @@ $(function () {
         };
 
         // 講師データの登録
-        await setDoc(doc(db, "users", uid, "class", className), {
+        await setDoc(doc(db, `users/${uid}/class/${className}`), {
             class_name: className,
         });
 
         // 生徒データの登録
         stuUids.forEach(async (stuid) => {
             await setDoc(
-                doc(db, "users", stuid, "class", className),
+                doc(db, `users/${stuid}/class/${className}`),
                 userClassData
             );
         });
 
         // クラス名の登録
-        await setDoc(doc(db, "class", className), classData);
+        await setDoc(doc(db, `class/${className}`), classData);
 
         alert("追加されました");
         window.location.href = "./";
