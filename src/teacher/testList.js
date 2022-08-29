@@ -43,6 +43,9 @@ const main = async () => {
                 // テスト名
                 test.test_name +
                 "</td><td>" +
+                // クラス名
+                test.class_name +
+                "</td><td>" +
                 // テストの最高得点
                 test.max_score +
                 "</td><td>" +
