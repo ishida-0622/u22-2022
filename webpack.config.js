@@ -1,6 +1,4 @@
 const path = require("path");
-const glob = require("glob");
-const entries = glob.sync("./src/**/*.js");
 
 module.exports = {
     entry: {
